@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        {% if page.title == 'Home' %}
+        <title>Pengyu Chen</title>
+        {% else %}
+        <title>{{ page.title }}</title>
+        {% endif %}
+        <!--<link rel="alternate" type="application/rss+xml" title="Pengyu Chen" href="http://toy.linuxtoy.org/atom.xml">-->
+        <link rel="shortcut icon" href="{{ site.baseurl }}favicon.ico">
+        <!-- syntax highlighting css -->
+        <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}css/syntax.css">
+        <!-- homepage css -->
+        <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}css/hgtip/aal.css">
+        <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}css/hgtip/calluna.css">
+        <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}css/hgtip/style.css">
+    </head>
+    <body>
+        <div id="main-wrap">
+            <div id="header">
+                <h1><a href="{{ site.baseurl }}" title="Pengyu Chen">Pengyu Chen</a></h1>
+            </div>
+            <p id="navigation">
+                <a href="{{ site.baseurl }}pages/archives.html">Archives</a> &mdash;
+                <a href="{{ site.baseurl }}pages/projects.html">Projects</a> &mdash;
+                <a href="{{ site.baseurl }}pages/viml.html">Viml</a> &mdash;
+                <a href="{{ site.baseurl }}pages/people.html">People</a> &mdash;
+                <a href="{{ site.baseurl }}pages/favorite.html">Favorite</a> &mdash;
+                <a href="{{ site.baseurl }}pages/about.html">About</a>
+            </p>
+            <div id="content">
+                {{ content }}
+            </div>
+            <div id="footer">
+                Follow me: <a href="https://github.com/ShongSu">github</a> / <a href="https://ca.linkedin.com/pub/pengyu-chen/86/538/852">linkedin</a> 
+            </div>
+        </div>
+    </body>
+</html>
