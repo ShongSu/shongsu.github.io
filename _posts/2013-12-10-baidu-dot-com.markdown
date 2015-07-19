@@ -2,7 +2,7 @@
 layout: post
 title: baidu.com
 date: 2013-12-10 16:16
-post-link: www.baidu.com
+post-link: http://www.baidu.com
 ---
 
 本文测试百度链接
