@@ -12,17 +12,17 @@ New Graduate @ University of Ottawa
 
 **Work Experience**
 
-QA Intern @ Optimal Payments PLC <br />
+<b>QA Intern</b> @ Optimal Payments PLC <br />
 September 2014 – December 2014 (4 months) Gatineau, Quebec, Canada <br />
 <br />
-Web Developer-COOP <br />
+<b>Web Developer</b> <br />
 Ottawa Insititute of Systems Biology, University of Ottawa <br />
 May 2014 – August 2014 (4 months) Ottawa, Ontario, Canada
 
 
 **Languages**
 
-Chinese(Mandarin) • English • Japanese 
+Chinese (Mandarin) • English • Japanese 
 
 
 **Skills**
@@ -32,16 +32,16 @@ C/C++ • Java • PHP • iOS • HTML • CSS • MySQL • MS SQL Server
 
 **Education**
 
-Master of Computer Science <br />
+<b>Master of Computer Science</b> <br />
 University of Ottawa (2013 - 2015)<br />
 <br />
-Bachelor of Engineering, Computer Science & Technology <br />
+<b>Bachelor of Engineering, Computer Science & Technology</b> <br />
 Tianjin University of Science and Technology (2009 - 2013)
 
 
 **Contact**
 
-+ Gmail:     [chinhouu1992@gmail.com][m]
++ Gmail:     [chinhouu1992[AT]gmail.com][m]
 + Github:    [@Pengyu Chen][g]
 + Linkedin:  [@Pengyu Chen][l]
 
