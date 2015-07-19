@@ -12,13 +12,11 @@ New Graduate @ University of Ottawa
 
 **Work Experience**
 
-+ QA Intern @ Optimal Payments PLC 
-
-<br />September 2014 – December 2014 (4 months) Gatineau, Quebec, Canada
-
-+ Web Developer-COOP
-
-<br />Ottawa Insititute of Systems Biology, University of Ottawa
+QA Intern @ Optimal Payments PLC <br />
+September 2014 – December 2014 (4 months) Gatineau, Quebec, Canada <br />
+<br />
+Web Developer-COOP <br />
+Ottawa Insititute of Systems Biology, University of Ottawa <br />
 May 2014 – August 2014 (4 months) Ottawa, Ontario, Canada
 
 
@@ -34,13 +32,11 @@ C/C++ • Java • PHP • iOS • HTML • CSS • MySQL • MS SQL Server
 
 **Education**
 
-+ Master of Computer Science 
-  
-<br />University of Ottawa (2013 - 2015)
-
-+ Bachelor of Engineering, Computer Science & Technology
-
-<br />Tianjin University of Science and Technology (2009 - 2013)
+Master of Computer Science <br />
+University of Ottawa (2013 - 2015)<br />
+<br />
+Bachelor of Engineering, Computer Science & Technology <br />
+Tianjin University of Science and Technology (2009 - 2013)
 
 
 **Contact**
