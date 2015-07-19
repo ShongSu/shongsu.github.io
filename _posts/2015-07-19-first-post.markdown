@@ -9,3 +9,6 @@ I am a beginner of Blog building. I am so glad that I have a own blog in [Github
 Steve Jobs is my hero, so I use his word as my first title.
 
 
+
+
+[g]: https://github.com/
