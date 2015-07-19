@@ -3,26 +3,28 @@ layout: page
 title: About
 ---
 
-# About the Author
+**About the Author**
 
-Pengyu Chen (Male)
-Ottawa, Ontario, Canada
-New Graduate @ University of Ottawa
+Pengyu Chen (Male) <br />
+Ottawa, Ontario, Canada <br />
+New Graduate @ University of Ottawa 
 
 
 **Work Experience**
 
-+ QA Intern @ Optimal Payments PLC
-September 2014 – December 2014 (4 months) Gatineau, Quebec, Canada
++ QA Intern @ Optimal Payments PLC 
+
+<br />September 2014 – December 2014 (4 months) Gatineau, Quebec, Canada
 
 + Web Developer-COOP
-Ottawa Insititute of Systems Biology, University of Ottawa
+
+<br />Ottawa Insititute of Systems Biology, University of Ottawa
 May 2014 – August 2014 (4 months) Ottawa, Ontario, Canada
 
 
 **Languages**
 
-Chinese(Mandarin) • English • Japanese
+Chinese(Mandarin) • English • Japanese 
 
 
 **Skills**
@@ -33,10 +35,12 @@ C/C++ • Java • PHP • iOS • HTML • CSS • MySQL • MS SQL Server
 **Education**
 
 + Master of Computer Science 
-  University of Ottawa (2013 - 2015)
+  
+<br />University of Ottawa (2013 - 2015)
 
 + Bachelor of Engineering, Computer Science & Technology
-  Tianjin University of Science and Technology (2009 - 2013)
+
+<br />Tianjin University of Science and Technology (2009 - 2013)
 
 
 **Contact**
@@ -45,7 +49,7 @@ C/C++ • Java • PHP • iOS • HTML • CSS • MySQL • MS SQL Server
 + Github:    [@Pengyu Chen][g]
 + Linkedin:  [@Pengyu Chen][l]
 
-# Colophon
+**Colophon**
 
 This Blog was written by [Sublime][s], built by [Jekyll][j], management by [Github][gh], style from [hg tip][h]。
 
