@@ -5,16 +5,41 @@ title: About
 
 # About the Author
 
-Pengyu Chen, 陈鹏宇，来自山东菏泽。
-现居加拿大
+Pengyu Chen (Male)
+Ottawa, Ontario, Canada
+New Graduate @ University of Ottawa
 
-我的学习领域:
+
+**Work Experience**
+
++ QA Intern @ Optimal Payments PLC
+September 2014 – December 2014 (4 months) Gatineau, Quebec, Canada
+
++ Web Developer-COOP
+Ottawa Insititute of Systems Biology, University of Ottawa
+May 2014 – August 2014 (4 months) Ottawa, Ontario, Canada
+
+
+**Languages**
+
+Chinese(Mandarin) • English • Japanese
+
+
+**Skills**
 
 C/C++ • Java • PHP • iOS • HTML • CSS • MySQL • MS SQL Server 
 
 
+**Education**
 
-联系我:
++ Master of Computer Science 
+  University of Ottawa (2013 - 2015)
+
++ Bachelor of Engineering, Computer Science & Technology
+  Tianjin University of Science and Technology (2009 - 2013)
+
+
+**Contact**
 
 + Gmail:     [chinhouu1992@gmail.com][m]
 + Github:    [@Pengyu Chen][g]
@@ -22,8 +47,7 @@ C/C++ • Java • PHP • iOS • HTML • CSS • MySQL • MS SQL Server
 
 # Colophon
 
-这个 Blog 在 [Sublime][s] 中书写，使用 [Jekyll][j] 生成，通过 [Github][gh] 进行
-管理，样式来自 [hg tip][h]。
+This Blog was written by [Sublime][s], built by [Jekyll][j], management by [Github][gh], style from [hg tip][h]。
 
 [m]: mailto:chinhouu1992@gmail.com
 [g]: https://github.com/Shongsu
@@ -32,4 +56,3 @@ C/C++ • Java • PHP • iOS • HTML • CSS • MySQL • MS SQL Server
 [j]: http://jekyllrb.com
 [gh]: https://github.com/
 [h]: http://hgtip.com/
-[v]: http://vim.org
