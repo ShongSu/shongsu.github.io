@@ -1,16 +1,11 @@
 ---
 layout: post
-title: My first post
-date: 2015-09-19 16:25
+title: Stay hungry. Stay foolish
+date: 2015-09-19 19:15
 post-link: 
 ---
 
-This is my fist post.
+I am a beginner of Blog building. I am so glad that I have a own blog in [Github][g].<br />
+Steve Jobs is my hero, so I use his word as my first title.
 
-This is my fist post.
-This is my fist post.
-This is my fist post.
-This is my fist post.
-This is my fist post.
-This is my fist post.
-This is my fist post.
+

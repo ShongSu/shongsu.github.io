@@ -5,7 +5,7 @@ title: About
 
 **About the Author**
 
-Pengyu Chen (Male) <br />
+<b>Pengyu Chen</b> <br />
 Ottawa, Ontario, Canada <br />
 New Graduate @ University of Ottawa 
 
@@ -13,11 +13,10 @@ New Graduate @ University of Ottawa
 **Work Experience**
 
 <b>QA Intern</b> @ Optimal Payments PLC <br />
-September 2014 – December 2014 (4 months) Gatineau, Quebec, Canada <br />
+September 2014 – December 2014 (4 months). Gatineau, Quebec, Canada <br />
 <br />
-<b>Web Developer</b> <br />
-Ottawa Insititute of Systems Biology, University of Ottawa <br />
-May 2014 – August 2014 (4 months) Ottawa, Ontario, Canada
+<b>Web Developer</b> @ Ottawa Insititute of Systems Biology, University of Ottawa <br />
+May 2014 – August 2014 (4 months). Ottawa, Ontario, Canada
 
 
 **Languages**
