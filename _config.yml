@@ -1,3 +1,4 @@
+baseurl: /shongsu.github.io
 markdown: redcarpet
 redcarpet:
     extensions: ["fenced_code_blocks", "autolink", "tables"]
