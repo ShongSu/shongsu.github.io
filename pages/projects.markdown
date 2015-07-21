@@ -13,7 +13,7 @@ title: Projects
 
 
 
-[o]: http://oisb-1.med.uottawa.ca/lab/index.php
+[b]: http://oisb-1.med.uottawa.ca/lab/index.php
 [q]: https://github.com/ShongSu/QRCode
 
 
