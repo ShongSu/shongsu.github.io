@@ -5,7 +5,7 @@ title: Favorite
 
 # {{ page.title }}
 
-+ Readings
+<h3>Readings</h3> 
 
 [1] Cracking the Coding Interview, 4 Edition - 150 Programming Interview Questions and Solutions
 
@@ -17,7 +17,7 @@ title: Favorite
 
 
 
-+ Study Notes
+<h3>Study Notes</h3>
 
 [1] Swift / iOS / Objective-C
 
