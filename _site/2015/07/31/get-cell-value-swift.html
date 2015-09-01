@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+        <title>Get Value from Cells of TableView / TableView点击获取当前Cell内容</title>
+        
+        <link rel="alternate" type="application/rss+xml" title="Pengyu Chen">
+        <link rel="shortcut icon" href="/favicon.ico">
+        <!-- syntax highlighting css -->
+        <link rel="stylesheet" type="text/css" href="/css/syntax.css">
+        <!-- homepage css -->
+        <link rel="stylesheet" type="text/css" href="/css/hgtip/aal.css">
+        <link rel="stylesheet" type="text/css" href="/css/hgtip/calluna.css">
+        <link rel="stylesheet" type="text/css" href="/css/hgtip/style.css">
+    </head>
+    <body>
+        <div id="main-wrap">
+            <div id="header">
+                <h1><a href="/" title="Pengyu Chen">Pengyu Chen</a></h1>
+                <br />
+            </div>
+            <p id="navigation">
+                <a href="/pages/archives.html">Archives</a> &mdash;
+                <a href="/pages/projects.html">Projects</a> &mdash;
+                <a href="/pages/people.html">People</a> &mdash;
+                <a href="/pages/favorite.html">Favorite</a> &mdash;
+                <a href="/pages/about.html">About</a>
+            </p>
+            <div id="content">
+                
+<h2>Get Value from Cells of TableView / TableView点击获取当前Cell内容</h2>
+
+<p id="tip-info">July 31, 2015 @ 06:12 PM</p>
+<p><center><strong>------English (英文)------</strong></center></p>
+
+<p>......</p>
+
+<p><center><strong>------中文 (Chinese)------</strong></center></p>
+
+<p>首先，在一个TableViewController里面有很多个Cell，我们希望在点击每个条目之后，跳转到第二个视图，在第二个视图上显示所点击的条目的索引和内容。</p>
+
+<p>第二个视图的代码如下：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">class ViewController: UIViewController {
+
+
+    var rowIndex = 0     //定义当前条目的索引
+    var rowValue = &quot;&quot;    //定义当前条目的内容值
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //分别显示出当前条目的索引和内容值
+        label1.text = &quot;rowIndex is \(rowIndex)&quot;
+        label2.text = &quot;rowValue is \(rowValue)&quot;
+    }
+
+    @IBOutlet weak var label1: UILabel!
+
+    @IBOutlet weak var label2: UILabel!
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+
+
+}
+</code></pre></div>
+<p>首先我们可以在<code>TableViewController.swift</code>文件中定义以下函数代码：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text"> override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+
+
+        // 其中“viewcontroller2”为第二个视图在storyboard中的唯一识别ID
+        var viewController = self.storyboard?.instantiateViewControllerWithIdentifier(&quot;viewcontroller2&quot;) as! ViewController   
+        // indexPath.row即为当前行的索引值，从0开始
+        viewController.rowIndex = indexPath.row  
+        // 加载第二个视图viewController
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+</code></pre></div>
+<p>以上代码很容易即可实现对当前条目索引值的获取。那么我们要想获得条目的内容，改怎么办呢？</p>
+
+<p>方法也十分简单，我们只需要把下面三行代码加入到<code>didSelectRowAtIndexPath</code>函数中即可。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">// 定义cell是UITableVeiwCell类型，返回索引为indexPath的Cell
+var cell = tableView.cellForRowAtIndexPath(indexPath)
+// 转化cell为UILabel类型，并赋值给viewController视图中的label2
+viewController.label2 = cell?.textLabel
+// 将所得到的label2的text内容赋值给rowValue变量
+viewController.rowValue = viewController.label2.text!
+</code></pre></div>
+<p>这样我们就能够在第二个视图中同时获取被点击Cell的索引和内容值了。</p>
+
+<div id="tip-comments">
+    <h2>Related Posts</h2>
+    <ul>
+        
+        <li><a href="/2015/09/01/codility.html">A Good Site for Coding Test / Codility, 练习编码的好平台</a> &raquo; September  1, 2015</li>
+        
+        <li><a href="/2015/07/23/mongodb-crud-operations.html">MongoDB CRUD Operations / MongoDB的增删改查操作</a> &raquo; July 23, 2015</li>
+        
+        <li><a href="/2015/07/23/mongodb-for-mac.html">Install and Run MongoDB on Mac OS X / 在Mac下安装并使用MongoDB</a> &raquo; July 23, 2015</li>
+        
+    </ul>
+</div>
+
+            </div>
+            <div id="footer">
+                Follow me: <a href="https://github.com/ShongSu">Github</a> / <a href="https://ca.linkedin.com/pub/pengyu-chen/86/538/852">Linkedin</a> 
+            </div>
+        </div>
+    </body>
+</html>
