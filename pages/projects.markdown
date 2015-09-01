@@ -5,6 +5,8 @@ title: Projects
 
 # {{ page.title }}
 
++ Currently working on secondary development on [Magento][m] eCommerce software.
+
 + Masters' Project: Establishing Communication among Nearby Devices using Multipeer Connectivity Framework
 
 + [Intraweb of OISB][b]: Intranet system development, using HTML, CSS, PHP, MySQL, functions including meeting schedule, resources inquiry, equipment reservation, password recovery, picture posting and commenting, etc.
@@ -15,6 +17,6 @@ title: Projects
 
 [b]: http://oisb-1.med.uottawa.ca/lab/index.php
 [q]: https://github.com/ShongSu/QRCode
-
+[m]: https://github.com/hchen1202/Magento
 
 
