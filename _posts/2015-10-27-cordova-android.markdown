@@ -5,9 +5,8 @@ date: 2015-10-27 00:19
 post-link:
 ---
 
+<center>**------English (英文)------**</center>
 
-Cordova-Android Plugin Example
-==============================
 
 This is sample cordova plugin (currently for android platform only). Tested with Cordova 5.3.3 + Android 5.1.1
 
@@ -16,27 +15,27 @@ How to run example?
 
 1. Create a new cordova project, for example:
 
-        cordova create PluginTest com.shongsu.test PluginTest
+    cordova create PluginTest com.shongsu.test PluginTest
 
 2. Go into the directory you just created.
 
-        cd PluginTest
+    cd PluginTest
 
 3. Add Android platform.
 
-        cordova platform add android
+    cordova platform add android
 
 4. Add this plugin to your cordova project, type:
 
-	    cordova plugin add https://github.com/shongsu/cordova-example-plugin.git
+	cordova plugin add https://github.com/shongsu/cordova-example-plugin.git
 
   or clone this git and add it locally, for example:
 
-        cordova plugin add file-path-here
+    cordova plugin add file-path-here
 
 5. Eidt your `www/index.html` file, here is full example:
 
-        <!DOCTYPE html>
+	<!DOCTYPE html>
         <html>
         <head>
             <meta charset="utf-8" />
@@ -264,63 +263,5 @@ For more details refer:
 [cp]: http://docs.phonegap.com/en/3.4.0/guide_hybrid_plugins_index.md.html#Plugin%20Development%20Guide
 
 
-
-
-
-
-
-
-
-
-
-
-<center>**------English (英文)------**</center>
-
-Thanks to an interview opportunity from [SurveyMonkey][sm], I learnt this website: [Codility][c], similar to [LeetCode][l]. It is an amazing place to provide online coding test to software companies to test candidates. But as a programmer, we also can test ourselves from the [lessons][le] and [challenges][ch] it provided. 
-
-
-It supports mostly programming language, including C, C++, Java, Pascal, Python, C#, PHP, JavaScript, Perl, Ruby, VB.NET, Lua, Objective-C, Scala and Go.
-
-
-In addition, it will evaluate your code by correctness and performance, for example,
-
-<center><img src="/images/score.png" alt="score" width="80%" /></center>
-
-It also run your code in many test cases to avoid overflow or edge data to ensure your code without little bugs.
-Details as below,
-
-<center>
-<img src="/images/correctness.png" alt="correctness" width="80%" /> 
-<img src="/images/performance.png" alt="performance" width="80%" />
-</center>
-
-Looks cool? 
-
-I would like to post my codes (mostly in Java) on [my GitHub][git], if you are interested, follow my coding trip. Let's coding start today!
-
-
-<center>**------中文 (Chinese)------**</center>
-
-最近刚刚结束了[SurveyMonkey][sm]的面试，在下不才在第三轮被刷下。不过通过此次面试，得知了一个非常不错的类似于[Leetcode][l]的网站: [Codility][c]。这个网站主要是给IT公司的HR提供online编程测试的，所以它的评分标准也是相对十分严格的，主要从正确率和复杂度两个方面进行评分，很利于我们进行自我测试。在下当时是4道题（3题考算法，1题考SQL），要求120分钟内完成。
-
-对于练习者，该网站提供了两个模块，[lessons][le] 和 [challenges][ch]，前者是些基础的编码题目，后者则相对有些难度。
-
-非常好的是，该网站的题目有多种编程语言可选，包括C, C++, Java, Pascal, Python, C#, PHP, JavaScript, Perl, Ruby, VB.NET, Lua, Objective-C, Scala and Go。绝对能满足你的需求。
-
-在未来的时间里，我将会把我自己的代码（Java为主）放在我的[GitHub][git]上，有兴趣的童鞋可以来围观一下。
-编程之旅，加油！
-
-
-
-
-
-
-
-[c]:https://codility.com/programmers/
-[l]:https://leetcode.com/
-[le]:https://codility.com/programmers/lessons/
-[ch]:https://codility.com/programmers/challenges/
-[git]:https://github.com/ShongSu/CodilitySolutions
-[sm]:https://www.surveymonkey.com/
 
 
