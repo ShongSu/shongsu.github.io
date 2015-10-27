@@ -15,15 +15,15 @@ How to run example?
 
 1. Create a new cordova project, for example:
 
-    cordova create PluginTest com.shongsu.test PluginTest
+		cordova create PluginTest com.shongsu.test PluginTest
 
 2. Go into the directory you just created.
 
-    cd PluginTest
+		cd PluginTest
 
 3. Add Android platform.
 
-    cordova platform add android
+	cordova platform add android
 
 4. Add this plugin to your cordova project, type:
 
@@ -31,12 +31,12 @@ How to run example?
 
   or clone this git and add it locally, for example:
 
-    cordova plugin add file-path-here
+	cordova plugin add file-path-here
 
 5. Eidt your `www/index.html` file, here is full example:
 
 	<!DOCTYPE html>
-        <html>
+    	<html>
         <head>
             <meta charset="utf-8" />
             <title>Cordova - Android Plugin Example</title>
@@ -68,7 +68,7 @@ How to run example?
         </p>
 
         </body>
-        </html>
+	</html>
 
 6. Run application.
 
