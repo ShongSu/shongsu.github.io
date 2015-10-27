@@ -10,6 +10,8 @@ post-link:
 
 This is sample cordova plugin (currently for android platform only). Tested with Cordova 5.3.3 + Android 5.1.1
 
+You can get the original codes from [here][cd]. 
+
 How to run example?
 -------------------
 
@@ -34,6 +36,7 @@ Add this plugin to your cordova project, type:
 	cordova plugin add file-path-here
 
 Eidt your `www/index.html` file, here is full example:
+
 
 	<!DOCTYPE html>
     	<html>
@@ -72,7 +75,7 @@ Eidt your `www/index.html` file, here is full example:
 
 Run application.
 
-    In this example, page shuld alert "5 + 3 = 8", "5 - 3 = 2" and "5! = 120".
+  In this example, page shuld alert "5 + 3 = 8", "5 - 3 = 2" and "5! = 120".
 
 
 
@@ -260,8 +263,8 @@ For more details refer:
 
 [h]: https://cordova.apache.org/docs/en/5.1.1/config_ref/index.html
 [ap]:http://docs.phonegap.com/en/3.4.0/guide_platforms_android_plugin.md.html#Android%20Plugins
-[cp]: http://docs.phonegap.com/en/3.4.0/guide_hybrid_plugins_index.md.html#Plugin%20Development%20Guide
-
+[cp]:http://docs.phonegap.com/en/3.4.0/guide_hybrid_plugins_index.md.html#Plugin%20Development%20Guide
+[cd]:https://github.com/ShongSu/CordovaPluginExample
 
 
 
