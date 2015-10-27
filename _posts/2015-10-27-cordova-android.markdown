@@ -17,11 +17,11 @@ How to run example?
 
 Create a new cordova project, for example:
 
-		cordova create PluginTest com.shongsu.test PluginTest
+	cordova create PluginTest com.shongsu.test PluginTest
 
 Go into the directory you just created.
 
-		cd PluginTest
+	cd PluginTest
 
 Add Android platform.
 
