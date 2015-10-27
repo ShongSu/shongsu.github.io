@@ -13,19 +13,19 @@ This is sample cordova plugin (currently for android platform only). Tested with
 How to run example?
 -------------------
 
-1. Create a new cordova project, for example:
+Create a new cordova project, for example:
 
 		cordova create PluginTest com.shongsu.test PluginTest
 
-2. Go into the directory you just created.
+Go into the directory you just created.
 
 		cd PluginTest
 
-3. Add Android platform.
+Add Android platform.
 
 	cordova platform add android
 
-4. Add this plugin to your cordova project, type:
+Add this plugin to your cordova project, type:
 
 	cordova plugin add https://github.com/shongsu/cordova-example-plugin.git
 
@@ -33,7 +33,7 @@ How to run example?
 
 	cordova plugin add file-path-here
 
-5. Eidt your `www/index.html` file, here is full example:
+Eidt your `www/index.html` file, here is full example:
 
 	<!DOCTYPE html>
     	<html>
@@ -70,7 +70,7 @@ How to run example?
         </body>
 	</html>
 
-6. Run application.
+Run application.
 
     In this example, page shuld alert "5 + 3 = 8", "5 - 3 = 2" and "5! = 120".
 
