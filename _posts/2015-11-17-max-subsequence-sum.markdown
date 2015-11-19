@@ -7,7 +7,7 @@ post-link:
 
 <center>**------English (英文)------**</center>
 
-Given (possibly negative) integers a_1, a_2, ..., a_n, find the maximum value of ∑a_k. The maximum subsequence sum is defined to be 0 if all the integers are negative. 
+Given (possibly negative) integers a_{1}, a_2, ..., a_n, find the maximum value of ∑a_k. The maximum subsequence sum is defined to be 0 if all the integers are negative. 
 
 For example, given the sequence -2, 11, -4, 13, -5, -2, the maximum subsequence sum is 20: a_2 through a_4. 
 
