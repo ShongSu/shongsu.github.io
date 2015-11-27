@@ -1,0 +1,77 @@
+---
+layout: post
+title: Sorting / 排序算法 
+date: 2015-11-27 22:43
+post-link:
+---
+
+<center>**------English (英文)------**</center>
+
+This article summarized the famous sorting algorithms, including insertion sort
+    
+
++ Insertion sort - O(N) / O(N^2) [Best case / Worst case]
+
+Insertion sort consists of n - 1 passes. For pass p = 2 through n, insertion sort ensures that the elements in positions 1 through p are in sorted order. Insertion sort makes use of the fact that elements in positions 1 through p - 1 are already known to be in sorted order.
+
+    void InsertionSort(ElementType A[], int N)
+    {
+        int j, P;
+        ElementType Temp;
+        for (P = 1; P < N; P++)
+        {
+            Temp = A [P];
+            for(j = P; j > 0 && A[j-1] > Temp; j--)
+            {
+                A[j] = A[j-1];
+            }
+            A[j] = Temp;
+        }
+    }
+
+
++ Bubble sort - O(N) / O(N^2)
+
++ Selection sort - O(N^2)
+
++ Shell sort - O(N^2)
+
+Shell sort is a generalization of insertion sort that allows the exchange of items that are far apart. The idea is to arrange the list of elements so that, starting anywhere, considering every h-th element gives a sorted list. Such a list is said to be h-sorted. 
+
+The first pass, 5-sorting, performs insertion sort on separate subarrays (a1, a6, a11), (a2, a7, a12), (a3, a8), (a4, a9), (a5, a10). For instance, it changes the subarray (a1, a6, a11) from (62, 17, 25) to (17, 25, 62). The next pass, 3-sorting, performs insertion sort on the subarrays (a1, a4, a7, a10), (a2, a5, a8, a11), (a3, a6, a9, a12). The last pass, 1-sorting, is an ordinary insertion sort of the entire array (a1,..., a12).
+
+
+Shellsort is unstable: it may change the relative order of elements with equal values. It is an adaptive sorting algorithm in that it executes faster when the input is partially sorted.
+
+    void ShellSort(ElementType A[], int N)
+    {
+        int i,j,Increment;
+        ElementType Temp;
+        for(Increment = N/2; Increment > 0; Increment /= 2)
+        {   
+            for(i = Increment; i < N; i++)
+            {
+                Temp = A[i];
+                for(j = i; j >= Increment; j -= Increment)
+                {
+                    if(Temp < A[j - Increment])
+                        A[j] = A[j - Increment];
+                    else 
+                        break;
+                }
+                A[j] = Temp;
+            }
+
+        }
+    }
+
+
++ Heap sort - O(NlogN) 
+
++ Quick sort - O(NlogN) / O(N^2)
+
++ Merge sort - O(NlogN) 
+
+ 
+
+
