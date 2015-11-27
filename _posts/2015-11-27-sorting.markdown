@@ -39,7 +39,7 @@ Insertion sort consists of n - 1 passes. For pass p = 2 through n, insertion sor
 
 + Selection sort - O(N^2)
 
-<center><img src="/images/Selection-Sort-Animation.gif" alt="selection sort" width="20%" /></center>
+<center><img src="/images/Selection-Sort-Animation.gif" alt="selection sort" width="40px" /></center>
 
 
 + Shell sort - O(N^2)
