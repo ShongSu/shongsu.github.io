@@ -84,6 +84,8 @@ Shellsort is unstable: it may change the relative order of elements with equal v
 
 + Quick sort - O(NlogN) / O(N^2)
 
+<center><img src="/images/quick-sort-example.png" alt="quick sort" width="80%" /></center>
+
 + Merge sort - O(NlogN) 
 
  
