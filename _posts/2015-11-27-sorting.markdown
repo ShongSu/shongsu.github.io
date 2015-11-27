@@ -39,7 +39,7 @@ Insertion sort consists of n - 1 passes. For pass p = 2 through n, insertion sor
 
 + Selection sort - O(N^2)
 
-<center><img src="/images/Selection-Sort-Animation.gif" alt="selection sort" width="80%" /></center>
+<center><img src="/images/Selection-Sort-Animation.gif" alt="selection sort" width="20%" /></center>
 
 
 + Shell sort - O(N^2)
@@ -84,7 +84,7 @@ Shellsort is unstable: it may change the relative order of elements with equal v
 
 + Quick sort - O(NlogN) / O(N^2)
 
-<center><img src="/images/quick-sort-example.png" alt="quick sort" width="80%" /></center>
+<center><img src="/images/quick-sort-example.png" alt="quick sort" width="60%" /></center>
 
 + Merge sort - O(NlogN) 
 
