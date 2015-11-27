@@ -6,7 +6,7 @@ All other directories and files are MIT Licensed. Feel free to use the HTML and 
 
 ## Generate and run locally
 
-    jekyll --server --auto
+    jekyll --serve
 
 ## Browse
 

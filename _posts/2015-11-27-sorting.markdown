@@ -14,6 +14,9 @@ This article summarized the famous sorting algorithms, including insertion sort
 
 Insertion sort consists of n - 1 passes. For pass p = 2 through n, insertion sort ensures that the elements in positions 1 through p are in sorted order. Insertion sort makes use of the fact that elements in positions 1 through p - 1 are already known to be in sorted order.
 
+<center><img src="/images/Insertion-sort-example.gif" alt="insertion sort" width="80%" /></center>
+
+
     void InsertionSort(ElementType A[], int N)
     {
         int j, P;
@@ -32,9 +35,17 @@ Insertion sort consists of n - 1 passes. For pass p = 2 through n, insertion sor
 
 + Bubble sort - O(N) / O(N^2)
 
+<center><img src="/images/Bubble-sort-example.gif" alt="bubble sort" width="80%" /></center>
+
 + Selection sort - O(N^2)
 
+<center><img src="/images/Selection-Sort-Animation.gif" alt="selection sort" width="80%" /></center>
+
+
 + Shell sort - O(N^2)
+
+<center><img src="/images/shell-sort-example.png" alt="shell sort" width="80%" /></center>
+
 
 Shell sort is a generalization of insertion sort that allows the exchange of items that are far apart. The idea is to arrange the list of elements so that, starting anywhere, considering every h-th element gives a sorted list. Such a list is said to be h-sorted. 
 
@@ -66,12 +77,16 @@ Shellsort is unstable: it may change the relative order of elements with equal v
     }
 
 
+
 + Heap sort - O(NlogN) 
+
+
 
 + Quick sort - O(NlogN) / O(N^2)
 
 + Merge sort - O(NlogN) 
 
  
+<center><img src="/images/Merge-sort-example.gif" alt="merge sort" width="80%" /></center>
 
 
