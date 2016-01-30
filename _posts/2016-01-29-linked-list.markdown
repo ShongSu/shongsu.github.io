@@ -161,7 +161,7 @@ Solution:
 Implement a function to check if a linked list is a palindrome.
 
 请编写一个函数，检查链表是否为回文。
-给定一个链表ListNode* pHead，请返回一个bool，代表链表是否为回文。
+给定一个链表`ListNode* pHead`，请返回一个`bool`，代表链表是否为回文。
 
 Solution 1:
 

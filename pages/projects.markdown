@@ -5,7 +5,9 @@ title: Projects
 
 # {{ page.title }}
 
-+ Currently working on project using [Cordova][c]. 
++ [Cookings4u][u]: Designing a Website in order to provide a platform for both customers and private home cuisine chefs.
+
++ Develop [Cordova][c] plugins for Android and iOS. 
 
 + Secondary development on [Magento][m] eCommerce software.
 
@@ -20,5 +22,5 @@ title: Projects
 [b]: http://oisb-1.med.uottawa.ca/lab/index.php
 [q]: https://github.com/ShongSu/QRCode
 [m]: https://github.com/hchen1202/Magento
-
+[u]: https://github.com/ShongSu/Cookings4u
 
