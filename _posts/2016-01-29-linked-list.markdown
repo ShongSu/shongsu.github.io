@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Classical Interview Problem - Linked List / 经典面试问题 - 链表 
+title: Classical Programming Problem - Linked List / 经典编程问题 - 链表 
 date: 2016-01-29 22:58
 post-link:
 ---
