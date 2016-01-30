@@ -7,14 +7,14 @@ post-link:
 
 Baisc Singly Linked List / 基本的单链表
 
-public class ListNode {
-    int val;
-    ListNode next = null;
+    public class ListNode {
+        int val;
+        ListNode next = null;
 
-    ListNode(int val) {
-        this.val = val;
+        ListNode(int val) {
+            this.val = val;
+        }
     }
-}
 
 
 
