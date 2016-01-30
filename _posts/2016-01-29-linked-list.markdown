@@ -39,6 +39,7 @@ Solution:
         }
     }
 
+P.S. Change your mind, modify the value rather than pointer.
 
 
 
@@ -134,7 +135,66 @@ Solution:
     }
     
 
+## Q4 - Reversed a Linked List
+
+Reversed a Linked List.
+转置一个链表。
+
+Solution:
+
+    ListNode reverseList(ListNode pHead)  
+    {  
+      
+        if ( (null == pHead) || (null == pHead.next) )
+            return pHead;  
+
+        ListNode pNewHead = reverseList(pHead.next);  
+        pHead.next.next = pHead;  
+        pHead.next = null;  
+       
+        return pNewHead;  
+    } 
 
 
+## Q5 - Check Palindrome
+
+Implement a function to check if a linked list is a palindrome.
+
+请编写一个函数，检查链表是否为回文。
+给定一个链表ListNode* pHead，请返回一个bool，代表链表是否为回文。
+
+Solution 1:
+
+Reserve the linked list and compare each node value (actually half numbers is enough).
+
+Solution 2:
+
+    public class Palindrome {
+        public boolean isPalindrome(ListNode pHead) {
+            ListNode fast = pHead;
+            ListNode slow = pHead;
+            Stack<Integer> stack = new Stack<Integer>();
+
+            while(fast != null && fast.next != null){
+                stack.push(slow.val);
+                slow = slow.next;
+                fast = fast.next.next;
+            }
+
+            if (fast != null) {
+                slow = slow.next;
+            }
+            while(slow != null){
+                if (stack.pop() != slow.val) {
+                    return false;
+                }
+                slow = slow.next;
+            }
+            return true;
+        }
+
+    }
+
+P.S. Fast/slow pointer strategy is very useful.
 
 
