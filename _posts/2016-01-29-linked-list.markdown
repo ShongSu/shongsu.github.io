@@ -18,13 +18,13 @@ Baisc Singly Linked List / 基本的单链表
 
 
 
-Q1 - Remove a Single Node
+### Q1 - Remove a Single Node
 
 Implement an algorithm to delete a node in the middle of a singly linked list, give only access to that node.
-if this node is the last node, return false, otherwise return true.
+if this node is the last node, return `false`, otherwise return `true`.
 
 实现一个算法，删除单向链表中间的某个结点，假定你只能访问该结点。
-给定带删除的节点，请执行删除操作，若该节点为尾节点，返回false，否则返回true
+给定带删除的节点，请执行删除操作，若该节点为尾节点，返回`false`，否则返回`true`。
 
 Solution:
 
@@ -40,12 +40,12 @@ Solution:
     }
 
 
-Q2 - Add Two Numbers by a Linked List 
+## Q2 - Add Two Numbers by a Linked List 
 
-You have two numbers represented by a linked list, where each node contains a single digit. The digits are stored in reverse order, such that the 1's digit is at the head of the list. Write a function that adds the two numbers and returns the um as a linked list. EXAMPLE: Input: (7->1->6),(5->9->2) Output: 2->1->9
+You have two numbers represented by a linked list, where each node contains a single digit. The digits are stored in reverse order, such that the 1's digit is at the head of the list. Write a function that adds the two numbers and returns the sum as a linked list. EXAMPLE: Input: (7->1->6),(5->9->2) Output: 2->1->9
 
 有两个用链表表示的整数，每个结点包含一个数位。这些数位是反向存放的，也就是个位排在链表的首部。编写函数对这两个整数求和，并用链表形式返回结果。
-给定两个链表ListNode* A，ListNode* B，请返回A+B的结果(ListNode*)。
+给定两个链表`ListNode* A`，`ListNode* B`，请返回A+B的结果`(ListNode*)`。
 测试样例：输入: (7->1->6),(5->9->2) 输出: 2->1->9
 
 Solution:
@@ -94,9 +94,9 @@ Solution:
 
 Q3 - Linked List Partition
 
-Question is: Write code to partition a linked list around a value x, such that all nodes less than x come before all nodes greater than or equal to x.
+Question is: Write code to partition a linked list around a value `x`, such that all nodes less than `x` come before all nodes greater than or equal to `x`.
 
-编写代码，以给定值x为基准将链表分割成两部分，所有小于x的结点排在大于或等于x的结点之前给定一个链表的头指针 ListNode* pHead，请返回重新排列后的链表的头指针。注意：分割以后保持原来的数据顺序不变。
+编写代码，以给定值`x`为基准将链表分割成两部分，所有小于`x`的结点排在大于或等于`x`的结点之前给定一个链表的头指针`ListNode* pHead`，请返回重新排列后的链表的头指针。注意：分割以后保持原来的数据顺序不变。
 
 Solution:
 
