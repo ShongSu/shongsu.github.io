@@ -18,7 +18,7 @@ Baisc Singly Linked List / 基本的单链表
 
 
 
-### Q1 - Remove a Single Node
+## Q1 - Remove a Single Node
 
 Implement an algorithm to delete a node in the middle of a singly linked list, give only access to that node.
 if this node is the last node, return `false`, otherwise return `true`.
@@ -38,6 +38,8 @@ Solution:
             return true;
         }
     }
+
+
 
 
 ## Q2 - Add Two Numbers by a Linked List 
@@ -92,7 +94,9 @@ Solution:
     }
 
 
-Q3 - Linked List Partition
+
+
+## Q3 - Linked List Partition
 
 Question is: Write code to partition a linked list around a value `x`, such that all nodes less than `x` come before all nodes greater than or equal to `x`.
 
