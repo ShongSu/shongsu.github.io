@@ -1,0 +1,45 @@
+---
+layout: post
+title: Classical Programming Problem - Tree / 经典编程问题 - 树 
+date: 2016-01-29 22:58
+post-link:
+---
+
+Baisc Tree Structure / 基本的树结构
+
+public class TreeNode {
+    int val = 0;
+    TreeNode left = null;
+    TreeNode right = null;
+    public TreeNode(int val) {
+        this.val = val;
+    }
+}
+
+
+
+## Q1 - Get Depth of A Binary Tree
+
+    int getDepth(TreeNode root) {
+        if(root==null)
+            return 0;
+        int left = getDepth(root.left);
+        int right = getDepth(root.right);
+        return left>right?(left+1):(right+1);
+    }
+
+## Q2 - Check if A Binary Tree is Blanced
+
+实现一个函数，检查二叉树是否平衡，平衡的定义如下，对于树中的任意一个结点，其两颗子树的高度差不超过1。
+给定指向树根结点的指针TreeNode* root，请返回一个bool，代表这棵树是否平衡。
+
+    public boolean isBalance(TreeNode root) {
+
+        if(root==null)
+            return true;
+        if(Math.abs(getDepth(root.left)-getDepth(root.right))>1)
+            return false;
+        else 
+            return isBalance(root.left)&&isBalance(root.right);   
+    }
+    
