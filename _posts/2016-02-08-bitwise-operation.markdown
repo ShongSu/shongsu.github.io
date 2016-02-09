@@ -114,7 +114,6 @@ post-link:
     }  
     int main()  
     {  
-        printf("二进制中1的个数 --- by MoreWindows( http://blog.csdn.net/MoreWindows )  ---\n\n");  
           
         unsigned short a = 34520;  
         printf("原数    %6d的二进制为:  ", a);  
@@ -132,9 +131,7 @@ post-link:
 6. 寻找只出现一次的数
 
     int main()  
-    {  
-        printf("缺失的数字 --- by MoreWindows( http://blog.csdn.net/MoreWindows )  ---\n\n");  
-          
+    {          
         const int MAXN = 15;  
         int a[MAXN] = {1, 347, 6, 9, 13, 65, 889, 712, 889, 347, 1, 9, 65, 13, 712};  
         int lostNum = 0;  
