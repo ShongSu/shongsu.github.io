@@ -1,5 +1,5 @@
 baseurl: /
-markdown: redcarpet
+markdown: kramdown
 redcarpet:
     extensions: ["fenced_code_blocks", "autolink", "tables"]
 pygments: true
