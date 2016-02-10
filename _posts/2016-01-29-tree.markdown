@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Classical Programming Problem - Tree / 经典编程问题 - 树 
+title: Classical Programming Problem - Tree / 经典编程问题 - 树
 date: 2016-01-29 22:58
 post-link:
 ---
@@ -20,6 +20,8 @@ Baisc Tree Structure / 基本的树结构
 
 ## Q1 - Get Depth of A Binary Tree
 
+获取给定树的深度。
+
     int getDepth(TreeNode root) {
         if(root==null)
             return 0;
@@ -28,7 +30,7 @@ Baisc Tree Structure / 基本的树结构
         return left>right?(left+1):(right+1);
     }
 
-## Q2 - Check if A Binary Tree is Blanced
+## Q2 - Check if A Binary Tree is Balanced
 
 实现一个函数，检查二叉树是否平衡，平衡的定义如下，对于树中的任意一个结点，其两颗子树的高度差不超过1。
 给定指向树根结点的指针TreeNode* root，请返回一个bool，代表这棵树是否平衡。
@@ -39,7 +41,33 @@ Baisc Tree Structure / 基本的树结构
             return true;
         if(Math.abs(getDepth(root.left)-getDepth(root.right))>1)
             return false;
-        else 
+        else
             return isBalance(root.left)&&isBalance(root.right);   
     }
-    
+
+
+## Q3 - Symmetric Tree
+
+Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).
+
+请实现一个函数，用来判断一颗二叉树是不是对称的。注意，如果一个二叉树同此二叉树的镜像是同样的，定义其为对称的。
+
+    public class Solution {
+        public boolean isSymmetric(TreeNode root) {
+            if(root==null)
+                return true;
+            return isSame(root.left,root.right);
+
+        }
+
+
+        public boolean isSame(TreeNode node1, TreeNode node2){
+            if(node1==null && node2 == null)
+                return true;
+            else if (node1==null || node2 == null)
+                return false;
+            else if(node1.val!=node2.val)
+                return false;
+            return isSame(node1.left,node2.right)&&isSame(node1.right,node2.left);
+        }
+    }
