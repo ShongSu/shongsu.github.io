@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Classical Programming Problem - Linked List / 经典编程问题 - 链表 
+title: Classical Programming Problem - Linked List / 经典编程问题 - 链表
 date: 2016-01-29 22:58
 post-link:
 ---
@@ -43,7 +43,7 @@ P.S. Change your mind, modify the value rather than pointer.
 
 
 
-## Q2 - Add Two Numbers by a Linked List 
+## Q2 - Add Two Numbers by a Linked List
 
 You have two numbers represented by a linked list, where each node contains a single digit. The digits are stored in reverse order, such that the 1's digit is at the head of the list. Write a function that adds the two numbers and returns the sum as a linked list. EXAMPLE: Input: (7->1->6),(5->9->2) Output: 2->1->9
 
@@ -76,7 +76,7 @@ Solution:
                     current=current.next;
                     plus = temp/10;
                 }
-                
+
                 if(a==null&&b!=null)
                     b=b.next;
                 else if(a!=null&&b==null)
@@ -85,7 +85,7 @@ Solution:
                     a=a.next;
                     b=b.next;
                 }
-                    
+
             }
             if(plus==1){
                 current.next = new ListNode(plus);
@@ -109,7 +109,7 @@ Solution:
         public ListNode partition(ListNode pHead, int x) {
             if(pHead == null || pHead.next == null)
                 return pHead;
-            
+
             ListNode moveBeforeX=new ListNode(0);
             ListNode moveAfterX=new ListNode(0);
             ListNode beforeX=moveBeforeX;
@@ -126,34 +126,58 @@ Solution:
                 }
                 temp = temp.next;
             }
-            
+
             moveBeforeX.next=afterX.next;
             moveAfterX.next=null;
             return beforeX.next;
 
         }
     }
-    
+
 
 ## Q4 - Reversed a Linked List
 
 Reversed a Linked List.
 转置一个链表。
 
-Solution:
+Solution 1:
 
     ListNode reverseList(ListNode pHead)  
     {  
-      
+
         if ( (null == pHead) || (null == pHead.next) )
             return pHead;  
 
         ListNode pNewHead = reverseList(pHead.next);  
         pHead.next.next = pHead;  
         pHead.next = null;  
-       
+
         return pNewHead;  
-    } 
+    }
+
+Solution 2:
+
+    public class Solution {
+        public ListNode ReverseList(ListNode head) {
+    		if(head == null || head.next == null)
+                return head;
+            ListNode p1 = head;
+            ListNode p2 = p1.next;
+            ListNode p3 = p2.next;
+            p1.next = null;
+
+            while(p3!=null){
+                p2.next = p1;
+                p1 = p2;
+                p2 = p3;
+                p3 = p2.next;            
+            }
+            p2.next = p1;
+            head = p2;
+
+    		return head;
+        }
+    }
 
 
 ## Q5 - Check Palindrome
@@ -196,5 +220,3 @@ Solution 2:
     }
 
 P.S. Fast/slow pointer strategy is very useful.
-
-
