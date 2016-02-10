@@ -154,4 +154,19 @@ post-link:
             lostNum ^= a[i];  
         printf("缺失的数字为:  %d\n", lostNum);     
         return 0;  
-    }  
+    }
+
+
+6．奇偶位交换
+
+请编写程序交换一个数的二进制的奇数位和偶数位。（使用越少的指令越好）
+给定一个int x，请返回交换后的数int。
+
+    public class Exchange {
+        public int exchangeOddEven(int x) {
+            // write code here
+            int oddVal = x & 0xAAAAAAAA;
+            int evenVal = x & 0x55555555;
+            return (oddVal>>1) | (evenVal<<1);
+        }
+    }
