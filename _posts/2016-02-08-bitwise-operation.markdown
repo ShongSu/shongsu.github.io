@@ -34,7 +34,7 @@ post-link:
     int SignReversal(int a)  
     {  
         return ~a + 1;  
-    } 
+    }
 
 
 
@@ -60,7 +60,7 @@ post-link:
     {  
         int i = a >> 31;  
         return ((a ^ i) - i);  
-    } 
+    }
 
 5．二进制中1的个数
 
@@ -114,11 +114,11 @@ post-link:
     }  
     int main()  
     {  
-          
+
         unsigned short a = 34520;  
         printf("原数    %6d的二进制为:  ", a);  
         PrintfBinary(a);  
-          
+
         a = ((a & 0xAAAA) >> 1) + (a & 0x5555);  
         a = ((a & 0xCCCC) >> 2) + (a & 0x3333);  
         a = ((a & 0xF0F0) >> 4) + (a & 0x0F0F);  
@@ -126,7 +126,22 @@ post-link:
         printf("计算结果%6d的二进制为:  ", a);     
         PrintfBinary(a);  
         return 0;  
-    } 
+    }
+
+另一种方法：
+
+    int BitCount(unsigned int n)
+    {
+        int count = 0; // 计数器
+        while (n > 0)
+        {
+            if((n & 1) == 1) // 当前位是1
+                count++ ; // 计数器加1
+            n = n >> 1 ; // 移位
+        }
+        return count ;
+    }
+
 
 6．寻找只出现一次的数
 
