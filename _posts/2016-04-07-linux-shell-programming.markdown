@@ -119,6 +119,80 @@ Shell一开始就定义了的变量，用户只能使用它们而不能重新定
 输入的结束用`Ctrl+D`表示，也可以自己定义定界符，定界符后的单词作为输入各行结束的定界符。
 注意结束时的定界符一定要顶格写。
 
+## Shell运算
+
+1 `let`命令 
+
+执行算数值的操作，使用let可以比较两个值或执行加减乘除等运算。注意let只能用于整数，运算结果也只能保存整数。
+
+用法：
+
+`let 变量名 ＝ 变量1 运算符 变量2`
+
+常见运算符 + - * / %
+
+和C语言类似，`let i=$i+1` 也可以写成 `let i++`
+
+
+2 `expr`命令
+
+执行整数型算数运算，不能保存小数结果；另外还能进行字符串的操作。
+
+用法：
+
+`expr expression1 操作符 expression2`
+
+乘法运算时，操作符前必须加`\`用于转义，并且操作符和两个expression之间必须要有空格。
+
+``res＝`expr $i + $j \* $k` ``  ## expr作为外部命令时要用反引号引起来。
+
+`expr`字符串操作
+
+1> 输出字符串长度
+
+    $ str1="abcde12345"
+    $ echo ${#str1}
+    $ expr length $str1
+
+2> 取子串操作
+
+    expr substr $string $position $length  #注意位置编号从1开始， 或者
+    echo ${string:$pos:$length}            #注意位置编号从0开始
+
+3> 字符串连接操作
+
+    $ str1=abc
+    $ str2=123
+    $ str3="${str1}$str2"
+    $ echo $str3
+
+4> 字符串替换操作
+
+    $ string="you and YOU and you and YOU"
+    $ echo ${string/you/YOU}          # / 替换一次
+    YOU and YOU and you and YOU
+    $ echo ${string//YOU/you}         # // 全部替换
+    you and you and you and you
+
+
+3 `bc`命令
+
+可以进行浮点运算，提供精确的复杂计算功能，它是Linux一个重要的工具，bc经常使用在管道里。
+
+用法：
+
+``variable=`echo "OPTIONS; OPERATIONS"|bc` ``
+
+其中`scale`作为bc一个最重要的选项，用来指定输出小数的位数。
+
+例如：
+
+    $ n=`echo "scale=3; 13/2"|bc`
+    $ echo $n
+    $ 6.500
+
+
+
 
 
 ## Continue...
