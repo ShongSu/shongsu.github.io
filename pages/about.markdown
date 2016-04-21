@@ -28,16 +28,16 @@ Chinese (Mandarin) • English • Japanese
 
 **Skills**
 
-C/C++ • Java • PHP • iOS • HTML • CSS • MySQL • MS SQL Server 
+C/C++ • Java • PHP • iOS • Android •HTML • SQL  
 
 
 **Education**
 
 <b>Master of Computer Science</b> <br />
-University of Ottawa (2013 - 2015)<br />
+[University of Ottawa][uo] (2013 - 2015)<br />
 <br />
 <b>Bachelor of Engineering, Computer Science & Technology</b> <br />
-Tianjin University of Science and Technology (2009 - 2013)
+[Tianjin University of Science and Technology][tust] (2009 - 2013)
 
 
 **Contact**
@@ -61,3 +61,5 @@ This Blog was written by [Sublime][s], built by [Jekyll][j], management by [Gith
 [j]: http://jekyllrb.com
 [gh]: https://github.com/
 [h]: http://hgtip.com/
+[uo]: http://www.uottawa.ca/en
+[tust]: http://www.tust.edu.cn/
