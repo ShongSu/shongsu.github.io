@@ -12,7 +12,8 @@ post-link:
 
 这一切听起来非常棒，但是在看过官方的文档之后，我们并不能了解怎么去实现它。文档中说到：
 
-  In iOS 8 and later, voice-over-IP (VoIP) apps register for UIRemoteNotificationTypeVoIP remote notifications instead of using this method.
+  In iOS 8 and later, voice-over-IP (VoIP) apps register for UIRemoteNotificationTypeVoIP
+  remote notifications instead of using this method.
 
 
 问题在于`UIRemoteNotificationTypeVoIP`并不存在。它不存在的原因在于Apple引入了新的推送框架`PushKit`来专门处理这一类别的推送。下面让我们看看如何将该框架运用到我们的应用中。
@@ -22,11 +23,12 @@ post-link:
 
 在开始之前，我们需要做些准备。首先，我们需要一个VoIP Services certificate。我们需要到iOS开发者中心找到Certificates, Identifier & Profiles部分，可以看到如下截图。
 
-<center><img src="/images/voip/image1.png" alt="" width="80%" /></center>
+<center><img src="/images/voip/image1.png" alt="" width="50%" /></center>
 
-<center><img src="/images/voip/image2.png" alt="" width="80%" /></center>
 
 为了能够接收到消息推送我们需要创建一个Identifier。可以通过导航到Identifiers部分，然后单击加号按钮。
+
+<center><img src="/images/voip/image2.png" alt="" width="80%" /></center>
 
 我们还需要指定一个bundle id给你的应用程序，本例中，我们将使用`com.pengyu.voiptest`。先不用担心App Services这部分，我们将在后面补充。然后点击Continue，在下一个界面点击Register，完成。
 
@@ -34,7 +36,8 @@ post-link:
 
 
 目前为止我们已经设置好了Identifier部分，然而我们仍需设置消息推送。打开Certificates界面，然后单击加号按钮，并选择VoIP Services Certificate如下：
-image4
+
+<center><img src="/images/voip/image4.png" alt="" width="80%" /></center>
 
 
 我们将会被要求选择一个app id，这里我们下拉菜单中选择我们之前刚刚创建的那个id，点击Continue。下一步要求并告诉我们如何生成一个Certificate Signing Request。
@@ -52,7 +55,10 @@ image4
 <center><img src="/images/voip/image6.png" alt="" width="80%" /></center>
 
 下载该证书并打开它`voip_services.cer`，这将会在Keychain Access应用中看到这个证书。目前我们完成了设置，下一步我们可以开始真正的工作了。找到你的certificate并点击证书旁边的小箭头，同时得到certificate和对应的key。
-同时选中certificate和key，右击，选择Export 2 items…。 ［image7］
+同时选中certificate和key，右击，选择Export 2 items…。
+
+<center><img src="/images/voip/image7.png" alt="" width="80%" /></center>
+
 选择p12格式并命名文件为 certificate.p12。
 
 将 `voip_services.cer` 和 `certificate.p12`文件保存在同一个文件夹下，方便我们一会儿生成模拟服务器端消息的推送。
@@ -77,12 +83,16 @@ image4
 
 
 在这个标签下有很多不同的选项，找到Background Modes并启用它。我们需要选定VoIP所需要的所有选项：
+
 Audio and Airplay
+
 Voice over IP
+
 Remote notifications
 
 
 现在我们开始向项目中添加代码。打开`AppDelegate.swift`，导入PushKit并注册通知。
+
 
   import UIKit
   import PushKit
@@ -119,12 +129,13 @@ Remote notifications
 这里我们使用一些Log输出来查看我们的应用是否正常工作。这将使我们在控制台观测到程序在后台运行时收到通知的反应。
 
 我们使用了`registerUserNotificationSettings`方法，我们还需要实现它的delegate callback
- `application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings)`.
+ `application(application: UIApplication, didRegisterUserNotificationSettings
+   notificationSettings: UIUserNotificationSettings)`.
 
 在这个回调中我们会在用户同意接收推送的情况下注册VoIP通知推送。
 
 
-extension AppDelegate {
+  extension AppDelegate {
 
     func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
 
@@ -136,7 +147,6 @@ extension AppDelegate {
   }
 
 我们刚刚在`voipRegistry`对象声明中启用了VoIP推送。初始化`PKPushRegistry`将使用一个GCD队列来决定它的delegates从哪里回调。这里我们使用主队列，因为在这个简单的测试中并没有什么关系。要想实现`voipRegistry`对象的作用，我们需要设置它的delegate为 `.self`。`voipRegistry`的delegate是一个具有三个方法的`PKPushRegistryDelegate`类型，其中两个是必须的，下面我们添加这些方法到我们的项目中。
-
 
 
   extension AppDelegate: PKPushRegistryDelegate {
@@ -232,19 +242,20 @@ extension AppDelegate {
 现在回到你存储证书的那个文件夹，应该包含有下面的文件：
 
 voip_services.cer
+
 certificate.p12
 
 1 - 打开终端，通过certificate文件创建pem文件。
 
-  #openssl x509 -in voip_services.cer -inform der -out PushVoipCert.pem
+  openssl x509 -in voip_services.cer -inform der -out PushVoipCert.pem
 
 2 - 通过导出的private key文创建另一个pem文件，其过程中需要你创建一个密码用于验证。
 
-  #openssl pkcs12 -nocerts -out PushVoipKey.pem -in certificate.p12
+  openssl pkcs12 -nocerts -out PushVoipKey.pem -in certificate.p12
 
 3 - 将两个文件和成为一个:
 
-  #cat PushVoipCert.pem PushVoipKey.pem > ck.pem
+  cat PushVoipCert.pem PushVoipKey.pem > ck.pem
 
 
 
@@ -315,7 +326,9 @@ certificate.p12
 
 执行脚本文件
 
-  #php simplepush.php
+  php simplepush.php
+
+你将在控制台看到消息发送成功的消息，如图：
 
 <center><img src="/images/voip/image14.png" alt="" width="80%" /></center>
 
