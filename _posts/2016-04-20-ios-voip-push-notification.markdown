@@ -128,9 +128,7 @@ post-link:
 
 这里我们使用一些Log输出来查看我们的应用是否正常工作。这将使我们在控制台观测到程序在后台运行时收到通知的反应。
 
-我们使用了`registerUserNotificationSettings`方法，我们还需要实现它的delegate callback
-
- `application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings)`.
+我们使用了`registerUserNotificationSettings`方法，我们还需要实现它的delegate callback `didRegisterUserNotificationSettings`.
 
 在这个回调中我们会在用户同意接收推送的情况下注册VoIP通知推送。
 
