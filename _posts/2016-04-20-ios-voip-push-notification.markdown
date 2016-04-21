@@ -84,11 +84,9 @@ post-link:
 
 在这个标签下有很多不同的选项，找到Background Modes并启用它。我们需要选定VoIP所需要的所有选项：
 
-Audio and Airplay
-
-Voice over IP
-
-Remote notifications
+`Audio and Airplay`
+`Voice over IP`
+`Remote notifications`
 
 
 现在我们开始向项目中添加代码。打开`AppDelegate.swift`，导入PushKit并注册通知。
@@ -97,33 +95,33 @@ Remote notifications
     import UIKit
     import PushKit
 
-    @UIApplicationMain
-    class AppDelegate: UIResponder, UIApplicationDelegate {
+      @UIApplicationMain
+      class AppDelegate: UIResponder, UIApplicationDelegate {
 
-      var window: UIWindow?
-      let voipRegistry = PKPushRegistry(queue: dispatch_get_main_queue())
+        var window: UIWindow?
+        let voipRegistry = PKPushRegistry(queue: dispatch_get_main_queue())
 
 
-      func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
-        //Enable all notification type. VoIP Notifications don't present a UI but we will use this to show local nofications later
-        let notificationSettings = UIUserNotificationSettings(forTypes: [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound] , categories: nil)
+        func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+          // Override point for customization after application launch.
+          //Enable all notification type. VoIP Notifications don't present a UI but we will use this to show local nofications later
+          let notificationSettings = UIUserNotificationSettings(forTypes: [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound] , categories: nil)
 
-        //register the notification settings
-        application.registerUserNotificationSettings(notificationSettings)
+          //register the notification settings
+          application.registerUserNotificationSettings(notificationSettings)
 
-        //output what state the app is in. This will be used to see when the app is started in the background
-        NSLog("app launched with state \(application.applicationState.stringValue)")
-        return true
+          //output what state the app is in. This will be used to see when the app is started in the background
+          NSLog("app launched with state \(application.applicationState.stringValue)")
+          return true
+        }
+
+        func applicationWillTerminate(application: UIApplication) {
+          // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+          //output to see when we terminate the app
+          NSLog("app terminated")
+        }
+
       }
-
-      func applicationWillTerminate(application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        //output to see when we terminate the app
-        NSLog("app terminated")
-      }
-
-    }
 
 
 这里我们使用一些Log输出来查看我们的应用是否正常工作。这将使我们在控制台观测到程序在后台运行时收到通知的反应。
@@ -137,14 +135,14 @@ Remote notifications
 
     extension AppDelegate {
 
-    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
+      func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
 
-        //register for voip notifications
-        NSLog("didRegisterUserNotificationSettings called")
-        voipRegistry.desiredPushTypes = Set([PKPushTypeVoIP])
-        voipRegistry.delegate = self;
+          //register for voip notifications
+          NSLog("didRegisterUserNotificationSettings called")
+          voipRegistry.desiredPushTypes = Set([PKPushTypeVoIP])
+          voipRegistry.delegate = self;
+      }
     }
-  }
 
 我们刚刚在`voipRegistry`对象声明中启用了VoIP推送。初始化`PKPushRegistry`将使用一个GCD队列来决定它的delegates从哪里回调。这里我们使用主队列，因为在这个简单的测试中并没有什么关系。要想实现`voipRegistry`对象的作用，我们需要设置它的delegate为 `.self`。`voipRegistry`的delegate是一个具有三个方法的`PKPushRegistryDelegate`类型，其中两个是必须的，下面我们添加这些方法到我们的项目中。
 
@@ -152,79 +150,79 @@ Remote notifications
     extension AppDelegate: PKPushRegistryDelegate {
 
 
-    func pushRegistry(registry: PKPushRegistry!, didUpdatePushCredentials credentials: PKPushCredentials!, forType type: String!) {
-        NSLog("didUpdatePushCredentials called")
+      func pushRegistry(registry: PKPushRegistry!, didUpdatePushCredentials credentials: PKPushCredentials!, forType type: String!) {
+          NSLog("didUpdatePushCredentials called")
 
-        //print out the VoIP token. We will use this to test the nofications.
-        NSLog("voip token: \(credentials.token)")
+          //print out the VoIP token. We will use this to test the nofications.
+          NSLog("voip token: \(credentials.token)")
+      }
+
+      func pushRegistry(registry: PKPushRegistry!, didReceiveIncomingPushWithPayload payload: PKPushPayload!, forType type: String!) {
+
+          NSLog("didReceiveIncomingPushWithPayload called")
+
+
+          let payloadDict = payload.dictionaryPayload["aps"] as? Dictionary<String, String>
+          let message = payloadDict?["alert"]
+
+          //present a local notifcation to visually see when we are recieving a VoIP Notification
+          if UIApplication.sharedApplication().applicationState == UIApplicationState.Background {
+              NSLog("incoming notificaiton from background")
+
+              let localNotification = UILocalNotification();
+              localNotification.alertBody = message
+              localNotification.applicationIconBadgeNumber = 1;
+              localNotification.soundName = UILocalNotificationDefaultSoundName;
+
+              UIApplication.sharedApplication().presentLocalNotificationNow(localNotification);
+          }
+
+          else {
+              NSLog("incoming notificaiton from frontend")
+
+
+              dispatch_async(dispatch_get_main_queue(), { () -> Void in
+
+
+                  let alertController = UIAlertController(title: "Title", message: "This is UIAlertController default", preferredStyle: UIAlertControllerStyle.Alert)
+                  let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
+                  let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                  alertController.addAction(cancelAction)
+                  alertController.addAction(okAction)
+
+                  UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alertController, animated: true, completion: nil)
+
+              })
+          }
+
+          NSLog("incoming voip notfication: \(payload.dictionaryPayload)")
+      }
+
+      func pushRegistry(registry: PKPushRegistry!, didInvalidatePushTokenForType type: String!) {
+          NSLog("didInvalidatePushTokenForType called")
+          NSLog("token invalidated")
+      }
     }
-
-    func pushRegistry(registry: PKPushRegistry!, didReceiveIncomingPushWithPayload payload: PKPushPayload!, forType type: String!) {
-
-        NSLog("didReceiveIncomingPushWithPayload called")
-
-
-        let payloadDict = payload.dictionaryPayload["aps"] as? Dictionary<String, String>
-        let message = payloadDict?["alert"]
-
-        //present a local notifcation to visually see when we are recieving a VoIP Notification
-        if UIApplication.sharedApplication().applicationState == UIApplicationState.Background {
-            NSLog("incoming notificaiton from background")
-
-            let localNotification = UILocalNotification();
-            localNotification.alertBody = message
-            localNotification.applicationIconBadgeNumber = 1;
-            localNotification.soundName = UILocalNotificationDefaultSoundName;
-
-            UIApplication.sharedApplication().presentLocalNotificationNow(localNotification);
-        }
-
-        else {
-            NSLog("incoming notificaiton from frontend")
-
-
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-
-
-                let alertController = UIAlertController(title: "Title", message: "This is UIAlertController default", preferredStyle: UIAlertControllerStyle.Alert)
-                let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
-                let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
-                alertController.addAction(cancelAction)
-                alertController.addAction(okAction)
-
-                UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alertController, animated: true, completion: nil)
-
-            })
-        }
-
-        NSLog("incoming voip notfication: \(payload.dictionaryPayload)")
-    }
-
-    func pushRegistry(registry: PKPushRegistry!, didInvalidatePushTokenForType type: String!) {
-        NSLog("didInvalidatePushTokenForType called")
-        NSLog("token invalidated")
-    }
-  }
 
 
 我们不需要添加额外的代码到这些方法中去，但对于我们的测试，我们将使用`UILocalNotification`或者`UIAlertController`来显示收到了VoIP推送通知。我们还打印出`token`因为我们后面需要用它来测试我们的功能。好了，现在我们的程序将会在后台收到消息是重新打开应用程序了。
 
   extension UIApplicationState {
 
-    //help to output a string instead of an enum number
-    var stringValue : String {
-        get {
-            switch(self) {
-            case .Active:
-                return "Active"
-            case .Inactive:
-                return "Inactive"
-            case .Background:
-                return "Background"
-            }
-        }
+      //help to output a string instead of an enum number
+      var stringValue : String {
+          get {
+              switch(self) {
+              case .Active:
+                  return "Active"
+              case .Inactive:
+                  return "Inactive"
+              case .Background:
+                  return "Background"
+              }
+          }
+      }
     }
-  }
 
 
 ## 测试
@@ -271,57 +269,57 @@ Remote notifications
 
 这里贴一下`simplepush.php`的脚本代码：
 
-  `<?php
+      <?php
 
-  // Put your device token here (without spaces):
-  $deviceToken = 'b949d3784df30c2cf5c16aa24b494cb82c78acda986113b39e1b89b0a1f0d4bc';
+      // Put your device token here (without spaces):
+      $deviceToken = 'b949d3784df30c2cf5c16aa24b494cb82c78acda986113b39e1b89b0a1f0d4bc';
 
-  // Put your private key's passphrase here:
-  $passphrase = 'password';
+      // Put your private key's passphrase here:
+      $passphrase = 'password';
 
-  // Put your alert message here:
-  $message = 'My first push notification!';
+      // Put your alert message here:
+      $message = 'My first push notification!';
 
-  ////////////////////////////////////////////////////////////////////////////////
+      ////////////////////////////////////////////////////////////////////////////////
 
-  $ctx = stream_context_create();
-  stream_context_set_option($ctx, 'ssl', 'local_cert', 'ck.pem');
-  stream_context_set_option($ctx, 'ssl', 'passphrase', $passphrase);
+      $ctx = stream_context_create();
+      stream_context_set_option($ctx, 'ssl', 'local_cert', 'ck.pem');
+      stream_context_set_option($ctx, 'ssl', 'passphrase', $passphrase);
 
-  // Open a connection to the APNS server
-  $fp = stream_socket_client(
-  	'ssl://gateway.push.apple.com:2195', $err,
-  	$errstr, 60, STREAM_CLIENT_CONNECT|STREAM_CLIENT_PERSISTENT, $ctx);
+      // Open a connection to the APNS server
+      $fp = stream_socket_client(
+      	'ssl://gateway.push.apple.com:2195', $err,
+      	$errstr, 60, STREAM_CLIENT_CONNECT|STREAM_CLIENT_PERSISTENT, $ctx);
 
-  if (!$fp)
-  	exit("Failed to connect: $err $errstr" . PHP_EOL);
+      if (!$fp)
+      	exit("Failed to connect: $err $errstr" . PHP_EOL);
 
-  echo 'Connected to APNS' . PHP_EOL;
+      echo 'Connected to APNS' . PHP_EOL;
 
-  // Create the payload body
-  $body['aps'] = array(
-  	'alert' => $message,
-  	'sound' => 'default'
-  	);
+      // Create the payload body
+      $body['aps'] = array(
+      	'alert' => $message,
+      	'sound' => 'default'
+      	);
 
-  // Encode the payload as JSON
-  $payload = json_encode($body);
+      // Encode the payload as JSON
+      $payload = json_encode($body);
 
-  // Build the binary notification
-  $msg = chr(0) . pack('n', 32) . pack('H*', $deviceToken) . pack('n', strlen($payload)) . $payload;
+      // Build the binary notification
+      $msg = chr(0) . pack('n', 32) . pack('H*', $deviceToken) . pack('n', strlen($payload)) . $payload;
 
-  // Send it to the server
-  $result = fwrite($fp, $msg, strlen($msg));
+      // Send it to the server
+      $result = fwrite($fp, $msg, strlen($msg));
 
-  if (!$result)
-  	echo 'Message not delivered' . PHP_EOL;
-  else
-  	echo 'Message successfully delivered' . PHP_EOL;
+      if (!$result)
+      	echo 'Message not delivered' . PHP_EOL;
+      else
+      	echo 'Message successfully delivered' . PHP_EOL;
 
-  // Close the connection to the server
-  fclose($fp);
+      // Close the connection to the server
+      fclose($fp);
 
-  ?>`
+      ?>
 
 
 执行脚本文件
