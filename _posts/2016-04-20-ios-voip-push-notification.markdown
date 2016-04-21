@@ -12,7 +12,7 @@ post-link:
 
 这一切听起来非常棒，但是在看过官方的文档之后，我们并不能了解怎么去实现它。文档中说到：
 
-`In iOS 8 and later, voice-over-IP (VoIP) apps register for UIRemoteNotificationTypeVoIP remote notifications instead of using this method.`
+  In iOS 8 and later, voice-over-IP (VoIP) apps register for UIRemoteNotificationTypeVoIP remote notifications instead of using this method.
 
 
 问题在于`UIRemoteNotificationTypeVoIP`并不存在。它不存在的原因在于Apple引入了新的推送框架`PushKit`来专门处理这一类别的推送。下面让我们看看如何将该框架运用到我们的应用中。
@@ -82,11 +82,10 @@ Voice over IP
 Remote notifications
 
 
-现在我们开始向项目中添加代码。打开AppDelegate.swift，导入PushKit并注册通知。
+现在我们开始向项目中添加代码。打开`AppDelegate.swift`，导入PushKit并注册通知。
 
   import UIKit
   import PushKit
-
 
   @UIApplicationMain
   class AppDelegate: UIResponder, UIApplicationDelegate {
