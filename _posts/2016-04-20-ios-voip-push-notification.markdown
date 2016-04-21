@@ -85,7 +85,9 @@ post-link:
 在这个标签下有很多不同的选项，找到Background Modes并启用它。我们需要选定VoIP所需要的所有选项：
 
 `Audio and Airplay`
+
 `Voice over IP`
+
 `Remote notifications`
 
 
@@ -128,6 +130,7 @@ post-link:
 
 我们使用了`registerUserNotificationSettings`方法，我们还需要实现它的delegate callback
  `application(application: UIApplication, didRegisterUserNotificationSettings
+
    notificationSettings: UIUserNotificationSettings)`.
 
 在这个回调中我们会在用户同意接收推送的情况下注册VoIP通知推送。
@@ -207,22 +210,21 @@ post-link:
 
 我们不需要添加额外的代码到这些方法中去，但对于我们的测试，我们将使用`UILocalNotification`或者`UIAlertController`来显示收到了VoIP推送通知。我们还打印出`token`因为我们后面需要用它来测试我们的功能。好了，现在我们的程序将会在后台收到消息是重新打开应用程序了。
 
-  extension UIApplicationState {
-
-      //help to output a string instead of an enum number
-      var stringValue : String {
-          get {
-              switch(self) {
-              case .Active:
-                  return "Active"
-              case .Inactive:
-                  return "Inactive"
-              case .Background:
-                  return "Background"
-              }
-          }
+    extension UIApplicationState {
+        //help to output a string instead of an enum number
+        var stringValue : String {
+            get {
+                switch(self) {
+                case .Active:
+                    return "Active"
+                case .Inactive:
+                    return "Inactive"
+                case .Background:
+                    return "Background"
+                }
+            }
+        }
       }
-    }
 
 
 ## 测试
@@ -260,8 +262,9 @@ post-link:
 
 下载Simplepush的[php脚本文件][sc]用于发送推送消息。修改`$deviceToken`为你的Token，`$passphrase`为刚刚生成PushVoipKey.pem是所设置的密码。例如：
 
-  `$deviceToken = 'b949d3784df30c2cf5c16aa24b494cb82c78acda986113b39e1b89b0a1f0d4bc';
-  $passphrase = 'password';`
+  `$deviceToken = 'b949d3784df30c2cf5c16aa24b494cb82c78acda986113b39e1b89b0a1f0d4bc';`
+
+  `$passphrase = 'password';`
 
 如果你使用的是Simplepush的代码，还要修改下面这一行：
 将`ssl://gateway.sandbox.push.apple.com:2195`改成`ssl://gateway.push.apple.com:2195`。
