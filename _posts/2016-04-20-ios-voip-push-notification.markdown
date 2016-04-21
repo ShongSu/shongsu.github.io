@@ -94,11 +94,11 @@ Remote notifications
 现在我们开始向项目中添加代码。打开`AppDelegate.swift`，导入PushKit并注册通知。
 
 
-  import UIKit
-  import PushKit
+    import UIKit
+    import PushKit
 
-  @UIApplicationMain
-  class AppDelegate: UIResponder, UIApplicationDelegate {
+    @UIApplicationMain
+    class AppDelegate: UIResponder, UIApplicationDelegate {
 
       var window: UIWindow?
       let voipRegistry = PKPushRegistry(queue: dispatch_get_main_queue())
@@ -135,7 +135,7 @@ Remote notifications
 在这个回调中我们会在用户同意接收推送的情况下注册VoIP通知推送。
 
 
-  extension AppDelegate {
+    extension AppDelegate {
 
     func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
 
@@ -149,7 +149,7 @@ Remote notifications
 我们刚刚在`voipRegistry`对象声明中启用了VoIP推送。初始化`PKPushRegistry`将使用一个GCD队列来决定它的delegates从哪里回调。这里我们使用主队列，因为在这个简单的测试中并没有什么关系。要想实现`voipRegistry`对象的作用，我们需要设置它的delegate为 `.self`。`voipRegistry`的delegate是一个具有三个方法的`PKPushRegistryDelegate`类型，其中两个是必须的，下面我们添加这些方法到我们的项目中。
 
 
-  extension AppDelegate: PKPushRegistryDelegate {
+    extension AppDelegate: PKPushRegistryDelegate {
 
 
     func pushRegistry(registry: PKPushRegistry!, didUpdatePushCredentials credentials: PKPushCredentials!, forType type: String!) {
@@ -241,37 +241,37 @@ Remote notifications
 
 现在回到你存储证书的那个文件夹，应该包含有下面的文件：
 
-voip_services.cer
+`voip_services.cer`
 
-certificate.p12
+`certificate.p12`
 
 1 - 打开终端，通过certificate文件创建pem文件。
 
-  openssl x509 -in voip_services.cer -inform der -out PushVoipCert.pem
+  `openssl x509 -in voip_services.cer -inform der -out PushVoipCert.pem`
 
 2 - 通过导出的private key文创建另一个pem文件，其过程中需要你创建一个密码用于验证。
 
-  openssl pkcs12 -nocerts -out PushVoipKey.pem -in certificate.p12
+  `openssl pkcs12 -nocerts -out PushVoipKey.pem -in certificate.p12`
 
 3 - 将两个文件和成为一个:
 
-  cat PushVoipCert.pem PushVoipKey.pem > ck.pem
+  `cat PushVoipCert.pem PushVoipKey.pem > ck.pem`
 
 
 
 
 下载Simplepush的[php脚本文件][sc]用于发送推送消息。修改`$deviceToken`为你的Token，`$passphrase`为刚刚生成PushVoipKey.pem是所设置的密码。例如：
 
-  $deviceToken = 'b949d3784df30c2cf5c16aa24b494cb82c78acda986113b39e1b89b0a1f0d4bc';
-  $passphrase = 'password';
+  `$deviceToken = 'b949d3784df30c2cf5c16aa24b494cb82c78acda986113b39e1b89b0a1f0d4bc';
+  $passphrase = 'password';`
 
 如果你使用的是Simplepush的代码，还要修改下面这一行：
 将`ssl://gateway.sandbox.push.apple.com:2195`改成`ssl://gateway.push.apple.com:2195`。
 这是因为我们需要使用Apple的产品状态服务器地址而不是开发状态服务器地址。
 
-这里贴一下simplepush.php的脚本代码：
+这里贴一下`simplepush.php`的脚本代码：
 
-  <?php
+  `<?php
 
   // Put your device token here (without spaces):
   $deviceToken = 'b949d3784df30c2cf5c16aa24b494cb82c78acda986113b39e1b89b0a1f0d4bc';
@@ -321,12 +321,12 @@ certificate.p12
   // Close the connection to the server
   fclose($fp);
 
-  ?>
+  ?>`
 
 
 执行脚本文件
 
-  php simplepush.php
+  `php simplepush.php`
 
 你将在控制台看到消息发送成功的消息，如图：
 
