@@ -17,12 +17,13 @@ owner:
 gavatar: http://dreamofbook.qiniudn.com/Az..png
 favicon: sysimg/favicon.ico
 
-douban_username: Shongsu
-twitter_username: Shongsu
+#douban_username:
+#twitter_username: Shongsu
 github_username: Shongsu
-facebook_username: Shongsu
-weibo_username: Shongsu
-zhihu_username: Shongsu
+#facebook_username: Shongsu
+linkedin_username: in/pengyu-chen-85253886
+#weibo_username: Shongsu
+#zhihu_username: Shongsu
 
 # Build settings
 # use Github Flavored Markdown !important
