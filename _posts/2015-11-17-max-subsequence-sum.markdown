@@ -2,14 +2,16 @@
 layout: post
 title: Max Subsequence Sum Problem / 最大子序列和问题
 date: 2015-11-17 21:33
-post-link:
+categories: [blog ]
+tags: [Algorithm, ]
+description:
 ---
 
 <center>**------English (英文)------**</center>
 
-Given (possibly negative) integers a1, a2, ..., an, find the maximum value of ∑ ak. The maximum subsequence sum is defined to be 0 if all the integers are negative. 
+Given (possibly negative) integers a1, a2, ..., an, find the maximum value of ∑ ak. The maximum subsequence sum is defined to be 0 if all the integers are negative.
 
-For example, given the sequence -2, 11, -4, 13, -5, -2, the maximum subsequence sum is 20: a2 through a4. 
+For example, given the sequence -2, 11, -4, 13, -5, -2, the maximum subsequence sum is 20: a2 through a4.
 
 
 The most obvious approach is an algorithm with O(N^3).
@@ -73,7 +75,7 @@ We also may apply divide-and-conquer approach for this problem.
         {
             if(A[Left] > 0)
                 return A[Left];
-            else 
+            else
                 return 0;
         }
 
@@ -105,7 +107,7 @@ We also may apply divide-and-conquer approach for this problem.
     {
         return MaxSubSum(A, 0, N - 1);
     }
- 
+
 However, there has an optimal solution can achieve O(N).
 
 <4> Algorithm 4 -- `O(N)`
@@ -126,4 +128,3 @@ However, there has an optimal solution can achieve O(N).
 
         return MaxSum;
     }
-

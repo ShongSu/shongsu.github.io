@@ -2,7 +2,9 @@
 layout: post
 title: Classical Programming Problem - Tree / 经典编程问题 - 树
 date: 2016-01-29 22:58
-post-link:
+categories: [blog ]
+tags: [Algorithm, ]
+description:
 ---
 
 Baisc Tree Structure / 基本的树结构

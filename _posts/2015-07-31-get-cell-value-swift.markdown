@@ -2,7 +2,9 @@
 layout: post
 title: Get Value from Cells of TableView / TableView点击获取当前Cell内容
 date: 2015-07-31 18:12
-post-link: 
+categories: [blog ]
+tags: [iOS, Swift, ]
+description:
 ---
 
 
@@ -21,21 +23,21 @@ post-link:
 
 	class ViewController: UIViewController {
 
-    
+
 	    var rowIndex = 0     //定义当前条目的索引
 	    var rowValue = ""    //定义当前条目的内容值
-	    
+
 	    override func viewDidLoad() {
 	        super.viewDidLoad()
 	        //分别显示出当前条目的索引和内容值
 	        label1.text = "rowIndex is \(rowIndex)"
 	        label2.text = "rowValue is \(rowValue)"
 	    }
-	    
+
 	    @IBOutlet weak var label1: UILabel!
-	    
+
 	    @IBOutlet weak var label2: UILabel!
-	    
+
 	    override func didReceiveMemoryWarning() {
 	        super.didReceiveMemoryWarning()
 	    }
@@ -48,8 +50,8 @@ post-link:
 
 
 	 override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-	       
-	        
+
+
 	        // 其中“viewcontroller2”为第二个视图在storyboard中的唯一识别ID
 	        var viewController = self.storyboard?.instantiateViewControllerWithIdentifier("viewcontroller2") as! ViewController   
 	        // indexPath.row即为当前行的索引值，从0开始
@@ -70,11 +72,6 @@ post-link:
 	viewController.label2 = cell?.textLabel
 	// 将所得到的label2的text内容赋值给rowValue变量
 	viewController.rowValue = viewController.label2.text!
-	            
+
 
 这样我们就能够在第二个视图中同时获取被点击Cell的索引和内容值了。
-
-
-
-
-

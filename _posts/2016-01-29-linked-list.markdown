@@ -2,7 +2,9 @@
 layout: post
 title: Classical Programming Problem - Linked List / 经典编程问题 - 链表
 date: 2016-01-29 22:58
-post-link:
+categories: [blog ]
+tags: [Algorithm, ]
+description:
 ---
 
 Baisc Singly Linked List / 基本的单链表

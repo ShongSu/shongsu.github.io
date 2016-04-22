@@ -1,14 +1,16 @@
 ---
 layout: post
-title: Sorting / 排序算法 
+title: Sorting / 排序算法
 date: 2015-11-27 22:43
-post-link:
+categories: [blog ]
+tags: [Algorithm, ]
+description:
 ---
 
 <center>**------English (英文)------**</center>
 
 This article summarized the famous sorting algorithms, including insertion sort
-    
+
 
 + Insertion sort - O(N) / O(N^2) [Best case / Worst case]
 
@@ -85,7 +87,7 @@ The algorithm divides the input list into two parts: the sublist of items alread
 
 + Shell sort - O(N^2)
 
-Shell sort is a generalization of insertion sort that allows the exchange of items that are far apart. The idea is to arrange the list of elements so that, starting anywhere, considering every h-th element gives a sorted list. Such a list is said to be h-sorted. 
+Shell sort is a generalization of insertion sort that allows the exchange of items that are far apart. The idea is to arrange the list of elements so that, starting anywhere, considering every h-th element gives a sorted list. Such a list is said to be h-sorted.
 
 The first pass, 5-sorting, performs insertion sort on separate subarrays (a1, a6, a11), (a2, a7, a12), (a3, a8), (a4, a9), (a5, a10). For instance, it changes the subarray (a1, a6, a11) from (62, 17, 25) to (17, 25, 62). The next pass, 3-sorting, performs insertion sort on the subarrays (a1, a4, a7, a10), (a2, a5, a8, a11), (a3, a6, a9, a12). The last pass, 1-sorting, is an ordinary insertion sort of the entire array (a1,..., a12).
 
@@ -108,7 +110,7 @@ Shellsort is unstable: it may change the relative order of elements with equal v
                 {
                     if(Temp < A[j - Increment])
                         A[j] = A[j - Increment];
-                    else 
+                    else
                         break;
                 }
                 A[j] = Temp;
@@ -119,7 +121,7 @@ Shellsort is unstable: it may change the relative order of elements with equal v
 
 
 
-+ Heap sort - O(NlogN) 
++ Heap sort - O(NlogN)
 
 The heapsort algorithm involves preparing the list by first turning it into a max heap. The algorithm then repeatedly swaps the first value of the list with the last value, decreasing the range of values considered in the heap operation by one, and sifting the new first value into its position in the heap. This repeats until the range of considered values is one value in length.
 
@@ -136,7 +138,7 @@ The heapsort algorithm involves preparing the list by first turning it into a ma
                 Child ++;
             if(Temp < A[Child])
                 A[i] = A[Child];
-            else 
+            else
                 break;
         }
         A[i] = Temp;
@@ -211,7 +213,7 @@ The base case of the recursion is arrays of size zero or one, which never need t
                 while(A[--j] < Pivot) {}
                 if(i < j)
                     Swap(&A[i], &A[j]);
-                else 
+                else
                     break;
             }
             Swap(&A[i], &A[Right - 1]); /* Restroe pivot */
@@ -233,12 +235,12 @@ P.S. Don't write code like this, since there is an endless loop if A[i] = A[j] =
         while(A[j] < Pivot) j--;
         if(i < j)
             Swap(&A[i], &A[j]);
-        else 
+        else
             break;
     }
 
 
-+ Merge sort - O(NlogN) 
++ Merge sort - O(NlogN)
 
 Conceptually, a merge sort works as follows:
 
@@ -270,7 +272,7 @@ Conceptually, a merge sort works as follows:
             MSort(A, TmpArray, 0, N - 1);
             free(TmpArray);
         }
-        else 
+        else
             FataError("No space for tmp array!!!");
     }
 
@@ -287,14 +289,14 @@ Conceptually, a merge sort works as follows:
         while(Lpos <= LeftEnd && Rpos <= RightEnd)
             if(A[Lpos] <= A[Rpos])
                 TmpArray[TmpPos++] = A[Lpos++];
-            else 
+            else
                 TmpArray[TmpPos++] = A[Rpos++];
 
         while(Lpos <= LeftEnd) /* Copy rest of first half */
             TmpArray[TmpPos++] = A[Lpos++];
         while(Rpos <= RightEnd) /* Copy rest of second half */
             TmpArray[TmpPos++] = A[Rpos++];
-          
+
         /* Copy TmpArray back */
         for(i = 0; i < NumElements; i++, RightEnd--)
             A[RightEnd] = TmpArray[RightEnd];  
@@ -303,5 +305,3 @@ Conceptually, a merge sort works as follows:
 
 
 Updated, Dec. 3rd, 2015.
-
-       

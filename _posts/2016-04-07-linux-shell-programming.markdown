@@ -2,7 +2,9 @@
 layout: post
 title: Linux Shell Programming / Linux Shell编程
 date: 2016-04-07 22:38
-post-link:
+categories: [blog ]
+tags: [Linux, Shell, ]
+description:
 ---
 
 ## My First Shell
@@ -121,7 +123,7 @@ Shell一开始就定义了的变量，用户只能使用它们而不能重新定
 
 ## Shell运算
 
-1 `let`命令 
+1 `let`命令
 
 执行算数值的操作，使用let可以比较两个值或执行加减乘除等运算。注意let只能用于整数，运算结果也只能保存整数。
 

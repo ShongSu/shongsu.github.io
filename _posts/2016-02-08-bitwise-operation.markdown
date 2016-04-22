@@ -2,7 +2,9 @@
 layout: post
 title: Classical Programming Problem - Bitwise Operation / 经典编程问题 - 位运算
 date: 2016-02-08 21:48
-post-link:
+categories: [blog ]
+tags: [Algorithm, ]
+description:
 ---
 
 1．判断奇偶

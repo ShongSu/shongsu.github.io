@@ -2,7 +2,9 @@
 layout: post
 title: Cordova-Android Plugin Example / Cordova-Android 插件详解
 date: 2015-10-27 00:19
-post-link:
+categories: [blog ]
+tags: [Cordova, Android, ]
+description:
 ---
 
 <center>**------English (英文)------**</center>
@@ -10,7 +12,7 @@ post-link:
 
 This is sample cordova plugin (currently for android platform only). Tested with Cordova 5.3.3 + Android 5.1.1
 
-You can get the original codes from [here][cd]. 
+You can get the original codes from [here][cd].
 
 How to run example?
 -------------------
@@ -265,6 +267,3 @@ For more details refer:
 [ap]:http://docs.phonegap.com/en/3.4.0/guide_platforms_android_plugin.md.html#Android%20Plugins
 [cp]:http://docs.phonegap.com/en/3.4.0/guide_hybrid_plugins_index.md.html#Plugin%20Development%20Guide
 [cd]:https://github.com/ShongSu/CordovaPluginExample
-
-
-

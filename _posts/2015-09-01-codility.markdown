@@ -3,11 +3,14 @@ layout: post
 title: A Good Site for Coding Test / Codility, 练习编码的好平台
 date: 2015-09-01 17:42
 post-link: https://codility.com/programmers/
+categories: [blog ]
+tags: [Algorithm, ]
+description:
 ---
 
 <center>**------English (英文)------**</center>
 
-Thanks to an interview opportunity from [SurveyMonkey][sm], I learnt this website: [Codility][c], similar to [LeetCode][l]. It is an amazing place to provide online coding test to software companies to test candidates. But as a programmer, we also can test ourselves from the [lessons][le] and [challenges][ch] it provided. 
+Thanks to an interview opportunity from [SurveyMonkey][sm], I learnt this website: [Codility][c], similar to [LeetCode][l]. It is an amazing place to provide online coding test to software companies to test candidates. But as a programmer, we also can test ourselves from the [lessons][le] and [challenges][ch] it provided.
 
 
 It supports mostly programming language, including C, C++, Java, Pascal, Python, C#, PHP, JavaScript, Perl, Ruby, VB.NET, Lua, Objective-C, Scala and Go.
@@ -21,11 +24,11 @@ It also run your code in many test cases to avoid overflow or edge data to ensur
 Details as below,
 
 <center>
-<img src="/images/correctness.png" alt="correctness" width="80%" /> 
+<img src="/images/correctness.png" alt="correctness" width="80%" />
 <img src="/images/performance.png" alt="performance" width="80%" />
 </center>
 
-Looks cool? 
+Looks cool?
 
 I would like to post my codes (mostly in Java) on [my GitHub][git], if you are interested, follow my coding trip. Let's coding start today!
 
@@ -53,5 +56,3 @@ I would like to post my codes (mostly in Java) on [my GitHub][git], if you are i
 [ch]:https://codility.com/programmers/challenges/
 [git]:https://github.com/ShongSu/CodilitySolutions
 [sm]:https://www.surveymonkey.com/
-
-

@@ -2,7 +2,9 @@
 layout: post
 title: MongoDB CRUD Operations / MongoDB的增删改查操作
 date: 2015-07-23 17:23
-post-link: 
+categories: [blog ]
+tags: [MongoDB,]
+description:
 ---
 
 
@@ -52,13 +54,13 @@ MongoDB can use `update()` function to modify data.
 ###<b>Query Documents</b>
 
 Select all documents in a collection
-	
-	db.myinfo.find({}); // or 
+
+	db.myinfo.find({}); // or
 	db.myinfo.find();
 
 which is similar to SQL statement
 
-	Select * from myinfo; 
+	Select * from myinfo;
 
 Select the documents which "education" is "M.C.S"
 
@@ -87,7 +89,7 @@ is similar to SQL statement
 	Select * from testtable where age >22;
 
 Example 2,
-	
+
 	db.testtable.find({age : {$lt :24, $gt : 17}})
 
 is similar to SQL statement
@@ -111,23 +113,23 @@ is similar to SQL statement
 ###<b>Remove Documents</b>
 
 Use `remove()`
-if you want to delete record where "user_id" = "chen" in "myinfo", you may use, 
+if you want to delete record where "user_id" = "chen" in "myinfo", you may use,
 
 	db.myinfo.remove( { "user_id" : "chen" } );
 
 Delete all data
-if you want to delete all records in "myinfo", you may use, 
+if you want to delete all records in "myinfo", you may use,
 
 	db.myinfo.remove({});
 
 Use `drop()` to delete collections
-if you want to delete the whole "myinfo", including data and documents, you may use, 
+if you want to delete the whole "myinfo", including data and documents, you may use,
 
 	db.myinfo.drop();
 
 Use `dropDatabase()` to delete database
 if you want to delete the whole database, you may use,
-	
+
 	db.dropDatabase()
 
 

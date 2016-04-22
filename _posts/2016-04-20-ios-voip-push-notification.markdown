@@ -2,7 +2,9 @@
 layout: post
 title: Example of iOS VoIP Notification / iOS VoIP Notification实例  
 date: 2016-04-20 22:31
-post-link:
+categories: [blog ]
+tags: [iOS, Swift, PushKit, ]
+description:
 ---
 
 这篇文章翻译整理自Pierre-Marc Airoldi的[iOS 8 VoIP Notifications][pi]和[M Penades][mp]关于PushKit实现的回答，加入了我自己的文件设定，以及代码的更新，以方便读者更简单便捷的实现PushKit的学习。

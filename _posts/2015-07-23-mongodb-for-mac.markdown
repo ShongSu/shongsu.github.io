@@ -2,7 +2,9 @@
 layout: post
 title: Install and Run MongoDB on Mac OS X / 在Mac下安装并使用MongoDB
 date: 2015-07-23 15:30
-post-link: 
+categories: [blog ]
+tags: [MongoDB, Mac, ]
+description:
 ---
 
 
@@ -36,7 +38,7 @@ add the following codes and then restart Terminal
 
 
 <b>4> Run MongoDB</b>
-   
+
 	 $ mongod
 
 
@@ -68,7 +70,7 @@ Mac下安装启动MongoDB很简单，在Terminal下运行以下指令就可以�
 
 <b>1> 通过[Homebrew][hb]安装MongoDB</b>
 
-	$ brew update 
+	$ brew update
 	$ brew install mongodb
 
 如果没有Homebrew还是先装一个吧，程序员必备。
@@ -94,7 +96,7 @@ Mac下安装启动MongoDB很简单，在Terminal下运行以下指令就可以�
 
 
 <b>4> 启动MongoDB</b>
-   
+
 	 $ mongod
 
 <b>5> 数据库查询</b>
@@ -116,5 +118,3 @@ Mac下安装启动MongoDB很简单，在Terminal下运行以下指令就可以�
 
 
 [hb]:http://brew.sh/index.html
-
-
