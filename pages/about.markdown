@@ -1,7 +1,10 @@
 ---
 layout: page
 title: About
+description: "嘿，你总算找到我啦"
+header-img: "img/plane.jpg"
 ---
+
 
 **About the Author**
 
@@ -23,7 +26,7 @@ May 2014 – August 2014 (4 months). Ottawa, Ontario, Canada
 
 **Languages**
 
-Chinese (Mandarin) • English • Japanese 
+Chinese (Mandarin) • English • Japanese
 
 
 **Skills**
