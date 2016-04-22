@@ -53,6 +53,12 @@ C/C++ • Java • PHP • iOS • Android • HTML • SQL
 
 This Blog was written by [Sublime][s], built by [Jekyll][j], management by [Github][gh], style from [hg tip][h]。
 
+> Live long and prosper
+
+<center>
+    <p><img src="http://dreamofbook.qiniudn.com/hacker.png" align="center"></p>
+</center>
+
 
 [ae]: http://www.aetonix.com/
 [op]: https://www.paysafe.com/
