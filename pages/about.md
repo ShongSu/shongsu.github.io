@@ -2,7 +2,7 @@
 layout: page
 title: About
 description: "不以物喜 不以己悲"
-header-img: "img/plane.jpg"
+header-img: "../sysimg/tree.jpg"
 ---
 
 

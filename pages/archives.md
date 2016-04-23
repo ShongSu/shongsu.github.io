@@ -2,7 +2,7 @@
 layout: page
 title: Archives
 description: "聽青春 迎來笑聲 羨煞許多人 那史冊 溫柔不肯 下筆都太狠"
-header-img: "img/plane.jpg"
+header-img: "../sysimg/umbrella.jpg"
 ---
 
 # {{ page.title }}

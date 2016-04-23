@@ -2,7 +2,7 @@
 layout: page
 title: Projects
 description: "千裏之行 始於足下"
-header-img: "img/plane.jpg"
+header-img: "../sysimg/grass.jpg"
 ---
 
 # {{ page.title }}
