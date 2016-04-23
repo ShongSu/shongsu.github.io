@@ -11,10 +11,10 @@ baseurl: ""
 owner:
   name: "Pengyu"
   email: chinhouu1992@gmail.com
-  bio: "明朝即長路 惜取此時心"
+  bio: "不以物喜 不以己悲"
 
 # Data
-gavatar: http://dreamofbook.qiniudn.com/Az..png
+#gavatar: url
 favicon: sysimg/favicon.ico
 
 #douban_username:
@@ -55,16 +55,14 @@ defaults:
     values:
       layout: "post"
       author: "Pengyu"
-      header-img: "img/fantasy.jpg" # We don't want posts without a header image, that whould mean white on white
+      header-img: "img/tree.jpg" # We don't want posts without a header image, that whould mean white on white
 
 
 # Comments
 comments :
-  provider : duoshuo
-  duoshuo :
-    short_name : Azeril
+  provider : disqus
   disqus :
-      short_name : Azeril
+      short_name : Shongsu
 
 # Analytics and webmaster tools stuff goes here
 google_analytics: UA-66863061-1
