@@ -62,7 +62,7 @@ layout: default
                     .ds-share{
                         text-align: right;
                     }
-                    
+
                     @media only screen and (max-width: 700px) {
                         .ds-share {
 
@@ -105,7 +105,7 @@ layout: default
 
 
 
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次)
 <script type="text/javascript">
 var duoshuoQuery = {short_name:"azeril"};
     (function() {
@@ -117,9 +117,35 @@ var duoshuoQuery = {short_name:"azeril"};
          || document.getElementsByTagName('body')[0]).appendChild(ds);
     })();
 </script>
-<!-- 多说公共JS代码 end -->
+多说公共JS代码 end -->
 
 
+
+<!-- disqus code start-->
+<div id="disqus_thread"></div>
+<script>
+/**
+* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+* LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+
+s.src = '//shongsu.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+<!-- disqus code end-->
 
 </script>
 
