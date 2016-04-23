@@ -7,7 +7,7 @@ header-img: "img/plane.jpg"
 
 
 <center>
-    <p><img src="../sysimg/kawonashi.png" align="center"></p>
+    <p><img src="../sysimg/yagamilaito.png" align="center"></p>
 </center>
 
 
@@ -54,7 +54,7 @@ This Blog was written by [Sublime][s], built by [Jekyll][j], management by [Gith
 > Stay Hungry Stay Foolish
 
 <center>
-    <p><img src="http://dreamofbook.qiniudn.com/hacker.png" align="center"></p>
+    <p><img src="../sysimg/.triangle.png" align="center"></p>
 </center>
 
 
