@@ -1,12 +1,15 @@
 ---
 layout: page
 title: About
-description: "嘿，你总算找到我啦"
+description: "不以物喜 不以己悲"
 header-img: "img/plane.jpg"
 ---
 
 
-**About the Author**
+<center>
+    <p><img src="http://dreamofbook.qiniudn.com/Zero.png" align="center"></p>
+</center>
+
 
 <b>Pengyu Chen</b> <br />
 Ottawa, Ontario, Canada <br />
@@ -43,17 +46,12 @@ C/C++ • Java • PHP • iOS • Android • HTML • SQL
 [Tianjin University of Science and Technology][tust] (2009 - 2013)
 
 
-**Contact**
-
-+ Gmail:     [chinhouu1992[AT]gmail.com][m]
-+ Github:    [@Pengyu Chen][g]
-+ Linkedin:  [@Pengyu Chen][l]
 
 **Colophon**
 
-This Blog was written by [Sublime][s], built by [Jekyll][j], management by [Github][gh], style from [hg tip][h]。
+This Blog was written by [Sublime][s], built by [Jekyll][j], management by [Github][gh].
 
-> Live long and prosper
+> Stay Hungry Stay Foolish
 
 <center>
     <p><img src="http://dreamofbook.qiniudn.com/hacker.png" align="center"></p>
