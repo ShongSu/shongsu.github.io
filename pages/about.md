@@ -7,7 +7,7 @@ header-img: "img/plane.jpg"
 
 
 <center>
-    <p><img src="http://dreamofbook.qiniudn.com/Zero.png" align="center"></p>
+    <p><img src="../sysimg/kawonashi.png" align="center"></p>
 </center>
 
 
