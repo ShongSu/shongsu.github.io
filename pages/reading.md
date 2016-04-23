@@ -2,7 +2,7 @@
 layout: page
 title: Reading
 description: "獨坐沏壺茶 沏成一夜燈下"
-header-img: "img/bay.jpg"
+header-img: "../sysimg/blue.jpg"
 ---
 
 # {{ page.title }}
