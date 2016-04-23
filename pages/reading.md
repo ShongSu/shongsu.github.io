@@ -1,11 +1,13 @@
 ---
 layout: page
-title: Favorite
+title: Reading
+description: "獨坐沏壺茶 沏成一夜燈下"
+header-img: "img/bay.jpg"
 ---
 
 # {{ page.title }}
 
-## Readings 
+## Readings
 
 [1] Cracking the Coding Interview, 4 Edition - 150 Programming Interview Questions and Solutions
 
@@ -22,8 +24,3 @@ title: Favorite
 [1] Swift / iOS / Objective-C
 
 [2] MongoDB
- 
-
-
-
-

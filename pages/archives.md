@@ -1,6 +1,8 @@
 ---
 layout: page
 title: Archives
+description: ""
+header-img: "img/plane.jpg"
 ---
 
 # {{ page.title }}

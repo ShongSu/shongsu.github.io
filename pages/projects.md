@@ -1,13 +1,15 @@
 ---
 layout: page
 title: Projects
+description: "千裏之行 始於足下"
+header-img: "img/plane.jpg"
 ---
 
 # {{ page.title }}
 
 + [Cookings4u][u]: Designing a Website in order to provide a platform for both customers and private home cuisine chefs.
 
-+ Develop [Cordova][c] plugins for Android and iOS. 
++ Develop [Cordova][c] plugins for Android and iOS.
 
 + Secondary development on [Magento][m] eCommerce software.
 
@@ -23,4 +25,3 @@ title: Projects
 [q]: https://github.com/ShongSu/QRCode
 [m]: https://github.com/hchen1202/Magento
 [u]: https://github.com/ShongSu/Cookings4u
-
