@@ -7,7 +7,7 @@ header-img: "img/plane.jpg"
 
 
 <center>
-    <p><img src="../sysimg/yagamilaito.png" align="center" width="30%"></p>
+    <p><img src="../sysimg/yagamilaito.png" align="center" width="20%"></p>
 </center>
 
 
