@@ -54,7 +54,7 @@ This Blog was written by [Sublime][s], built by [Jekyll][j], management by [Gith
 > Stay Hungry Stay Foolish
 
 <center>
-    <p><img src="../sysimg/triangle.png" align="center" width="60%"></p>
+    <p><img src="../sysimg/triangle.png" align="center" width="40%"></p>
 </center>
 
 
