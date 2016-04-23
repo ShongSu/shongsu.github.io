@@ -3,7 +3,7 @@ layout: post
 title: Install and Run MongoDB on Mac OS X / 在Mac下安装并使用MongoDB
 date: 2015-07-23 15:30
 categories: [blog ]
-tags: [iOS, Swift, ]
+tags: [MongoDB, ]
 description:
 ---
 

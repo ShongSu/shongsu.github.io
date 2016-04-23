@@ -3,7 +3,7 @@ layout: post
 title: MongoDB CRUD Operations / MongoDB的增删改查操作
 date: 2015-07-23 17:23
 categories: [blog ]
-tags: [iOS, Swift, ]
+tags: [MongoDB, ]
 description:
 ---
 
