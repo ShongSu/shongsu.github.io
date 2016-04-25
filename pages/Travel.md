@@ -40,4 +40,4 @@ header-img: "../sysimg/autumn.jpg"
 </script>
 
 <div id="map"></div>
-<div> Hello Google</div>
+<a href="../test.html"> Hello Google</a>
