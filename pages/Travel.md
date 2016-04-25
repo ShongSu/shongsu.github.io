@@ -5,6 +5,10 @@ description: "生活不止眼前的茍且 還有詩和遠方的田野"
 header-img: "../sysimg/autumn.jpg"
 ---
 
+<style>
+    html, body, #map { margin: 0; padding: 0; height: 100%; }
+</style>
+
 <script
       src="https://maps.googleapis.com/maps/api/js?libraries=visualization">
 </script>
