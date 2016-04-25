@@ -4,3 +4,7 @@ title: "Travel"
 description: "生活不止眼前的茍且 還有詩和遠方的田野"
 header-img: "../sysimg/autumn.jpg"
 ---
+
+<script
+      src="https://maps.googleapis.com/maps/api/js?libraries=visualization">
+</script>
