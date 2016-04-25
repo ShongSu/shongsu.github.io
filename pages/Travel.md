@@ -5,9 +5,6 @@ description: "生活不止眼前的茍且 還有詩和遠方的田野"
 header-img: "../sysimg/autumn.jpg"
 ---
 
-<style>
-html, body, #map { margin: 0; padding: 0; height: 100%; }
-</style>
 
 <script
       src="https://maps.googleapis.com/maps/api/js?libraries=visualization">
@@ -45,4 +42,4 @@ html, body, #map { margin: 0; padding: 0; height: 100%; }
       google.maps.event.addDomListener(window, 'load', initialize)
     </script>
 
-<div id="map"></div>
+<div id="map" style="width:80%"></div>
