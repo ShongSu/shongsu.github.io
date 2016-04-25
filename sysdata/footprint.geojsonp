@@ -1,0 +1,209 @@
+eqfeed_callback(
+{
+	type: "Feature",
+	metadata: {
+		title: "Shongsu's Travel Map",
+	},
+	features: [
+		{
+			type: "Feature",
+			properties: {
+				place: "US",
+				time: 20140214,
+				updated: 20160425,
+				times: 1,
+				title: "New York"
+			},
+			geometry: {
+				type: "Point",
+				coordinates: [
+					-74.0059,
+					40.7142
+				]
+			},
+			id: "20140214"
+		},
+
+		{
+			type: "Feature",
+			properties: {
+				place: "Canada",
+				time: 20130815,
+				updated: 20160425,
+				times: 99,
+				title: "Ottawa"
+			},
+			geometry: {
+				type: "Point",
+				coordinates: [
+					-75.6981,
+					45.4111,
+				]
+			},
+			id: "20130815"
+		},
+		{
+			type: "Feature",
+			properties: {
+				place: "China",
+				time: 20130707,
+				updated: 20160425,
+				times: 99,
+				title: "Beijing"
+			},
+			geometry: {
+				type: "Point",
+				coordinates: [
+					116.3972,
+					39.9075,
+				]
+			},
+			id: "20130707"
+		},
+		{
+			type: "Feature",
+			properties: {
+				place: "Canada",
+				time: 20150827,
+				updated: 20160425,
+				times: 2,
+				title: "Toronto"
+			},
+			geometry: {
+				type: "Point",
+				coordinates: [
+					-79.4163,
+					43.7001,
+				]
+			},
+			id: "20150827"
+		},
+		{
+			type: "Feature",
+			properties: {
+				place: "China",
+				time: 20090913,
+				updated: 20160425,
+				times: 99,
+				title: "Tianjin"
+			},
+			geometry: {
+				type: "Point",
+				coordinates: [
+					117.1766,
+					39.1422,
+				]
+			},
+			id: "20090913"
+		},
+		{
+			type: "Feature",
+			properties: {
+				place: "China",
+				time: 19920302,
+				updated: 20160425,
+				times: 99,
+				title: "Heze"
+			},
+			geometry: {
+				type: "Point",
+				coordinates: [
+					115.4735,
+					35.2392,
+				]
+			},
+			id: "19920302"
+		},
+		{
+			type: "Feature",
+			properties: {
+				place: "China",
+				time: 20020501,
+				updated: 20160425,
+				times: 1,
+				title: "Zhengzhou"
+			},
+			geometry: {
+				type: "Point",
+				coordinates: [
+					113.6486,
+					34.7577,
+				]
+			},
+			id: "20020501"
+		},
+		{
+			type: "Feature",
+			properties: {
+				place: "China",
+				time: 20120706,
+				updated: 20160425,
+				times: 1,
+				title: "Xi'an"
+			},
+			geometry: {
+				type: "Point",
+				coordinates: [
+					108.92861,
+					34.25833,
+				]
+			},
+			id: "20120706"
+		},
+		{
+			type: "Feature",
+			properties: {
+				place: "China",
+				time: 20130106,
+				updated: 20160425,
+				times: 1,
+				title: "Ji'nan"
+			},
+			geometry: {
+				type: "Point",
+				coordinates: [
+					116.99722,
+					36.66833,
+				]
+			},
+			id: "20130106"
+		},
+		{
+			type: "Feature",
+			properties: {
+				place: "China",
+				time: 20130407,
+				updated: 20160425,
+				times: 1,
+				title: "Tai'an"
+			},
+			geometry: {
+				type: "Point",
+				coordinates: [
+					117.1200,
+					36.18528,
+				]
+			},
+			id: "20130407"
+		},
+		{
+			type: "Feature",
+			properties: {
+				place: "Canada",
+				time: 20150507,
+				updated: 20160425,
+				times: 1,
+				title: "Kingston"
+			},
+			geometry: {
+				type: "Point",
+				coordinates: [
+					-76.48098,
+					44.22976,
+				]
+			},
+			id: "20150507"
+		},
+	],
+}
+)
