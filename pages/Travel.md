@@ -40,5 +40,5 @@ header-img: "../sysimg/autumn.jpg"
       }
       google.maps.event.addDomListener(window, 'load', initialize)
     </script>
-    
-    <div id="map"></div>
+
+<div id="map"></div>
