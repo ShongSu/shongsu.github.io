@@ -4,11 +4,7 @@ title: "Travel"
 description: "生活不止眼前的茍且 還有詩和遠方的田野"
 header-img: "../sysimg/autumn.jpg"
 ---
-
-<script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtpsSEgiya8WPhQ0iPTb_7hpatBw__CHQ&libraries=visualization@callback=initialize">
-    </script>
-    
+<script src="https://maps.googleapis.com/maps/api/js?libraries=visualization"></script>
 
 <script>
       var map;
@@ -39,7 +35,7 @@ header-img: "../sysimg/autumn.jpg"
           });
         }
       }
-      //google.maps.event.addDomListener(window, 'load', initialize)
-    </script>
+      google.maps.event.addDomListener(window, 'load', initialize)
+</script>
 
-<div id="map" style="width:80%,height:60%"></div>
+<div id="map"></div>
