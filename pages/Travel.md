@@ -6,7 +6,7 @@ header-img: "../sysimg/autumn.jpg"
 ---
 
 <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtpsSEgiya8WPhQ0iPTb_7hpatBw__CHQ">
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtpsSEgiya8WPhQ0iPTb_7hpatBw__CHQ&libraries=visualization">
     </script>
     
 
