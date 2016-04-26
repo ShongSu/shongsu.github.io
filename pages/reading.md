@@ -10,7 +10,7 @@ header-img: "../sysimg/blue.jpg"
 
 [1] [C Traps and Pitfalls][ctp]
 
-[2] [C Primer Plus][cpp]
+[2] [C Primer Plus - 5 Edition][cpp]
 
 
 ## Others
