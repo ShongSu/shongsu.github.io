@@ -5,9 +5,15 @@ description: "獨坐沏壺茶 沏成一夜燈下"
 header-img: "../sysimg/blue.jpg"
 ---
 
-# {{ page.title }}
 
-## Readings
+## Readings - April
+
+[1] [C Traps and Pitfalls][ctp]
+
+[2] [C Primer Plus][cpp]
+
+
+## Others
 
 [1] Cracking the Coding Interview, 4 Edition - 150 Programming Interview Questions and Solutions
 
@@ -24,3 +30,7 @@ header-img: "../sysimg/blue.jpg"
 [1] Swift / iOS / Objective-C
 
 [2] MongoDB
+
+
+[ctp]:http://www.ebooksbucket.com/uploads/itprogramming/cplus/C_Traps_and_Pitfalls.pdf
+[cpp]:http://faculty.euc.ac.cy/scharalambous/csc131/books/C%20book%201.pdf

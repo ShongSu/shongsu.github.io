@@ -204,6 +204,24 @@ eqfeed_callback(
 			},
 			id: "20150507"
 		},
+		{
+			type: "Feature",
+			properties: {
+				place: "Canada",
+				time: 20150508,
+				updated: 20160425,
+				times: 1,
+				title: "Gatineau"
+			},
+			geometry: {
+				type: "Point",
+				coordinates: [
+					-75.692627,
+					45.477825,
+				]
+			},
+			id: "20150508"
+		},
 	],
 }
 )
