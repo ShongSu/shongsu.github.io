@@ -222,6 +222,24 @@ eqfeed_callback(
 			},
 			id: "20150508"
 		},
+		{
+			type: "Feature",
+			properties: {
+				place: "Canada",
+				time: 20150831,
+				updated: 20160425,
+				times: 1,
+				title: "Niagara Falls"
+			},
+			geometry: {
+				type: "Point",
+				coordinates: [
+					-79.06627,
+					43.10012,
+				]
+			},
+			id: "20150831"
+		},
 	],
 }
 )
