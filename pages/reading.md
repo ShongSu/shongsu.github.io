@@ -8,7 +8,7 @@ header-img: "../sysimg/blue.jpg"
 
 ## Readings - April
 
-[1] [C Traps and Pitfalls][ctp]  \[[Notes][n1]\]
+[1] [C Traps and Pitfalls][ctp]  --- \[[Notes][n1]\]
 
 [2] [C Primer Plus - 5 Edition][cpp]
 
