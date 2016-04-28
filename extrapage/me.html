@@ -355,13 +355,13 @@
 						break;
 					}
 					case 4:{
-						$('#con1').animate({ left: '-=0', opacity: '0.1', fontSize: '20px'}, times);
-	                    $("#me_top").animate({fontSize: '15px' }, times);
+						$('#con1').animate({ left: '-=0', opacity: '0.1', fontSize: '15px'}, times);
+	                    $("#me_top").animate({fontSize: '10px' }, times);
 						$("#me_one").animate({fontSize: '15px' }, times);
 						$("#me_two").animate({fontSize: '15px' }, times);
 						$("#me_three").animate({fontSize: '15px' }, times);
 	                    $('#con3').animate({ left: '-=70', top: '+=0', opacity: '0.2', fontSize: '20px'}, times);
-	                    $('#con4').animate({ left: '-=300', top:'+=0', opacity: '1.0', fontSize: '50px'}, times);
+	                    $('#con4').animate({ left: '-=300', top:'+=0', opacity: '1.0', fontSize: '40px'}, times);
                         $('.double_span_class').animate({fontSize: '90px'}, times);
 	                    $('#con5').animate({ left: '-=70', top:'+=0', opacity: '0.05', fontSize: '90px'}, times, function(){
 	                    	temp=1;
@@ -369,11 +369,11 @@
 						break;
 					}
 					case 5:{
-						$('#con1').animate({ left: '-=0', opacity: '0.1', fontSize: '20px'}, times);
+						$('#con1').animate({ left: '-=0', opacity: '0.1', fontSize: '7px'}, times);
 	                    $('#con3').animate({ left: '-=70', top: '+=0', opacity: '0.1', fontSize: '3px'}, times);
 	                    $('#con4').animate({ left: '-=70', top:'+=0', opacity: '0.2', fontSize: '20px'}, times);
                         $('.double_span_class').animate({fontSize: '50px'}, times);
-	                    $('#con5').animate({ left: '-=400', top:'+=0', opacity: '1.0', fontSize: '50px'}, times, function(){
+	                    $('#con5').animate({ left: '-=550', top:'+=0', opacity: '1.0', fontSize: '50px'}, times, function(){
                             $('#double_span1').html('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
                             $('#double_span').css({display: 'block'});
                             $('#double_span').animate({left: '+=120'}, 1000, function(){
@@ -489,31 +489,35 @@
 	<div id="bg">
 		<div id="tip"><span>Click to Start</span></div>
 
-		<div id="con1" class="cons"><span>Hello World!!!</span><br/><span>Welcome to </span><span class="name_span">Pengyu</span><span>'s Blog</span></div>
+		<div id="con1" class="cons"><span>Hello World!!!</span><br/><span>Here is </span><span class="name_span">Pengyu</span><span>'s Story</span></div>
 
-		<div id="con2" class="cons"><span id="me_top">Currently:</span><br/><span id="me_one">I am working for <a href="http://www.hustwenhua.net/">Aetonix Systems Inc.</a></span><br/><span id="me_two">as a Software developer</span><br/><span id="me_three">from Aug. 2015 </span></div>
+		<div id="con2" class="cons"><span id="me_top">Currently:</span><br/><span id="me_one">Working for <a target="_blank" href="http://www.aetonix.com/">Aetonix Systems Inc.</a></span><br/><span id="me_two">as a Software Developer</span><br/><span id="me_three">from Aug. 2015 </span></div>
 
 		<div id="con3" class="cons"><span id="age_span">24</span> Years old</div>
 
-		<div id="con4" class="cons"><span>Work Experience: <br /> QA Intern at Optimal Payments PLC.<br /> From Sep. 2014 to Dec. 2014. <br />Web Developer at University of Ottawa. <br /> From May 2014 to Aug. 2014.</span></div>
+		<div id="con4" class="cons"><span>Work Experience: <br /><br /> QA Intern at <a target="_blank" href="https://www.paysafe.com/"><i>Optimal Payments PLC</i></a><br /> <font size=5px>from Sep. 2014 to Dec. 2014.</font> <br /><br />
+			Web Developer at <a target="_blank" href="https://www.uottawa.ca/en/"><i>University of Ottawa</i></a> <br /> <font size=5px>from May 2014 to Aug. 2014.</font></span></div>
 
 
 		<div id="con5" class="cons"><span class="double_span_class">Education: <br /></span>
+			<br />
 			Master of Computer Science <br />
-			University of Ottawa (2013 - 2015)<br />
+			<font size=5px><a target="_blank" href="https://www.uottawa.ca/en/"><i>University of Ottawa </i></a> (2013 - 2015) </font><br />
+			<br />
 			Bachelor of Engineering, Computer Science & Technology<br />
-			Tianjin University of Science and Technology (2009 - 2013)
+			<font size=5px><a target="_blank" href="http://www.tust.edu.cn/"><i>Tianjin University of Science and Technology </i></a> (2009 - 2013) </font><br />
+
 			<span id="double_span" class="double_span_class"></span>
 		</div>
 
 
-		<div id="con6" class="cons"><span>Living in Ottawa, </span><span id="address">ON, Canada</span>:)</div>
+		<div id="con6" class="cons"><span>Living in Ottawa, </span><span id="address">ON, Canada</span></div>
 
 		<div id="con7" class="cons"><span>Skills including: <br /></span><span id="php_web"> C/C++ - Java - PHP - iOS <br /> Android - HTML - SQL </span><span>etc.</span></div>
 
-		<div id="con8" class="cons"><span id="title_span">Spare Time:</span><br/><span id="basket">Basketball </span><span id="roll"> Reading </span><span id="sing"> Music </span><span id="movie">Movie</span><br/><span id="like_span">:)</span></div>
+		<div id="con8" class="cons"><span id="title_span">Interests:</span><br/>Movie - Reading - Music<br/><span id="like_span">:)</span></div>
 
-		<div id="con9" class="cons">If you interested<br /><span id="web_span">Feel free to contact me</span><br/><span>at </span><span id="qq_span">github</span><br/><span>Haaaaaaa</span></div>
+		<div id="con9" class="cons">If you interested<br /><span id="web_span">feel free to contact me</span><br/><span>at </span><span id="qq_span"><a target="_blank" href="https://github.com/Shongsu">Github</a> or <a target="_blank" href="https://www.linkedin.com/in/pengyu-chen-85253886">Linkedin</a></span><br/><span>^_^</span></div>
 
 		<div id="con10" class="cons"><span id="con10_span1">Stay Hungry </span><span id="con10_span2">Stay Foolish</span><span id="con10_span3">!</span></div>
 
