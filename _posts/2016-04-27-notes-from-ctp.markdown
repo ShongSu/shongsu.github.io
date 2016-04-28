@@ -7,6 +7,9 @@ tags: [C/C++, ]
 description:
 ---
 
+## Chapter 1: Lexical Pitfalls (词法陷阱)
+
+## Chapter 2: Syntactic Pitfalls (语法陷阱)
 
 ## Chapter 3: Semantic Pitfalls (语义陷阱)
 
@@ -19,7 +22,9 @@ Notes
 + The `main` is presumed to yield an int value if no other return type is declared for it. Typically, a 0 return indicates success and any other value indicates failure. If you forgot write a `return` in your main function, it usually implicitly returns some garbage integer.
 
 
-Exercise 3-3. Write a function to do a binary search in a sorted table of integers. Its input is a pointer to the beginning of the table, a count of the elements in the table, and a value to be sought. Its output is a pointer to the element sought or a NULL pointer if the element is not present.
+Exercise
+
+3-3. Write a function to do a binary search in a sorted table of integers. Its input is a pointer to the beginning of the table, a count of the elements in the table, and a value to be sought. Its output is a pointer to the element sought or a NULL pointer if the element is not present.
 
 "pure pointer" form
 
@@ -59,3 +64,14 @@ Exercise 3-3. Write a function to do a binary search in a sorted table of intege
 
 
 ------Updated at 27th April, 2016------
+
+## Chapter 4: Linkage (链接)
+
+
+## Chapter 5: Library functions (库函数)
+
+
+## Chapter 6: Preprocessor (预处理器)
+
+
+## Chapter 7: Portability pitfalls (可移植性缺陷)
