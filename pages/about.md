@@ -10,9 +10,9 @@ header-img: "../sysimg/tree.jpg"
     <p><img src="../sysimg/yagamilaito.png" align="center" width="20%"></p>
 </center>
 
-<iframe src="../extrapage/map.html" allowtransparency="true" style="background-color=transparent" title="test" frameborder="0" width=100% height=500 scrolling="no">
+<a harf="../extrapage/map.html">
 Test
-</iframe>
+</a>
 
 <b>Pengyu Chen</b> <br />
 Ottawa, Ontario, Canada <br />
