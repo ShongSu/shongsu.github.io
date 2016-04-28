@@ -10,7 +10,7 @@ header-img: "../sysimg/tree.jpg"
     <p><img src="../sysimg/yagamilaito.png" align="center" width="20%"></p>
 </center>
 
-<a harf="../extrapage/map.html">
+<a href="../extrapage/map.html">
 Test
 </a>
 
