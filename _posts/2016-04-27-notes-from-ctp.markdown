@@ -13,7 +13,7 @@ description:
 
 ## Chapter 3: Semantic Pitfalls (语义陷阱)
 
-Notes
+### Notes
 
 + the `&&` and `||` operators do not even evaluate their right-hand operands if their results can be determined from their left-hand operands. `&` and `|` unlike `&&`, must always evaluate both of its operands.
 
@@ -22,7 +22,7 @@ Notes
 + The `main` is presumed to yield an int value if no other return type is declared for it. Typically, a 0 return indicates success and any other value indicates failure. If you forgot write a `return` in your main function, it usually implicitly returns some garbage integer.
 
 
-Exercise
+### Exercise
 
 3-3. Write a function to do a binary search in a sorted table of integers. Its input is a pointer to the beginning of the table, a count of the elements in the table, and a value to be sought. Its output is a pointer to the element sought or a NULL pointer if the element is not present.
 
