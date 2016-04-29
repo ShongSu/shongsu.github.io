@@ -62,10 +62,9 @@ description:
     }
 
 
-
-------Updated at 27th April, 2016------
-
 ## Chapter 4: Linkage (链接)
+
+### Notes
 
 + The declaration `extern int a;` is not a definition of `a`, such a declaration is a reference to the external object `a` but does not define it.
 
@@ -80,12 +79,12 @@ description:
 + A program with this definition: `char filename[] = "/etc/passwd";` in one file and this declaration: `extern char *filename;` in another. Although arrays and pointers are very similar in some contexts, they are not the same.
 
 
-------Updated at 28th April, 2016------
-
 ## Chapter 5: Library functions (库函数)
 
+### Notes
+
 + use `setbuf` in a program that copies its standard input to its standard output:
-        
+
         #include <stdio.h>
         main()
         {
@@ -118,14 +117,14 @@ Another possibility is to allocate the buffer dynamically and never free it:
         {
           va_list ap;
           int i;
-    
+
           va_start(ap, arg1);
           for (i = arg1; i >= 0; i = va_arg(ap, int))
           printf("%d ", i);
           va_end(ap);
           putchar('\n');
         }
-    
+
         int main(void)
         {
           printargs(5, 2, 14, 84, 97, 15, -1, 48, -1);
@@ -142,7 +141,10 @@ This program yields the output:
 
     1
 
+
 ## Chapter 6: Preprocessor (预处理器)
 
 
 ## Chapter 7: Portability pitfalls (可移植性缺陷)
+
+## Continue...
