@@ -85,21 +85,22 @@ description:
 ## Chapter 5: Library functions (库函数)
 
 + use `setbuf` in a program that copies its standard input to its standard output:
+        
+        #include <stdio.h>
+        main()
+        {
+            int c;
+            char buf[BUFSIZ];  // error in this line.
+            setbuf(stdout, buf);
 
-    #include <stdio.h>
-    main()
-    {
-      int c;
+            while (c = getchar()) != EOF)
+            putchar (c);
+        }
 
-      char buf[BUFSIZ];  // error in this line.
-      setbuf(stdout, buf);
-
-      while (c = getchar()) != EOF)
-        putchar (c);
-    }
 There are two ways to prevent this sort of trouble: First, make the `buffer` static, either by declaring it explicitly as static:
 
-`static char buf[BUFSIZ];`
+    `static char buf[BUFSIZ];`
+
 or by moving the declaration outside the main program entirely.
 
 Another possibility is to allocate the buffer dynamically and never free it:
@@ -109,30 +110,30 @@ Another possibility is to allocate the buffer dynamically and never free it:
 
 + `stdarg.h` is a header in the C standard library hat allows functions to accept an indefinite number of arguments. Example:
 
-    #include <stdio.h>
-    #include <stdarg.h>
+        #include <stdio.h>
+        #include <stdarg.h>
 
-    /* print all args one at a time until a negative argument is seen; all args are assumed to be of int type */
-    void printargs(int arg1, ...)
-    {
-      va_list ap;
-      int i;
-
-      va_start(ap, arg1);
-      for (i = arg1; i >= 0; i = va_arg(ap, int))
-      printf("%d ", i);
-      va_end(ap);
-      putchar('\n');
-    }
-
-    int main(void)
-    {
-      printargs(5, 2, 14, 84, 97, 15, -1, 48, -1);
-      printargs(84, 51, -1);
-      printargs(-1);
-      printargs(1, -1);
-      return 0;
-    }
+        /* print all args one at a time until a negative argument is seen; all args are assumed to be of int type */
+        void printargs(int arg1, ...)
+        {
+          va_list ap;
+          int i;
+    
+          va_start(ap, arg1);
+          for (i = arg1; i >= 0; i = va_arg(ap, int))
+          printf("%d ", i);
+          va_end(ap);
+          putchar('\n');
+        }
+    
+        int main(void)
+        {
+          printargs(5, 2, 14, 84, 97, 15, -1, 48, -1);
+          printargs(84, 51, -1);
+          printargs(-1);
+          printargs(1, -1);
+          return 0;
+        }
 
 This program yields the output:
 
