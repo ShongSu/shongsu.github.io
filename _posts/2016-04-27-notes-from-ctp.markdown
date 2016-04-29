@@ -67,9 +67,79 @@ description:
 
 ## Chapter 4: Linkage (链接)
 
++ The declaration `extern int a;` is not a definition of `a`, such a declaration is a reference to the external object `a` but does not define it.
+
++ A program that includes `extern int a;` must say `int a;` somewhere else, either in the same program file or a different one.
+
++ The declaration `static int a;` means the same thing as `int a;` within a single source program file, but a is hidden from other files.
+
++ Arguments(形参), parameters(实参)。
+
++ A function called before it is defined or declared is assumed to return `int`.
+
++ A program with this definition: `char filename[] = "/etc/passwd";` in one file and this declaration: `extern char *filename;` in another. Although arrays and pointers are very similar in some contexts, they are not the same.
+
+
+------Updated at 28th April, 2016------
 
 ## Chapter 5: Library functions (库函数)
 
++ use `setbuf` in a program that copies its standard input to its standard output:
+
+    #include <stdio.h>
+    main()
+    {
+      int c;
+
+      char buf[BUFSIZ];  // error in this line.
+      setbuf(stdout, buf);
+
+      while (c = getchar()) != EOF)
+        putchar (c);
+    }
+There are two ways to prevent this sort of trouble: First, make the `buffer` static, either by declaring it explicitly as static:
+
+`static char buf[BUFSIZ];`
+or by moving the declaration outside the main program entirely.
+
+Another possibility is to allocate the buffer dynamically and never free it:
+
+    char *malloc();
+    setbuf(stdout, malloc(BUFSIZ);
+
++ `stdarg.h` is a header in the C standard library hat allows functions to accept an indefinite number of arguments. Example:
+
+    #include <stdio.h>
+    #include <stdarg.h>
+
+    /* print all args one at a time until a negative argument is seen; all args are assumed to be of int type */
+    void printargs(int arg1, ...)
+    {
+      va_list ap;
+      int i;
+
+      va_start(ap, arg1);
+      for (i = arg1; i >= 0; i = va_arg(ap, int))
+      printf("%d ", i);
+      va_end(ap);
+      putchar('\n');
+    }
+
+    int main(void)
+    {
+      printargs(5, 2, 14, 84, 97, 15, -1, 48, -1);
+      printargs(84, 51, -1);
+      printargs(-1);
+      printargs(1, -1);
+      return 0;
+    }
+
+This program yields the output:
+
+    5 2 14 84 97 15
+    84 51
+
+    1
 
 ## Chapter 6: Preprocessor (预处理器)
 
