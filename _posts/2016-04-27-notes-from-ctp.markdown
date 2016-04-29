@@ -98,7 +98,7 @@ description:
 
 There are two ways to prevent this sort of trouble: First, make the `buffer` static, either by declaring it explicitly as static:
 
-    `static char buf[BUFSIZ];`
+    static char buf[BUFSIZ];
 
 or by moving the declaration outside the main program entirely.
 
