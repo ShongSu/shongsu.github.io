@@ -150,6 +150,7 @@ This program yields the output:
 
 + Some examples:
 
+
     #define abs(x) (((x)>=0) ? (x) : (-x) )
     #define max(a,b) ((a)>(b) ? (a):(b))
     #define toupper(c) ((c)=>'a' && (c)<='z' ? (c + ('A'-'a')) : (c))
@@ -157,6 +158,7 @@ This program yields the output:
 
 + Macros are not type definitions. Using `typedef` instead of `#define`. For example, if you defined `#define T1 struct foo *` and `typedef struct foo *T2`. These definitions make T1 and T2 conceptually equivalent to a pointer to
 a struct foo. But when we try to use them with more than one variable:
+
 
     T1 a, b;
     T2 c, d;
