@@ -151,20 +151,20 @@ This program yields the output:
 + Some examples:
 
 
-    #define abs(x) (((x)>=0) ? (x) : (-x) )
-    #define max(a,b) ((a)>(b) ? (a):(b))
-    #define toupper(c) ((c)=>'a' && (c)<='z' ? (c + ('A'-'a')) : (c))
-    #define assert(e) ((e) || assert_error(__FILE__, __LINE__))
+      #define abs(x) (((x)>=0) ? (x) : (-x) )
+      #define max(a,b) ((a)>(b) ? (a):(b))
+      #define toupper(c) ((c)=>'a' && (c)<='z' ? (c + ('A'-'a')) : (c))
+      #define assert(e) ((e) || assert_error(__FILE__, __LINE__))
 
 + Macros are not type definitions. Using `typedef` instead of `#define`. For example, if you defined `#define T1 struct foo *` and `typedef struct foo *T2`. These definitions make T1 and T2 conceptually equivalent to a pointer to
 a struct foo. But when we try to use them with more than one variable:
 
 
-    T1 a, b;
-    T2 c, d;
+      T1 a, b;
+      T2 c, d;
 
 The first declaration gets expanded to `struct foo * a, b;` This defines `a` to be a pointer to a structure, but defines `b` to be a structure (not a pointer). The second declaration, in contrast, defines both `c`
-and `d` as pointers to structures, because T2 behaves as a true type.
+and `d` as pointers to structures, because `T2` behaves as a true type.
 
 ### Exercise
 
