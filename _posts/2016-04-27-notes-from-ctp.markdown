@@ -144,6 +144,35 @@ This program yields the output:
 
 ## Chapter 6: Preprocessor (预处理器)
 
+### Notes
+
++ It is important to to enclose each parameter in parentheses and parenthesize the entire result expression to defend against using the macro in a larger expression.
+
++ Some examples:
+
+    #define abs(x) (((x)>=0) ? (x) : (-x) )
+    #define max(a,b) ((a)>(b) ? (a):(b))
+    #define toupper(c) ((c)=>'a' && (c)<='z' ? (c + ('A'-'a')) : (c))
+    #define assert(e) ((e) || assert_error(__FILE__, __LINE__))
+
++ Macros are not type definitions. Using `typedef` instead of `#define`. For example, if you defined `#define T1 struct foo *` and `typedef struct foo *T2`. These definitions make T1 and T2 conceptually equivalent to a pointer to
+a struct foo. But when we try to use them with more than one variable:
+
+    T1 a, b;
+    T2 c, d;
+
+The first declaration gets expanded to `struct foo * a, b;` This defines `a` to be a pointer to a structure, but defines `b` to be a structure (not a pointer). The second declaration, in contrast, defines both `c`
+and `d` as pointers to structures, because T2 behaves as a true type.
+
+### Exercise
+
+6-1. Write a macro version of max with integer arguments that evaluates its arguments only once.
+
+    static int max_temp1, max_temp2;
+    #define max(p,q) (max_temp1=(p),max_temp2=(q),\
+            max_temp1>max_temp2? max_temp1:max_temp2)
+
+This will work as long as calls to max are not nested; making it work in that case may be impossible.
 
 ## Chapter 7: Portability pitfalls (可移植性缺陷)
 
