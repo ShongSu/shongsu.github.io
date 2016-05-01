@@ -178,4 +178,46 @@ This will work as long as calls to max are not nested; making it work in that ca
 
 ## Chapter 7: Portability pitfalls (可移植性缺陷)
 
+### Notes
+
++ The three sizes of integers are nondecreasing. That is, a `short` integer can contain only values that will also fit in a `int` integer and a `int` integer can contain only values that will also fit in a `long` integer.
+
++ The ANSI standard requires `long` integers to be at least 32 bits and `short` or `int` integers to be at least 16 bits.
+
++ In most C, the remainder has the same sign as the dividend.
+
+
+### Exercise
+
+7-2. Write a portable version of the `atol` function, which takes a pointer to a null-terminated character string as its argument and returns the corresponding `long` value. Assume:
+
+1. The input will always represent a valid `long` integer, so `atol` need not check for the input being out of bounds;
+
+2. The only valid input characters are digits and `+` and `-` signs. The input ends at the first invalid character.
+
+
+        long atol(char *s)
+        {
+            long r = 0;
+            int neg = 0;
+            switch (*s){
+              case '-' :
+                  neg = 1;
+                  /* no break here*/
+              case '+' :
+                  s++;
+                  break;
+            }
+            while (*s >= '0' && *s <= '9'){
+                int n = *s++ - '0';
+                if(neg)
+                    n = -n;
+                r = r * 10 + n;
+            }
+
+            return r;
+        }
+
+
+
 ## Continue...
