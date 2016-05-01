@@ -9,7 +9,26 @@ description:
 
 ## Chapter 1: Lexical Pitfalls (词法陷阱)
 
+### Notes
+
++ A character enclosed in single quotes is just another way of writing the integer that corresponds to the given character in the implementation's collating sequence. A string enclosed in double quotes is a short-hand way of writing a pointer to the initial character of a nameless array that has been initialized with the characters between the quotes and an extra character whose binary value is zero (`'\0'`).
+
+### Exercise
+
+1-1. Some C compilers allow nested comments. Write a C program that finds out if it is being run on such a compiler without any error messages. In other words, the program should be valid under both comment rules, but should do different things in each. Hint. A comment symbol `/*` inside a quoted string is just part of the string; a double quote `" "` inside a comment is part of the comment.
+
+      /*/**/"*/"/*"/**/
+
+This expression is equivalent to `"*/"` if comments nest and `"/*"` if they don't.
+
+      /*/*/0*/**/1
+
+This expression is equivalent to `1` if comments nest and `0*1` if they don't.
+
+
 ## Chapter 2: Syntactic Pitfalls (语法陷阱)
+
+
 
 ## Chapter 3: Semantic Pitfalls (语义陷阱)
 
