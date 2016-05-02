@@ -28,11 +28,57 @@ This expression is equivalent to `1` if comments nest and `0*1` if they don't.
 
 ## Chapter 2: Syntactic Pitfalls (语法陷阱)
 
+### Notes
+
++  Wrong examples of operator precedence
+
+
+    if (flags & FLAG != 0)  ===  if (flags & (FLAG != 0))
+    r = hi<<4 + low  === r = hi<< (4 + low)
+    r = (hi<<4) + low === r = hi<<4 | low
+    *p++ === *(p++)
+    while(c=getc(in) != EOF) === while(c = (getc(in) != EOF))
+
++ Do not forget `break` in each `case` of `switch` statement.
+
++ C requires a function call to have an argument list even if there are no arguments. `f();` is a statement that calls the function, but `f;`does nothing at all. More precisely, it evaluates the address of the function
+but does not call it.
+
++ An `else` is always associated with the closest unmatched `if` inside the same pair of braces.
+
 
 
 ## Chapter 3: Semantic Pitfalls (语义陷阱)
 
 ### Notes
+
++ Apply `sizeof()` for Arrays and Pointers:
+
+
+      int calendar[12][31];    // sizeof(calendar) = 31 * 12 * sizeof(int)
+      calendar[4];             // sizeof(calendar[4]) = sizeof(*monthp) = 31 * sizeof(int)
+      int *p=calendar[4];      // sizeof(p) = 2 * sizeof(int); sizeof(*p) = 1 * sizeof(int)
+      int (*monthp)[31]=calendar;   //sizeof(monthp) = 2 * sizeof(int)
+
+In addtion, calendar[4][7] == *(calendar[4] + 7) == *((calendar + 4) + 7)
+
++ Copying a pointer does not copy the thing it addresses.
+
++ Using asymmetric bounds, that is, when traverse a array `int a[10]`, using `for(i = 0; i < 10; i++ )` rather than `for(i = 0; i <= 9; i++ )`.
+
++ Pointer declaration syntax overview:
+
+
+      char cff [5][5];    /* array of arrays of chars; a char can be any sign */
+      char *cfp [5];      /* array of pointers to chars */
+      char **cpp;         /* pointer to pointer to chars ("double pointer") */
+      char (*cpf) [5];    /* pointer to an array of chars */
+      char *cpF();        /* function which returns a pointer to chars */
+      char (*CFp)();      /* pointer to a function which returns chars */
+      char (*cfpF*())[5]; /* function which returns pointers to an array of chars */
+      char (*cpFf[5])();  /* an array of pointers to functions, which all return chars */
+
+The `()` and `[]` have a higher priority than `*`.
 
 + the `&&` and `||` operators do not even evaluate their right-hand operands if their results can be determined from their left-hand operands. `&` and `|` unlike `&&`, must always evaluate both of its operands.
 
