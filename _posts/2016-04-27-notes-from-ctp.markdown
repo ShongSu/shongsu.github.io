@@ -300,7 +300,3 @@ This will work as long as calls to max are not nested; making it work in that ca
 
             return r;
         }
-
-
-
-## Continue...
