@@ -30,14 +30,14 @@ This expression is equivalent to `1` if comments nest and `0*1` if they don't.
 
 ### Notes
 
-+  Wrong examples of operator precedence
++  Wrong examples of operator precedence:
 
 
-      if (flags & FLAG != 0)  ===  if (flags & (FLAG != 0))
-      r = hi<<4 + low  === r = hi<< (4 + low)
-      r = (hi<<4) + low === r = hi<<4 | low
-      *p++ === *(p++)
-      while(c=getc(in) != EOF) === while(c = (getc(in) != EOF))
+        if (flags & FLAG != 0)  ===  if (flags & (FLAG != 0))
+        r = hi<<4 + low  === r = hi<< (4 + low)
+        r = (hi<<4) + low === r = hi<<4 | low
+        *p++ === *(p++)
+        while(c=getc(in) != EOF) === while(c = (getc(in) != EOF))
 
 + Do not forget `break` in each `case` of `switch` statement.
 
