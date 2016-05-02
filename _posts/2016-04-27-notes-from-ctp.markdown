@@ -172,7 +172,7 @@ Another possibility is to allocate the buffer dynamically and never free it:
     char *malloc();
     setbuf(stdout, malloc(BUFSIZ);
 
-+ `stdarg.h` is a header in the C standard library hat allows functions to accept an indefinite number of arguments. Example:
++ `stdarg.h` is a header in the C standard library hat allows functions to accept an indefinite number of arguments. Example 1:
 
         #include <stdio.h>
         #include <stdarg.h>
@@ -205,6 +205,24 @@ This program yields the output:
     84 51
 
     1
+
+
+Example 2:
+
+
+      #include <stdarg.h>
+
+      int printf(char *format, ...)
+      {
+        va_list ap;
+        int n;
+
+        va_start(ap,format);
+        n = vprintf(format, ap);
+        va_end(ap);
+        return n;
+      }
+
 
 
 ## Chapter 6: Preprocessor (预处理器)
