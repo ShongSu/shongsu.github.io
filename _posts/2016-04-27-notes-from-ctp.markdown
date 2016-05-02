@@ -55,10 +55,10 @@ but does not call it.
 + Apply `sizeof()` for Arrays and Pointers:
 
 
-      int calendar[12][31];         /* sizeof(calendar) = 31 * 12 * sizeof(int) */
-      calendar[4];                  /* sizeof(calendar[4]) = sizeof(*monthp) = 31 * sizeof(int) */
-      int *p=calendar[4];           /* sizeof(p) = 2 * sizeof(int); sizeof(*p) = 1 * sizeof(int) */
-      int (*monthp)[31]=calendar;   /* sizeof(monthp) = 2 * sizeof(int) */
+      int calendar[12][31];  /* sizeof(calendar) = 31 * 12 * sizeof(int) */
+      calendar[4];   /* sizeof(calendar[4]) = sizeof(*monthp) = 31 * sizeof(int) */
+      int *p=calendar[4];   /* sizeof(p) = 2 * sizeof(int); sizeof(*p) = 1 * sizeof(int) */
+      int (*monthp)[31]=calendar;  /* sizeof(monthp) = 2 * sizeof(int) */
 
 In addtion, `calendar[4][7] == *(calendar[4] + 7) == *((calendar + 4) + 7)`.
 
