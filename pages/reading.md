@@ -6,9 +6,9 @@ header-img: "../sysimg/blue.jpg"
 ---
 
 
-## Readings - April
+## Readings - May
 
-[1] [C Traps and Pitfalls][ctp]   \[[Notes][n1]\]
+[1] [Expert C Programming][ecp]
 
 [2] [C Primer Plus - 5 Edition][cpp]
 
@@ -27,11 +27,12 @@ header-img: "../sysimg/blue.jpg"
 
 ## Study Notes
 
-[1] Swift / iOS / Objective-C
+[1] [C Traps and Pitfalls][ctp]   \[[Notes][n1]\]
 
-[2] MongoDB
+
 
 
 [ctp]:http://www.ebooksbucket.com/uploads/itprogramming/cplus/C_Traps_and_Pitfalls.pdf
 [cpp]:http://faculty.euc.ac.cy/scharalambous/csc131/books/C%20book%201.pdf
 [n1]:http://shongsu.github.io/blog/notes-from-ctp.html
+[ecp]:http://www.madar.com.pl/demo/expert.pdf
