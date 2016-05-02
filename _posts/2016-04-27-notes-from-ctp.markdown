@@ -33,11 +33,11 @@ This expression is equivalent to `1` if comments nest and `0*1` if they don't.
 +  Wrong examples of operator precedence
 
 
-    if (flags & FLAG != 0)  ===  if (flags & (FLAG != 0))
-    r = hi<<4 + low  === r = hi<< (4 + low)
-    r = (hi<<4) + low === r = hi<<4 | low
-    *p++ === *(p++)
-    while(c=getc(in) != EOF) === while(c = (getc(in) != EOF))
+      if (flags & FLAG != 0)  ===  if (flags & (FLAG != 0))
+      r = hi<<4 + low  === r = hi<< (4 + low)
+      r = (hi<<4) + low === r = hi<<4 | low
+      *p++ === *(p++)
+      while(c=getc(in) != EOF) === while(c = (getc(in) != EOF))
 
 + Do not forget `break` in each `case` of `switch` statement.
 
@@ -60,7 +60,7 @@ but does not call it.
       int *p=calendar[4];      // sizeof(p) = 2 * sizeof(int); sizeof(*p) = 1 * sizeof(int)
       int (*monthp)[31]=calendar;   //sizeof(monthp) = 2 * sizeof(int)
 
-In addtion, calendar[4][7] == *(calendar[4] + 7) == *((calendar + 4) + 7)
+In addtion, `calendar[4][7] == *(calendar[4] + 7) == *((calendar + 4) + 7)`.
 
 + Copying a pointer does not copy the thing it addresses.
 
