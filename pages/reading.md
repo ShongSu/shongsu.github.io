@@ -8,7 +8,7 @@ header-img: "../sysimg/blue.jpg"
 
 ## Readings - May
 
-[1] [Expert C Programming][ecp]
+[1] [Expert C Programming][ecp]   \[[Notes][n2]\]
 
 [2] [C Primer Plus - 5 Edition][cpp]
 
@@ -36,3 +36,4 @@ header-img: "../sysimg/blue.jpg"
 [cpp]:http://faculty.euc.ac.cy/scharalambous/csc131/books/C%20book%201.pdf
 [n1]:http://shongsu.github.io/blog/notes-from-ctp.html
 [ecp]:http://www.madar.com.pl/demo/expert.pdf
+[n2]:http://shongsu.github.io/blog/notes-from-ecp.html
