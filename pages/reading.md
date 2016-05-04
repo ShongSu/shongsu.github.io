@@ -10,7 +10,7 @@ header-img: "../sysimg/blue.jpg"
 
 [1] [Expert C Programming][ecp]   \[[Notes][n2]\]
 
-[2] [C Primer Plus - 5 Edition][cpp]
+[2] [C Primer Plus - 5 Edition][cpp]   \[[Notes][n3]\]
 
 [3] [JavaScript: The Definitive Guide, 6th Edition][js]
 
@@ -41,3 +41,4 @@ header-img: "../sysimg/blue.jpg"
 [ecp]:http://www.madar.com.pl/demo/expert.pdf
 [n2]:http://shongsu.github.io/blog/notes-from-ecp.html
 [js]:ftp://91.193.236.10/pub/docs/linux-support/programming/JavaScript/%5BO%60Reilly%5D%20-%20JavaScript.%20The%20Definitive%20Guide,%206th%20ed.%20-%20%5BFlanagan%5D.pdf
+[n3]:http://shongsu.github.io/blog/notes-from-cpp.html
