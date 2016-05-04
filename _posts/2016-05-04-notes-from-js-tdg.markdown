@@ -1,11 +1,12 @@
 ---
 layout: post
-title: Notes from JavaScript: The Definitive Guide / JavaScript权威指南笔记
-date: 2016-05-04 17:29
+title: Notes from JavaScript:The Definitive Guide / JavaScript权威指南笔记
+date: 2016-05-04 17:32
 categories: [blog ]
 tags: [JavaScript, ]
 description:
 ---
+
 
 ## Part I. Core JavaScript
 
