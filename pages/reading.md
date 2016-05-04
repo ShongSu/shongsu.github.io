@@ -12,6 +12,8 @@ header-img: "../sysimg/blue.jpg"
 
 [2] [C Primer Plus - 5 Edition][cpp]
 
+[3] [JavaScript: The Definitive Guide, 6th Edition][js]
+
 
 ## Others
 
@@ -37,3 +39,4 @@ header-img: "../sysimg/blue.jpg"
 [n1]:http://shongsu.github.io/blog/notes-from-ctp.html
 [ecp]:http://www.madar.com.pl/demo/expert.pdf
 [n2]:http://shongsu.github.io/blog/notes-from-ecp.html
+[js]:http://shop.oreilly.com/product/9780596805531.do
