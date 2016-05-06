@@ -10,7 +10,7 @@ description:
 
 ## Chapter 1: C Through the Mists of Time
 
-### notes
+### Notes
 
 + Avoid unnecessary complexity by minimizing your use of unsigned types; use a signed type like `int` and you won't have to worry about boundary cases in the detailed rules for promoting mixed types; only use unsigned types for bitfields or binary masks. Use casts in expressions, to make all the operands `signed` or `unsigned`, so the compiler does not have to choose the result type.
 
@@ -32,7 +32,7 @@ The defined variable `TOTAL_ELEMENTS` has type `unsigned int` (because the retur
 
 ## Chapter 2: It's Not a Bug, It's a Language Feature
 
-### notes
+### Notes
 
 + Any time you encounter the string `malloc(strlen(str));` it is almost always sure to be an error, where `malloc(strlen(str)+1);` was meant. This is because almost all the other string handling routines include the room needed for the trailing `'\0'` terminator, so people get used to not making the special provision for it that strlen needs.
 
@@ -46,25 +46,21 @@ The defined variable `TOTAL_ELEMENTS` has type `unsigned int` (because the retur
 
 `static`:
 
-Inside a function, retains its value between calls;
-At the function level, visible only in this file.
+Inside a function, retains its value between calls; At the function level, visible only in this file.
 
 `extern`:
 
-Applied to a function definition, has global scope (and is redundant);
-
-Applied to a variable, defined elsewhere.
+Applied to a function definition, has global scope (and is redundant); Applied to a variable, defined elsewhere.
 
 `void`:
 
-As the return type of a function, doesn't return a value;
+As the return type of a function, doesn't return a value; In a pointer declaration, the type of a generic pointer; In a parameter list, takes no parameters.
 
-In a pointer declaration, the type of a generic pointer;
-
-In a parameter list, takes no parameters.
 
 
 ## Chapter 3: Unscrambling Declarations in C
+
+### Notes
 
 + A declaration involving a pointer and a const has several possible orderings:
 
@@ -124,6 +120,44 @@ The last of these cases makes the pointer read-only, whereas the other two make 
   </tr>
 </table>
 
++ A Example Solving a Declaration Using the Precedence Rule
+
+<table style="width:100%">
+  <tr>
+    <th colspan="3">char* const *(*next)();</th>
+  </tr>
+  <tr>
+    <th colspan="2">A</th>
+    <th>First, go to the variable name, "next", and note that it is directly enclosed by parentheses.</th>
+  </tr>
+  <tr>
+    <td></td>
+    <td>B.1</td>
+    <td>So we group it with what else is in the parentheses, to get "next is a pointer to...".</td>
+  </tr>
+  <tr>
+    <th colspan="2">B</th>
+    <th>Then we go outside the parentheses, and have a choice of a prefix asterisk, or a postfix pair of parentheses.</th>
+  </tr>
+  <tr>
+    <td></td>
+    <td>B.2</td>
+    <td>Rule B.2 tells us the highest precedence thing is the function parentheses at the right, so we have "next is a pointer to a function returning…"</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>B.3</td>
+    <td>Then process the prefix "*" to get "pointer to".</td>
+  </tr>
+  <tr>
+    <th colspan="2">C</th>
+    <th>Finally, take the "char * const", as a constant pointer to a character</th>
+  </tr>
+</table>
+
+Then put it all together to read:
+
+"next is a pointer to a function returning a pointer to a const pointer-to-char"
 
 
 
