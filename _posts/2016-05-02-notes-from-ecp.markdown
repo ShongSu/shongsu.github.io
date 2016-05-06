@@ -157,7 +157,12 @@ The last of these cases makes the pointer read-only, whereas the other two make 
 
 Then put it all together to read:
 
-"next is a pointer to a function returning a pointer to a const pointer-to-char"
+"`next` is a pointer to a function returning a pointer to a const pointer-to-char"
+
++ Another Example: `char *(*c[10])(int **p);`
+
+"`c` is an array[0..9] of pointer to a function returning a pointer-to-char"
+
 
 
 
