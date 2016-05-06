@@ -42,5 +42,87 @@ The defined variable `TOTAL_ELEMENTS` has type `unsigned int` (because the retur
 
 + All the cases are optional, and any form of statement, including labelled statements, is permitted, means that some errors can't be detected even by `lint`. A hard problem was mistyped `defau1t` for the `default` label (i.e., mistyped a digit "1" for the letter "l").
 
++ Some Symbol Overloading in C:
+
+`static`:
+Inside a function, retains its value between calls;
+
+At the function level, visible only in this file.
+
+`extern`:
+Applied to a function definition, has global scope (and is redundant);
+
+Applied to a variable, defined elsewhere.
+
+`void`:
+As the return type of a function, doesn't return a value;
+
+In a pointer declaration, the type of a generic pointer;
+
+In a parameter list, takes no parameters.
+
+
+## Chapter 3: Unscrambling Declarations in C
+
++ A declaration involving a pointer and a const has several possible orderings:
+
+
+        const int * grape;
+        int const * grape;
+        int * const grape_jelly;
+
+The last of these cases makes the pointer read-only, whereas the other two make the object that it points at read-only; and of course, both the object and what it points at might be constant. Either of the following equivalent declarations will accomplish this:
+
+
+        const int * const grape_jam;
+        int const * const grape_jam;
+
+
++ a function returning a pointer to a function is allowed: `int (* fun())()`
+
+  a function returning a pointer to an array is allowed: `int (* foo())[]`
+
+  an array holding pointers to functions is allowed: `int (*foo[])()`
+
+  an array can hold other arrays, so you'll frequently see `int foo[][]`
+
+
++ The Precedence Rule
+
+<table style="width:100%">
+  <tr>
+    <th colspan="3">The Precedence Rule for Understanding C Declarations</th>
+  </tr>
+  <tr>
+    <th colspan="2">A</th>
+    <th>Declarations are read by starting with the name and then reading in precedence order.</th>
+  </tr>
+  <tr>
+    <th colspan="2">B</th>
+    <th>The precedence, from high to low, is:</th>
+  </tr>
+  <tr>
+    <td></td>
+    <td>B.1</td>
+    <td>parentheses grouping together parts of a declaration</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>B.2</td>
+    <td>the postfix operators:</br>parentheses () indicating a function, and</br> square brackets [] indicating an array.</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>B.3</td>
+    <td>the prefix operator: the asterisk denoting "pointer to".</td>
+  </tr>
+  <tr>
+    <th colspan="2">C</th>
+    <th>If a const and/or volatile keyword is next to a type specifier (e.g. int, long, etc.) it applies to the type specifier. Otherwise the const and/or volatile keyword applies to the pointer asterisk on its immediate left.</th>
+  </tr>
+</table>
+
+
+
 
 ### To be continued...
