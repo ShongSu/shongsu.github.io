@@ -45,16 +45,19 @@ The defined variable `TOTAL_ELEMENTS` has type `unsigned int` (because the retur
 + Some Symbol Overloading in C:
 
 `static`:
+
 Inside a function, retains its value between calls;
 
 At the function level, visible only in this file.
 
 `extern`:
+
 Applied to a function definition, has global scope (and is redundant);
 
 Applied to a variable, defined elsewhere.
 
 `void`:
+
 As the return type of a function, doesn't return a value;
 
 In a pointer declaration, the type of a generic pointer;
