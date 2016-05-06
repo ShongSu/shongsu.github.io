@@ -47,7 +47,6 @@ The defined variable `TOTAL_ELEMENTS` has type `unsigned int` (because the retur
 `static`:
 
 Inside a function, retains its value between calls;
-
 At the function level, visible only in this file.
 
 `extern`:
