@@ -164,6 +164,51 @@ Then put it all together to read:
 "`c` is an array[0..9] of pointer to a function returning a pointer-to-char"
 
 
+## Chapter 4: The Shocking Truth: C Arrays and Pointers Are NOT the Same!
+
+### Notes
+
++ Defined as array NOT Same AS external declaration as pointer. The pointer variable itself will always be at the same address, but its contents can change to point to many different ints at different times. Each of those different ints can have different values. The array can't move around to different places. At different times it can be filled with different values, but it always refers to the same n consecutive memory locations.
+
++ Differences Between Arrays and Pointers
+
+<table style="width:100%">
+   <tr>
+    <th>Pointer</th>
+    <th>Array</th>
+  </tr>
+  <tr>
+   <td>Holds the address of data</td>
+   <td>Holds data</td>
+  </tr>
+  <tr>
+    <td>Data is accessed indirectly, so you first retrieve the
+contents of the pointer, load that as an address (call it "L"),
+then retrieve its contents.
+If the pointer has a subscript [i] you instead retrieve the
+contents of the location 'i' units past "L"</td>
+    <td>Data is accessed directly, so for a[i] you
+simply retrieve the contents of the
+location i units past a.</td>
+  </tr>
+  <tr>
+   <td>Commonly used for dynamic data structures</td>
+   <td>Commonly used for holding a fixed number of elements of the same type of data</td>
+  </tr>
+  <tr>
+   <td>Commonly used with `malloc()`, `free()`</td>
+   <td>Implicitly allocated and deallocated</td>
+  </tr>
+  <tr>
+   <td>Typically points to anonymous data</td>
+   <td>Is a named variable in its own right</td>
+  </tr>
+</table>
+
+
++ A string literal created by a pointer initialization is defined as read-only in ANSI C; In contrast to a pointer, an array initialized by a literal string is writable. The individual characters can later be changed.
+
+
 
 
 ### To be continued...
