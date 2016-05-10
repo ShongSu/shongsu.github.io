@@ -48,7 +48,7 @@ A better approach may perform as O(N^2).
         for(i = 0; i < N; i++)
         {
             ThisSum = 0;
-            for(j = 0; j < N; j++)
+            for(j = i; j < N; j++)
             {
                 ThisSum += A[j];
                 if(ThisSum > MaxSum)
