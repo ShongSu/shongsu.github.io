@@ -9,7 +9,9 @@ description:
 
 <center>**------English (英文)------**</center>
 
-## Problem 1. Given a amount `A` and `n` coins, `v1<v2<v3<...<vn`. Write a pro­gram to find out min­i­mum num­bers of coins required to make the change for the amount `A`.
+## Problem 1.
+
+Given a amount `A` and `n` coins, `v1<v2<v3<...<vn`. Write a pro­gram to find out min­i­mum num­bers of coins required to make the change for the amount `A`.
 
 Example.
 
