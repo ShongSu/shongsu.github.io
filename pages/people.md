@@ -8,7 +8,6 @@ header-img: "../sysimg/sky2.jpg"
 # {{ page.title }}
 
 + [Hao Chen][a]
-
 + [Liu Cheng][b]
 
 
