@@ -39,7 +39,7 @@ C/C++ • Java • PHP • iOS • Android • HTML • SQL
 
 **Education**
 
-<img src="../sysimg/uOttaw_Logo.png" align="center" width="20%">
+<img src="../sysimg/uOttawa_Logo.png" align="center" width="20%">
 <b>Master of Computer Science</b> <br />
 [University of Ottawa][uo] (2013 - 2015)<br />
 <br />
