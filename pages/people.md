@@ -10,6 +10,7 @@ header-img: "../sysimg/sky2.jpg"
 + [Hao Chen][a]
 + [Liu Cheng][b]
 + [Opeoluwa Temitayo][c]
++ [Zijie(Augustus) Li][d]
 
 
 
@@ -22,3 +23,4 @@ header-img: "../sysimg/sky2.jpg"
 [a]: https://hchen1202.github.io/
 [b]: http://willowcheng.top/
 [c]: http://www.ewejeopeoluwa.com/
+[d]: http://augustus2014.blogspot.ca/
