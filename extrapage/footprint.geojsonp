@@ -240,6 +240,25 @@ eqfeed_callback(
 			},
 			id: "20150831"
 		},
+		
+		{
+			type: "Feature",
+			properties: {
+				place: "Canada",
+				time: 20160521,
+				updated: 20160607,
+				times: 1,
+				title: "Thousand Islands"
+			},
+			geometry: {
+				type: "Point",
+				coordinates: [
+					-76.3135773,
+					44.2588661,
+				]
+			},
+			id: "20150831"
+		},
 	],
 }
 )
