@@ -7,7 +7,7 @@ header-img: "../sysimg/grass.jpg"
 
 # {{ page.title }}
 
-+ [Cookings4u][u]: Designing a Website in order to provide a platform for both customers and private home cuisine chefs.
++ [Cookings4u][u]: Designing a Website in order to provide a platform for both customers and private home cuisine chefs. (In development)
 
 + Develop [Cordova][c] plugins for Android and iOS.
 
@@ -24,4 +24,4 @@ header-img: "../sysimg/grass.jpg"
 [b]: http://oisb-1.med.uottawa.ca/lab/index.php
 [q]: https://github.com/ShongSu/QRCode
 [m]: https://github.com/hchen1202/Magento
-[u]: https://github.com/ShongSu/Cookings4u
+[u]: http://ec2-52-3-166-108.compute-1.amazonaws.com/Main/
