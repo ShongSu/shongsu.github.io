@@ -3,7 +3,7 @@ layout: post
 title: Internet Protocol - SMTP and POP3 / 网络协议系列 - SMTP和POP3协议
 date: 2016-06-13 20:43
 categories: [blog ]
-tags: [Internet Protocol, ]
+tags: [Internet Protocols, ]
 description:
 ---
 
@@ -77,7 +77,7 @@ SMTP的响应也不复杂，它的一般形式是：
 4)  然后`smtp.gmail.com`通过SMTP协议将这封邮件发送到接收端邮件服务器。
 
 
-## 1 POP3协议
+## 2 POP3协议
 
 [POP3][pop3]，（Post Office Protocol version3），即邮局协议第3版。它被用户代理用来邮件服务器取得邮件。POP3采用的也是C/S通信模型。
 
