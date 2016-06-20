@@ -35,7 +35,7 @@ abc…	   |Letters
 (…)	     |Capture Group
 (a(bc))	 |Capture Sub-group
 (.*)	   |Capture all
-(abc|def)|Matches abc or def
+`(abc|def)`|Matches abc or def
 
 
 
