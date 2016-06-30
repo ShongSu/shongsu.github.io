@@ -37,7 +37,7 @@ You need learn [three.js][3js] at first. `three.js` is a cross-browser JavaScrip
 Then you can follow [borismus/webvr-boilerplate][webvrb] project on Github to build a sample VR website. Remember you should use Chromium or Mozilla nightly to test you site, take [webvr.info] for reference. In addition, [Hello-Cannon.js!][hcj] is another interesting project.
 
 
-Let us wander in the sea of VR.
+### Let us wander in the sea of VR.
 
 
 
