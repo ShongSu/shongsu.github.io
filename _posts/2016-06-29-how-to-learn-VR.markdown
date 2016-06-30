@@ -47,7 +47,7 @@ Then you can follow [borismus/webvr-boilerplate][webvrb] project on Github to bu
 [odc]:https://developer.oculus.com/documentation/
 [emfg]:https://www.amazon.com/Essential-Mathematics-Games-Interactive-Applications/dp/0123742978
 [3js]:http://threejs.org/
-[3js]:https://github.com/mrdoob/three.js/
+[3jsgit]:https://github.com/mrdoob/three.js/
 [webvrb]:https://github.com/borismus/webvr-boilerplate
 [webvr]:https://webvr.info/
 [hcj]:https://github.com/schteppe/cannon.js
