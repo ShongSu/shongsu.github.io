@@ -7,7 +7,7 @@ tags: [Virtual Reality, ]
 description:
 ---
 
-As research I did, there are 3 main parts in general.
+There are 3 main parts of Virtual Reality in general.
 
 ##  Native VR App
 
