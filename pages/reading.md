@@ -6,7 +6,7 @@ header-img: "../sysimg/blue.jpg"
 ---
 
 
-## Readings - May
+## Readings - July
 
 [1] [Expert C Programming][ecp]   \[[Notes][n2]\]
 
@@ -15,6 +15,8 @@ header-img: "../sysimg/blue.jpg"
 [3] [JavaScript: The Definitive Guide, 6th Edition][js]
 
 [4] Node.js
+
+[5] [Learning Virtual Reality][vr]
 
 
 ## Others
@@ -44,3 +46,4 @@ header-img: "../sysimg/blue.jpg"
 [n2]:http://shongsu.github.io/blog/notes-from-ecp.html
 [js]:ftp://91.193.236.10/pub/docs/linux-support/programming/JavaScript/%5BO%60Reilly%5D%20-%20JavaScript.%20The%20Definitive%20Guide,%206th%20ed.%20-%20%5BFlanagan%5D.pdf
 [n3]:http://shongsu.github.io/blog/notes-from-cpp.html
+[vr]:http://pdf.th7.cn/down/files/1602/Learning%20Virtual%20Reality.pdf
