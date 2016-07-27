@@ -170,13 +170,13 @@ description:
 
 指定查询`status`为`A`的记录
 
-SELECT *
-FROM users
-WHERE status = "A"
+	SELECT *
+	FROM users
+	WHERE status = "A"
 
-db.users.find(
-    { status: "A" }
-)
+	db.users.find(
+	    { status: "A" }
+	)
 
 指定查询`status`为`A`的记录并指定输出
 
@@ -245,14 +245,14 @@ db.users.find(
 
 指定查询`age`大于`25`，并且小于等于`50`的记录
 
-SELECT *
-FROM users
-WHERE age > 25
-AND   age <= 50
+	SELECT *
+	FROM users
+	WHERE age > 25
+	AND   age <= 50
 
-db.users.find(
-   { age: { $gt: 25, $lte: 50 } }
-)
+	db.users.find(
+	   { age: { $gt: 25, $lte: 50 } }
+	)
 
 指定查询`user_id`中间包含`bc`的记录
 
@@ -421,6 +421,7 @@ X
 下表对比了SQL和MongoDB的语句，我们假设本例中的表满足以下几点：
 
 ！SQL定义了两个数据表，表名分别为 `orders` 和 `order_lineitem`，其中以`order_lineitem.order_id`和`orders.id`为主外键连接.
+
 ！MongoDB定义了一个数据集合名为 `orders`，包含以下文档格式：
 
 	{
