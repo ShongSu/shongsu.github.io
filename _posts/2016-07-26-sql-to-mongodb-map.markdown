@@ -12,7 +12,6 @@ description:
 下表对比了SQL和MongoDB的术语和概念。
 
 
-
 | SQL   |  MongoDB |
 |-------|----------|
 | database  | database  |
@@ -21,113 +20,117 @@ description:
 |column |	field |
 |index	| index |
 |table joins	| embedded documents and linking |
-|primary key Specify any unique column or column combination as primary key.| primary key In MongoDB, the primary key is automatically set to the _id field. |
-|aggregation (e.g. group by)	| aggregation pipeline See the SQL to Aggregation Mapping Chart. |
+|primary key: Specify any unique column or column combination as primary key.| primary key: In MongoDB, the primary key is automatically set to the `_id` field. |
+|aggregation (e.g. `group by`)	| aggregation pipeline |
 
 
 ###	示例
 
 下表对比了SQL和MongoDB的语句，我们假设本例中的表满足以下几点：
+
 ！SQL表名为 `users`
+
 ！MongoDB集合名为 `users`，包含以下文档格式：
 
-		{
-			_id: ObjectId("509a8fb2f3f4948bd2f983a0"),
-			user_id: "abc123",
-			age: 55,
-			status: 'A'
-		}
+	{
+		_id: ObjectId("509a8fb2f3f4948bd2f983a0"),
+		user_id: "abc123",
+		age: 55,
+		status: 'A'
+	}
 
 
 ##	Create & Alter
 
 下表对比了SQL和MongoDB中与表相关的操作语句。
 
-CREATE TABLE users (
-    id MEDIUMINT NOT NULL
-        AUTO_INCREMENT,
-    user_id Varchar(30),
-    age Number,
-    status char(1),
-    PRIMARY KEY (id)
-)
+	CREATE TABLE users (
+	    id MEDIUMINT NOT NULL
+	        AUTO_INCREMENT,
+	    user_id Varchar(30),
+	    age Number,
+	    status char(1),
+	    PRIMARY KEY (id)
+	)
 
 
-隐式的创建第一个`insert()`操作。如果没有显式声明主键，将自动生成主键key _id。
+隐式的创建第一个`insert()`操作。如果没有显式声明主键，将自动生成主键key `_id`。
 
-db.users.insert( {
-    user_id: "abc123",
-    age: 55,
-    status: "A"
- } )
+	db.users.insert( {
+	    user_id: "abc123",
+	    age: 55,
+	    status: "A"
+	 } )
 
 然后，你也可以显示的创建一个集合：
-db.createCollection("users")
+
+	db.createCollection("users")
 
 
-ALTER TABLE users
-ADD join_date DATETIME
+	ALTER TABLE users
+	ADD join_date DATETIME
 
 集合不描述或指定文件的结构,即在集合级别上，没有结构更换。
-然而在文档级别，update()操作可以使用$set操作符向既存的文档中添加新的字段。
+然而在文档级别，`update()`操作可以使用`$set`操作符向既存的文档中添加新的字段。
 
-db.users.update(
-    { },
-    { $set: { join_date: new Date() } },
-    { multi: true }
-)
-
-ALTER TABLE users
-DROP COLUMN join_date
-
-在文档级别，update()操作可以使用$unset操作符删除文档中的某个字段。
-
-db.users.update(
-    { },
-    { $unset: { join_date: "" } },
-    { multi: true }
-)
-
-CREATE INDEX idx_user_id_asc
-ON users(user_id)
-
-db.users.createIndex( { user_id: 1 } )
+	db.users.update(
+	    { },
+	    { $set: { join_date: new Date() } },
+	    { multi: true }
+	)
 
 
-CREATE INDEX
-       idx_user_id_asc_age_desc
-ON users(user_id, age DESC)
+	ALTER TABLE users
+	DROP COLUMN join_date
 
-db.users.createIndex( { user_id: 1, age: -1 } )
+在文档级别，`update()``操作可以使用`$unset`操作符删除文档中的某个字段。
+
+	db.users.update(
+	    { },
+	    { $unset: { join_date: "" } },
+	    { multi: true }
+	)
+
+	CREATE INDEX idx_user_id_asc
+	ON users(user_id)
+
+	db.users.createIndex( { user_id: 1 } )
 
 
-DROP TABLE users
+	CREATE INDEX
+	       idx_user_id_asc_age_desc
+	ON users(user_id, age DESC)
 
-db.users.drop()
+	db.users.createIndex( { user_id: 1, age: -1 } )
+
+
+	DROP TABLE users
+
+	db.users.drop()
 
 
 ###	Insert操作
 
 下表对比了SQL和MongoDB中与向表中插入数据相关的操作语句。
 
-INSERT INTO users(user_id,
-                  age,
-                  status)
-VALUES ("bcd001",
-        45,
-        "A")
+	INSERT INTO users(user_id,
+	                  age,
+	                  status)
+	VALUES ("bcd001",
+	        45,
+	        "A")
 
 
-db.users.insert(
-   { user_id: "bcd001", age: 45, status: "A" }
-)
+	db.users.insert(
+	   { user_id: "bcd001", age: 45, status: "A" }
+	)
 
 ###	Select操作
 
 下表对比了SQL和MongoDB中与从表中读取数据相关的操作语句。
 
 注意：
-find()方法返回的数据中总是包含_id字段，除非你在映射中显式的说明它。下面某些SQL查询将使用_id字段，尽管该字段并没有在对应的find()方法中包含。
+`find()`方法返回的数据中总是包含`_id`字段，除非你在映射中显式的说明它。下面某些SQL查询将使用`_id`字段，尽管该字段并没有在对应的`find()``方法中包含。
 
 SELECT *
 FROM users
