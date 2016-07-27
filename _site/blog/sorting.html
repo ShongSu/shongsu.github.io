@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="檐下窗欞斜映枝椏 與你席地對座飲茶">
+
+    <title>Sorting / 排序算法 - A Piece of Sunshine</title>
+
+    <link rel="canonical" href="/blog/sorting.html">
+
+    <!-- Icons -->
+  <link rel="shortcut icon" href="../sysimg/favicon.ico">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/clean-blog.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-65242983-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+</head>
+
+
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">A Piece of Sunshine</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/about.html">About</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/archives.html">Archives</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/people.html">People</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/projects.html">Projects</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/reading.html">Reading</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/tags.html">Tags</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/travel.html">Travel</a>
+                </li>
+                
+
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+
+    <!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/sysimg/autumn2.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="Tags">
+                        
+                        <a class="tag" href="/Tags/#Algorithm" title="Algorithm">Algorithm</a>
+                        
+                    </div>
+                    <h1>Sorting / 排序算法</h1>
+                    
+                    <span class="meta">Posted by Pengyu on November 27, 2015</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 post-container">
+
+                <center>**------English (英文)------**</center>
+
+<p>This article summarized the famous sorting algorithms, including insertion sort</p>
+
+<ul>
+  <li>Insertion sort - O(N) / O(N^2) [Best case / Worst case]</li>
+</ul>
+
+<p>Insertion sort consists of n - 1 passes. For pass p = 2 through n, insertion sort ensures that the elements in positions 1 through p are in sorted order. Insertion sort makes use of the fact that elements in positions 1 through p - 1 are already known to be in sorted order.</p>
+
+<center><img src="/images/Insertion-sort-example.gif" alt="insertion sort" width="80%" /></center>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>void InsertionSort(ElementType A[], int N)
+{
+    int j, P;
+    ElementType Temp;
+    for (P = 1; P &lt; N; P++)
+    {
+        Temp = A [P];
+        for(j = P; j &gt; 0 &amp;&amp; A[j-1] &gt; Temp; j--)
+        {
+            A[j] = A[j-1];
+        }
+        A[j] = Temp;
+    }
+}
+</code></pre>
+</div>
+
+<ul>
+  <li>Bubble sort - O(N) / O(N^2)</li>
+</ul>
+
+<center><img src="/images/Bubble-sort-example.gif" alt="bubble sort" width="80%" /></center>
+
+<p>Starting from the beginning of the list, compare every adjacent pair, swap their position if they are not in the right order (the latter one is smaller than the former one). After each iteration, one less element (the last one) is needed to be compared until there are no more elements left to be compared.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>void BubbleSort(ElementType A[], int N)
+{
+    int i, j;
+    ElementType Temp;
+    for (i = 0; i &lt; N-1; i++)
+    {
+        for(j = 0; j &lt; N - 1 - i; j++)
+        {
+            if(A[j] &gt; A [j+1])
+            {
+                Temp = A[j];
+                A[j] = A[j+1];
+                A[j+1] = Temp;
+            }
+        }
+    }
+}
+</code></pre>
+</div>
+
+<ul>
+  <li>Selection sort - O(N^2)</li>
+</ul>
+
+<center><img src="/images/Selection-Sort-Animation.gif" alt="selection sort" width="40px" /></center>
+
+<p>The algorithm divides the input list into two parts: the sublist of items already sorted, which is built up from left to right at the front (left) of the list, and the sublist of items remaining to be sorted that occupy the rest of the list. Initially, the sorted sublist is empty and the unsorted sublist is the entire input list. The algorithm proceeds by finding the smallest (or largest, depending on sorting order) element in the unsorted sublist, exchanging (swapping) it with the leftmost unsorted element (putting it in sorted order), and moving the sublist boundaries one element to the right.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>void SelectionSort(ElementType A[], int N)
+{
+    int i, j, Min;
+    ElementType Temp;
+    for(i = 0; i &lt; N - 1 ; i++)
+    {
+        Min = i;
+        for(j = i + 1; j &lt; N ; j++ )
+        {
+            if(A[Min] &gt; A [j])
+                min = j;
+        }
+        Temp = A[Min];
+        A[Min] = A[i];
+        A[i] = Temp;
+    }
+}
+</code></pre>
+</div>
+
+<ul>
+  <li>Shell sort - O(N^2)</li>
+</ul>
+
+<p>Shell sort is a generalization of insertion sort that allows the exchange of items that are far apart. The idea is to arrange the list of elements so that, starting anywhere, considering every h-th element gives a sorted list. Such a list is said to be h-sorted.</p>
+
+<p>The first pass, 5-sorting, performs insertion sort on separate subarrays (a1, a6, a11), (a2, a7, a12), (a3, a8), (a4, a9), (a5, a10). For instance, it changes the subarray (a1, a6, a11) from (62, 17, 25) to (17, 25, 62). The next pass, 3-sorting, performs insertion sort on the subarrays (a1, a4, a7, a10), (a2, a5, a8, a11), (a3, a6, a9, a12). The last pass, 1-sorting, is an ordinary insertion sort of the entire array (a1,…, a12).</p>
+
+<p>Shellsort is unstable: it may change the relative order of elements with equal values. It is an adaptive sorting algorithm in that it executes faster when the input is partially sorted.</p>
+
+<center><img src="/images/shell-sort-example.png" alt="shell sort" width="80%" /></center>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>void ShellSort(ElementType A[], int N)
+{
+    int i,j,Increment;
+    ElementType Temp;
+    for(Increment = N/2; Increment &gt; 0; Increment /= 2)
+    {   
+        for(i = Increment; i &lt; N; i++)
+        {
+            Temp = A[i];
+            for(j = i; j &gt;= Increment; j -= Increment)
+            {
+                if(Temp &lt; A[j - Increment])
+                    A[j] = A[j - Increment];
+                else
+                    break;
+            }
+            A[j] = Temp;
+        }
+
+    }
+}
+</code></pre>
+</div>
+
+<ul>
+  <li>Heap sort - O(NlogN)</li>
+</ul>
+
+<p>The heapsort algorithm involves preparing the list by first turning it into a max heap. The algorithm then repeatedly swaps the first value of the list with the last value, decreasing the range of values considered in the heap operation by one, and sifting the new first value into its position in the heap. This repeats until the range of considered values is one value in length.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>#define LeftChild(i) (2 * (i) + 1)
+
+void PerDown(ElementType A[], int i, int N)
+{
+    int Child;
+    ElementType Temp;
+    for(Temp = A[i]; LeftChild(i) &lt; N; i = Child)
+    {
+        Child = LeftChild(i);
+        if(Child != N - 1 &amp;&amp; A[Child + 1] &gt; A[Child])
+            Child ++;
+        if(Temp &lt; A[Child])
+            A[i] = A[Child];
+        else
+            break;
+    }
+    A[i] = Temp;
+}
+
+void HeapSort(ElementType A[], int N)
+{
+    int i;
+    for(i = N / 2; i &gt;= 0; i--)    /* Build Heap */
+        PerDown(A, i, N);
+    for(i = N - 1; i &gt; 0; i--)     /* Delete Max */
+    {
+        Swap(&amp;A[0], &amp;A[i]);
+        PerDown(A, 0, i);
+    }
+}
+</code></pre>
+</div>
+
+<ul>
+  <li>Quick sort - O(NlogN) / O(N^2)</li>
+</ul>
+
+<p>Quicksort is a divide and conquer algorithm. Quicksort first divides a large array into two smaller sub-arrays: the low elements and the high elements. Quicksort can then recursively sort the sub-arrays.</p>
+
+<p>The steps are:</p>
+
+<ol>
+  <li>
+    <p>Pick an element, called a pivot, from the array.</p>
+  </li>
+  <li>
+    <p>Reorder the array so that all elements with values less than the pivot come before the pivot, while all elements with values greater than the pivot come after it (equal values can go either way). After this partitioning, the pivot is in its final position. This is called the partition operation.</p>
+  </li>
+  <li>
+    <p>Recursively apply the above steps to the sub-array of elements with smaller values and separately to the sub-array of elements with greater values.</p>
+  </li>
+</ol>
+
+<p>The base case of the recursion is arrays of size zero or one, which never need to be sorted.</p>
+
+<center><img src="/images/quick-sort-example.png" alt="quick sort" width="60%" /></center>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>void QuickSort(ElementType A[], int N)
+{
+    Qsort(A, 0, N - 1);
+}
+
+/* Return median of Left, Center and Right */
+/* Order these and hide the pivot */
+ElementType Median3(ElementType A[], int Left, int Right)
+{
+    int Center = (Left + Right) / 2;
+    if(A[Left] &gt; A[Center])
+        Swap(&amp;A[Left], &amp;A[Center]);
+    if(A[Left] &gt; A[Right])
+        Swap(&amp;A[Left], &amp;A[Right]);
+    if(A[Center] &gt; A[Right])
+        Swap(&amp;A[Center], &amp;A[Right]);      
+
+    /* Invariant: A[Left] &lt;= A[Center] &lt;= A[Right] */
+    Swap(&amp;A[Center], &amp;A[Right - 1]);  /* Hide pivot */
+    return A[Right - 1];              /* Return pivot */
+}
+
+#define Cutoff (3)
+
+void QSort(ElementType A[], int Left, int Right)
+{
+    int i, j;
+    ElementType Pivot;
+
+    if(Left + Cutoff &lt;= Right)
+    {
+        Pivot = Median3(A, Left, Right);
+        i = Left; j = Right - 1;
+        for( ; ; )
+        {
+            while(A[++i] &lt; Pivot) {}
+            while(A[--j] &lt; Pivot) {}
+            if(i &lt; j)
+                Swap(&amp;A[i], &amp;A[j]);
+            else
+                break;
+        }
+        Swap(&amp;A[i], &amp;A[Right - 1]); /* Restroe pivot */
+
+        QSort(A, Left, i - 1);
+        QSort(A, i + 1, Right);
+
+    }
+    else /* Do an insertion sort on the subarray */
+        InsertionSort(A + Left, Right - Left + 1);
+}
+</code></pre>
+</div>
+
+<p>P.S. Don’t write code like this, since there is an endless loop if A[i] = A[j] = Pivot.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>i = Left + 1; j = Right - 2;
+for( ; ; )
+{
+    while(A[i] &lt; Pivot) i++;
+    while(A[j] &lt; Pivot) j--;
+    if(i &lt; j)
+        Swap(&amp;A[i], &amp;A[j]);
+    else
+        break;
+}
+</code></pre>
+</div>
+
+<ul>
+  <li>Merge sort - O(NlogN)</li>
+</ul>
+
+<p>Conceptually, a merge sort works as follows:</p>
+
+<ol>
+  <li>
+    <p>Divide the unsorted list into n sublists, each containing 1 element (a list of 1 element is considered sorted).</p>
+  </li>
+  <li>
+    <p>Repeatedly merge sublists to produce new sorted sublists until there is only 1 sublist remaining. This will be the sorted list.</p>
+  </li>
+</ol>
+
+<center><img src="/images/Merge-sort-example.gif" alt="merge sort" width="80%" /></center>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>void MSort(ElementType A[], ElementType TmpArray[], int Left, int Right)
+{
+    int Center;
+    if(Left &lt; Right)
+    {
+        Center = (Left + Right) / 2;
+        MSort(A, TmpArray, Left, Center);
+        MSort(A, TmpArray, Center + 1; Right);
+        Merge(A, TmpArray, Left, Center + 1, Right);
+    }
+}
+
+void MergeSort(ElementType A[], int N)
+{
+    ElementType *TmpArray;
+    TmpArray = malloc(N * sizeof(ElementType));
+    if(TmpArray != NULL)
+    {
+        MSort(A, TmpArray, 0, N - 1);
+        free(TmpArray);
+    }
+    else
+        FataError("No space for tmp array!!!");
+}
+
+/* Lpos = start of left half, Rpos = start of right half */
+void Merge(ElementType A[], ElementType TmpArray[], int Lpos, int Rpos, int RightEnd)
+{
+    int i, LeftEnd, NumElements, TmpPos;
+
+    LeftEnd = Rpos - 1;
+    TmpPos = Lpos;
+    NumElements = RightEnd - Lpos + 1;
+
+    /* main loop */
+    while(Lpos &lt;= LeftEnd &amp;&amp; Rpos &lt;= RightEnd)
+        if(A[Lpos] &lt;= A[Rpos])
+            TmpArray[TmpPos++] = A[Lpos++];
+        else
+            TmpArray[TmpPos++] = A[Rpos++];
+
+    while(Lpos &lt;= LeftEnd) /* Copy rest of first half */
+        TmpArray[TmpPos++] = A[Lpos++];
+    while(Rpos &lt;= RightEnd) /* Copy rest of second half */
+        TmpArray[TmpPos++] = A[Rpos++];
+
+    /* Copy TmpArray back */
+    for(i = 0; i &lt; NumElements; i++, RightEnd--)
+        A[RightEnd] = TmpArray[RightEnd];  
+}
+</code></pre>
+</div>
+
+<p>Updated, Dec. 3rd, 2015.</p>
+
+
+                <hr>
+
+
+                <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC A-S 4.0 International License</a>.
+
+                <hr>
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/blog/max-subsequence-sum.html" data-toggle="tooltip" data-placement="top" title="Max Subsequence Sum Problem / 最大子序列和问题">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/blog/greedy-algorithm.html" data-toggle="tooltip" data-placement="top" title="Algorithm(1)-Greedy Algorithm / 算法(1)-贪心算法">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- Duoshuo Share start
+                <style>
+                    .ds-share{
+                        text-align: right;
+                    }
+
+                    @media only screen and (max-width: 700px) {
+                        .ds-share {
+
+                        }
+                    }
+                </style>
+
+                <div class="ds-share"
+                    data-thread-key="/blog/sorting" data-title="Sorting / 排序算法"
+                    data-images="/sysimg/autumn2.jpg"
+                    data-content="**------English (英文)------**
+
+This article summarized the famous sorting algo... | Microdust:Azeril's blog"
+                    data-url="/blog/sorting.html">
+                    <div class="ds-share-inline">
+                      <ul  class="ds-share-icons-16">
+
+                        <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
+                        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+                        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+                        <li><a class="ds-douban" href="javascript:void(0);" data-service="douban">豆瓣</a></li>
+                      </ul>
+                      <div class="ds-share-icons-more">
+                      </div>
+                    </div>
+                <hr>
+                </div>
+                 Duoshuo Share end-->
+
+                 <div id="disqus_thread"></div>
+                 <script>
+                   /**
+                   * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                   * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+                   */
+                   /*
+                   var disqus_config = function () {
+                   this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+                   this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                   };
+                   */
+                   (function() { // DON'T EDIT BELOW THIS LINE
+                     var d = document, s = d.createElement('script');
+
+                     s.src = '//shongsu.disqus.com/embed.js';
+
+                     s.setAttribute('data-timestamp', +new Date());
+                   (d.head || d.body).appendChild(s);
+                 })();
+                 </script>
+
+                 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+                 </noscript>
+
+
+                <!-- 多说评论框 start
+                <div class="comment">
+                    <div class="ds-thread" data-thread-key="/blog/sorting" data-title="Sorting / 排序算法" data-url="/blog/sorting.html"></div>
+                </div>
+                 多说评论框 end -->
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次)
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"azeril"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+多说公共JS代码 end -->
+
+
+
+
+
+</script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("http://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+  
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <!-- kill the Facebook and Weibo -->
+                    <li>
+                        <a href="/feed.xml">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+
+                    <!--
+                    
+                  -->
+
+                    
+                    <li>
+                        <a href="https://linkedin.com/in/pengyu-chen-85253886">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+                    
+                    <li>
+                        <a href="https://github.com/Shongsu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+                    <!--
+                    
+                    -->
+
+                    <!--
+                    
+                    -->
+
+                    
+                    <li>
+                        <a href="mailto:chinhouu1992@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">陈</i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+                    <!-- 
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/Shongsu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">陈</i>
+                            </span>
+                        </a>
+                    </li>
+                     -->
+
+                    <!--
+                    
+                    -->
+
+                </ul>
+                <p class="copyright text-muted">
+                &copy; 2015~2016 Pengyu   Powered by Jekyll.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/clean-blog.min.js "></script>
+
+
+
+
+<!-- Highlight.js -->
+<script>
+    async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js",function(){
+        hljs.initHighlightingOnLoad();
+    })
+</script>
+<link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+
+
+</body>
+
+</html>

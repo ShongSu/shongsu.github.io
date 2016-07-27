@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="檐下窗欞斜映枝椏 與你席地對座飲茶">
+
+    <title>Linux Shell Programming / Linux Shell编程 - A Piece of Sunshine</title>
+
+    <link rel="canonical" href="/blog/linux-shell-programming.html">
+
+    <!-- Icons -->
+  <link rel="shortcut icon" href="../sysimg/favicon.ico">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/clean-blog.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-65242983-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+</head>
+
+
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">A Piece of Sunshine</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/about.html">About</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/archives.html">Archives</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/people.html">People</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/projects.html">Projects</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/reading.html">Reading</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/tags.html">Tags</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/travel.html">Travel</a>
+                </li>
+                
+
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+
+    <!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/sysimg/autumn2.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="Tags">
+                        
+                        <a class="tag" href="/Tags/#Linux" title="Linux">Linux</a>
+                        
+                        <a class="tag" href="/Tags/#Shell" title="Shell">Shell</a>
+                        
+                    </div>
+                    <h1>Linux Shell Programming / Linux Shell编程</h1>
+                    
+                    <span class="meta">Posted by Pengyu on April 7, 2016</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 post-container">
+
+                <h2 id="my-first-shell">My First Shell</h2>
+
+<p>The first line must be start with <code class="highlighter-rouge">#!</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+<span class="c"># print hello,world</span>
+<span class="nb">echo</span> <span class="s2">"hello,world!"</span>
+</code></pre>
+</div>
+
+<p>脚本的执行需要一定的权限：</p>
+
+<ol>
+  <li>
+    <p><code class="highlighter-rouge">chmod +x 脚本名字</code>  ##所有用户均对该脚本有执行权限。</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">chmod 755 脚本名字</code>  ##用户所有者对该脚本具有完全的权限，其他人对该脚本拥有执行权限。</p>
+  </li>
+</ol>
+
+<p>运行脚本：</p>
+
+<ol>
+  <li>
+    <p>在当前目录下使用 <code class="highlighter-rouge">./脚本名</code> 来运行。</p>
+  </li>
+  <li>
+    <p>或者以 <code class="highlighter-rouge">/bin/sh 脚本名</code> 来运行。</p>
+  </li>
+</ol>
+
+<h2 id="variables--io">Variables &amp; IO</h2>
+
+<p>Shell中的变量名可以由字母、数字、下划线组成，但数字不能作为变量的第一个字符。</p>
+
+<p>使用<code class="highlighter-rouge">=</code>来定义一个变量的值，例如：</p>
+
+<ol>
+  <li>
+    <p><code class="highlighter-rouge">myname='pengyu'</code>  # 字符串类型，不解析任何字符</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">courses="abcdef"</code> # 双引号内部会解析$和反斜杠特殊字符。</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">now_date=`date`</code> # 反引号执行系统命令</p>
+  </li>
+</ol>
+
+<p>Shell 的变量类型只有字符串类型。</p>
+
+<p>变量的引用，使用<code class="highlighter-rouge">$</code>加变量名。</p>
+
+<p>变量名外面加花括号是可选的，是为了帮助解释器识别变量的边界，比如：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+<span class="k">for </span>skill <span class="k">in </span>php java linux db2
+  <span class="k">do
+    </span><span class="nb">echo</span> <span class="s2">"I am good at </span><span class="k">${</span><span class="nv">skill</span><span class="k">}</span><span class="s2">Script"</span>
+  <span class="k">done</span>
+</code></pre>
+</div>
+
+<p>单引号，双引号和反引号的使用方法：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sh-3.2$ testvar=100
+sh-3.2$ echo 'The testvalue is $testvar'
+</code></pre>
+</div>
+
+<p>输出 <code class="highlighter-rouge">The testvalue is $testvar</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sh-3.2$ echo "The testvalue is $testvar"
+</code></pre>
+</div>
+
+<p>输出 <code class="highlighter-rouge">The testvalue is 100</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sh-3.2$ now_date=`date`
+sh-3.2$ echo $now_date
+</code></pre>
+</div>
+
+<p>输出 <code class="highlighter-rouge">2016年 4月 7日 星期四 23时26分46秒 EDT</code></p>
+
+<p>环境变量：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>PATH:系统路径
+HOME:当前用户Home目录
+HISTSIZE:保存历史命令记录的条数
+LOGNAME:当前用户登录名
+HOATNAME:主机名称
+SHELL:当前用户是哪种shell
+LANG/LANGUGE:和语言相关的环境变量，使用多语言的用户可以修改此环境变量
+MAIL:当前用户的邮件存放目录
+</code></pre>
+</div>
+
+<p>查看环境变量：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>env: 显示所有环境变量
+echo $PATH :显示某一个环境变量的值
+</code></pre>
+</div>
+
+<p>局部变量：</p>
+
+<p>作用域从被定义的地方开始，到shell结束为止，其作用域为本脚本，离开本脚本变量无效。</p>
+
+<p>预定义变量：</p>
+
+<p>Shell一开始就定义了的变量，用户只能使用它们而不能重新定义。所有预定义变量都由<code class="highlighter-rouge">$</code>符和另一个符号组成，常用的Shell预定义变量有：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$# 位置参数的数量
+$* 所有位置参数的内容
+$? 命令执行后返回的状态，0表示成功，非0失败
+$$ 当前进程的进程号
+$! 后台运行的最后一个进程号
+$0 当前执行的进程名
+</code></pre>
+</div>
+
+<p>输入输出：</p>
+
+<p><code class="highlighter-rouge">echo</code> 发送数据到标准的输出设备，数据采用的是字符串的方式，而且<code class="highlighter-rouge">echo</code>可以输出一个变量。</p>
+
+<p><code class="highlighter-rouge">echo</code> 两个重要的参数：</p>
+
+<p><code class="highlighter-rouge">-e</code>: 识别输出内容里的转义序列</p>
+
+<p><code class="highlighter-rouge">-n</code>: 忽略结尾的换行</p>
+
+<p><code class="highlighter-rouge">printf</code> 格式化输出，默认没有换行，若换行则需要加<code class="highlighter-rouge">\n</code>,例如</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>printf "%s\n" $myVar
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">read</code> 读取标准输入设备的下一行，标准输入中的新一行到换行符前的所有字符会被读取，并复制给对应的变量</p>
+
+<p><code class="highlighter-rouge">&lt;&lt;</code>可以被认为是一种重定向符，重定向脚本文件中的一行作为到一个命令的输入。<br />
+输入的结束用<code class="highlighter-rouge">Ctrl+D</code>表示，也可以自己定义定界符，定界符后的单词作为输入各行结束的定界符。<br />
+注意结束时的定界符一定要顶格写。</p>
+
+<h2 id="shell">Shell运算</h2>
+
+<p>1 <code class="highlighter-rouge">let</code>命令</p>
+
+<p>执行算数值的操作，使用let可以比较两个值或执行加减乘除等运算。注意let只能用于整数，运算结果也只能保存整数。</p>
+
+<p>用法：</p>
+
+<p><code class="highlighter-rouge">let 变量名 ＝ 变量1 运算符 变量2</code></p>
+
+<p>常见运算符 + - * / %</p>
+
+<p>和C语言类似，<code class="highlighter-rouge">let i=$i+1</code> 也可以写成 <code class="highlighter-rouge">let i++</code></p>
+
+<p>2 <code class="highlighter-rouge">expr</code>命令</p>
+
+<p>执行整数型算数运算，不能保存小数结果；另外还能进行字符串的操作。</p>
+
+<p>用法：</p>
+
+<p><code class="highlighter-rouge">expr expression1 操作符 expression2</code></p>
+
+<p>乘法运算时，操作符前必须加<code class="highlighter-rouge">\</code>用于转义，并且操作符和两个expression之间必须要有空格。</p>
+
+<p><code class="highlighter-rouge">res＝`expr $i + $j \* $k`</code>  ## expr作为外部命令时要用反引号引起来。</p>
+
+<p><code class="highlighter-rouge">expr</code>字符串操作</p>
+
+<p>1&gt; 输出字符串长度</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ str1="abcde12345"
+$ echo ${#str1}
+$ expr length $str1
+</code></pre>
+</div>
+
+<p>2&gt; 取子串操作</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>expr substr $string $position $length  #注意位置编号从1开始， 或者
+echo ${string:$pos:$length}            #注意位置编号从0开始
+</code></pre>
+</div>
+
+<p>3&gt; 字符串连接操作</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ str1=abc
+$ str2=123
+$ str3="${str1}$str2"
+$ echo $str3
+</code></pre>
+</div>
+
+<p>4&gt; 字符串替换操作</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ string="you and YOU and you and YOU"
+$ echo ${string/you/YOU}          # / 替换一次
+YOU and YOU and you and YOU
+$ echo ${string//YOU/you}         # // 全部替换
+you and you and you and you
+</code></pre>
+</div>
+
+<p>3 <code class="highlighter-rouge">bc</code>命令</p>
+
+<p>可以进行浮点运算，提供精确的复杂计算功能，它是Linux一个重要的工具，bc经常使用在管道里。</p>
+
+<p>用法：</p>
+
+<p><code class="highlighter-rouge">variable=`echo "OPTIONS; OPERATIONS"|bc`</code></p>
+
+<p>其中<code class="highlighter-rouge">scale</code>作为bc一个最重要的选项，用来指定输出小数的位数。</p>
+
+<p>例如：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ n=`echo "scale=3; 13/2"|bc`
+$ echo $n
+$ 6.500
+</code></pre>
+</div>
+
+<h2 id="continue">Continue…</h2>
+
+
+                <hr>
+
+
+                <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC A-S 4.0 International License</a>.
+
+                <hr>
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/blog/bitwise-operation.html" data-toggle="tooltip" data-placement="top" title="Classical Programming Problem - Bitwise Operation / 经典编程问题 - 位运算">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/blog/ios-voip-push-notification.html" data-toggle="tooltip" data-placement="top" title="Example of iOS VoIP Notification / iOS VoIP Notification实例">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- Duoshuo Share start
+                <style>
+                    .ds-share{
+                        text-align: right;
+                    }
+
+                    @media only screen and (max-width: 700px) {
+                        .ds-share {
+
+                        }
+                    }
+                </style>
+
+                <div class="ds-share"
+                    data-thread-key="/blog/linux-shell-programming" data-title="Linux Shell Programming / Linux Shell编程"
+                    data-images="/sysimg/autumn2.jpg"
+                    data-content="My First Shell
+
+The first line must be start with #!
+
+#!/bin/bash
+# print hel... | Microdust:Azeril's blog"
+                    data-url="/blog/linux-shell-programming.html">
+                    <div class="ds-share-inline">
+                      <ul  class="ds-share-icons-16">
+
+                        <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
+                        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+                        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+                        <li><a class="ds-douban" href="javascript:void(0);" data-service="douban">豆瓣</a></li>
+                      </ul>
+                      <div class="ds-share-icons-more">
+                      </div>
+                    </div>
+                <hr>
+                </div>
+                 Duoshuo Share end-->
+
+                 <div id="disqus_thread"></div>
+                 <script>
+                   /**
+                   * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                   * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+                   */
+                   /*
+                   var disqus_config = function () {
+                   this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+                   this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                   };
+                   */
+                   (function() { // DON'T EDIT BELOW THIS LINE
+                     var d = document, s = d.createElement('script');
+
+                     s.src = '//shongsu.disqus.com/embed.js';
+
+                     s.setAttribute('data-timestamp', +new Date());
+                   (d.head || d.body).appendChild(s);
+                 })();
+                 </script>
+
+                 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+                 </noscript>
+
+
+                <!-- 多说评论框 start
+                <div class="comment">
+                    <div class="ds-thread" data-thread-key="/blog/linux-shell-programming" data-title="Linux Shell Programming / Linux Shell编程" data-url="/blog/linux-shell-programming.html"></div>
+                </div>
+                 多说评论框 end -->
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次)
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"azeril"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+多说公共JS代码 end -->
+
+
+
+
+
+</script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("http://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+  
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <!-- kill the Facebook and Weibo -->
+                    <li>
+                        <a href="/feed.xml">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+
+                    <!--
+                    
+                  -->
+
+                    
+                    <li>
+                        <a href="https://linkedin.com/in/pengyu-chen-85253886">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+                    
+                    <li>
+                        <a href="https://github.com/Shongsu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+                    <!--
+                    
+                    -->
+
+                    <!--
+                    
+                    -->
+
+                    
+                    <li>
+                        <a href="mailto:chinhouu1992@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">陈</i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+                    <!-- 
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/Shongsu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">陈</i>
+                            </span>
+                        </a>
+                    </li>
+                     -->
+
+                    <!--
+                    
+                    -->
+
+                </ul>
+                <p class="copyright text-muted">
+                &copy; 2015~2016 Pengyu   Powered by Jekyll.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/clean-blog.min.js "></script>
+
+
+
+
+<!-- Highlight.js -->
+<script>
+    async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js",function(){
+        hljs.initHighlightingOnLoad();
+    })
+</script>
+<link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+
+
+</body>
+
+</html>

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="檐下窗欞斜映枝椏 與你席地對座飲茶">
+
+    <title>Get Value from Cells of TableView / TableView点击获取当前Cell内容 - A Piece of Sunshine</title>
+
+    <link rel="canonical" href="/blog/get-cell-value-swift.html">
+
+    <!-- Icons -->
+  <link rel="shortcut icon" href="../sysimg/favicon.ico">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/clean-blog.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-65242983-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+</head>
+
+
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">A Piece of Sunshine</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/about.html">About</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/archives.html">Archives</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/people.html">People</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/projects.html">Projects</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/reading.html">Reading</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/tags.html">Tags</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/travel.html">Travel</a>
+                </li>
+                
+
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+
+    <!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/sysimg/autumn2.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="Tags">
+                        
+                        <a class="tag" href="/Tags/#iOS" title="iOS">iOS</a>
+                        
+                        <a class="tag" href="/Tags/#Swift" title="Swift">Swift</a>
+                        
+                    </div>
+                    <h1>Get Value from Cells of TableView / TableView点击获取当前Cell内容</h1>
+                    
+                    <span class="meta">Posted by Pengyu on July 31, 2015</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 post-container">
+
+                <center>**------English (英文)------**</center>
+
+<p>……</p>
+
+<center>**------中文 (Chinese)------**</center>
+
+<p>首先，在一个TableViewController里面有很多个Cell，我们希望在点击每个条目之后，跳转到第二个视图，在第二个视图上显示所点击的条目的索引和内容。</p>
+
+<p>第二个视图的代码如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>class ViewController: UIViewController {
+
+
+    var rowIndex = 0     //定义当前条目的索引
+    var rowValue = ""    //定义当前条目的内容值
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //分别显示出当前条目的索引和内容值
+        label1.text = "rowIndex is \(rowIndex)"
+        label2.text = "rowValue is \(rowValue)"
+    }
+
+    @IBOutlet weak var label1: UILabel!
+
+    @IBOutlet weak var label2: UILabel!
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+
+
+}
+</code></pre>
+</div>
+
+<p>首先我们可以在<code class="highlighter-rouge">TableViewController.swift</code>文件中定义以下函数代码：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code> override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+
+
+        // 其中“viewcontroller2”为第二个视图在storyboard中的唯一识别ID
+        var viewController = self.storyboard?.instantiateViewControllerWithIdentifier("viewcontroller2") as! ViewController   
+        // indexPath.row即为当前行的索引值，从0开始
+        viewController.rowIndex = indexPath.row  
+        // 加载第二个视图viewController
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+</code></pre>
+</div>
+
+<p>以上代码很容易即可实现对当前条目索引值的获取。那么我们要想获得条目的内容，改怎么办呢？</p>
+
+<p>方法也十分简单，我们只需要把下面三行代码加入到<code class="highlighter-rouge">didSelectRowAtIndexPath</code>函数中即可。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// 定义cell是UITableVeiwCell类型，返回索引为indexPath的Cell
+var cell = tableView.cellForRowAtIndexPath(indexPath)
+// 转化cell为UILabel类型，并赋值给viewController视图中的label2
+viewController.label2 = cell?.textLabel
+// 将所得到的label2的text内容赋值给rowValue变量
+viewController.rowValue = viewController.label2.text!
+</code></pre>
+</div>
+
+<p>这样我们就能够在第二个视图中同时获取被点击Cell的索引和内容值了。</p>
+
+
+                <hr>
+
+
+                <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC A-S 4.0 International License</a>.
+
+                <hr>
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/blog/mongodb-crud-operations.html" data-toggle="tooltip" data-placement="top" title="MongoDB CRUD Operations / MongoDB的增删改查操作">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/blog/codility.html" data-toggle="tooltip" data-placement="top" title="A Good Site for Coding Test / Codility, 练习编码的好平台">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- Duoshuo Share start
+                <style>
+                    .ds-share{
+                        text-align: right;
+                    }
+
+                    @media only screen and (max-width: 700px) {
+                        .ds-share {
+
+                        }
+                    }
+                </style>
+
+                <div class="ds-share"
+                    data-thread-key="/blog/get-cell-value-swift" data-title="Get Value from Cells of TableView / TableView点击获取当前Cell内容"
+                    data-images="/sysimg/autumn2.jpg"
+                    data-content="**------English (英文)------**
+
+……
+
+**------中文 (Chinese)------**
+
+首先，在一个TableVi... | Microdust:Azeril's blog"
+                    data-url="/blog/get-cell-value-swift.html">
+                    <div class="ds-share-inline">
+                      <ul  class="ds-share-icons-16">
+
+                        <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
+                        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+                        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+                        <li><a class="ds-douban" href="javascript:void(0);" data-service="douban">豆瓣</a></li>
+                      </ul>
+                      <div class="ds-share-icons-more">
+                      </div>
+                    </div>
+                <hr>
+                </div>
+                 Duoshuo Share end-->
+
+                 <div id="disqus_thread"></div>
+                 <script>
+                   /**
+                   * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                   * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+                   */
+                   /*
+                   var disqus_config = function () {
+                   this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+                   this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                   };
+                   */
+                   (function() { // DON'T EDIT BELOW THIS LINE
+                     var d = document, s = d.createElement('script');
+
+                     s.src = '//shongsu.disqus.com/embed.js';
+
+                     s.setAttribute('data-timestamp', +new Date());
+                   (d.head || d.body).appendChild(s);
+                 })();
+                 </script>
+
+                 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+                 </noscript>
+
+
+                <!-- 多说评论框 start
+                <div class="comment">
+                    <div class="ds-thread" data-thread-key="/blog/get-cell-value-swift" data-title="Get Value from Cells of TableView / TableView点击获取当前Cell内容" data-url="/blog/get-cell-value-swift.html"></div>
+                </div>
+                 多说评论框 end -->
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次)
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"azeril"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+多说公共JS代码 end -->
+
+
+
+
+
+</script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("http://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+  
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <!-- kill the Facebook and Weibo -->
+                    <li>
+                        <a href="/feed.xml">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+
+                    <!--
+                    
+                  -->
+
+                    
+                    <li>
+                        <a href="https://linkedin.com/in/pengyu-chen-85253886">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+                    
+                    <li>
+                        <a href="https://github.com/Shongsu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+                    <!--
+                    
+                    -->
+
+                    <!--
+                    
+                    -->
+
+                    
+                    <li>
+                        <a href="mailto:chinhouu1992@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">陈</i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+                    <!-- 
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/Shongsu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">陈</i>
+                            </span>
+                        </a>
+                    </li>
+                     -->
+
+                    <!--
+                    
+                    -->
+
+                </ul>
+                <p class="copyright text-muted">
+                &copy; 2015~2016 Pengyu   Powered by Jekyll.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/clean-blog.min.js "></script>
+
+
+
+
+<!-- Highlight.js -->
+<script>
+    async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js",function(){
+        hljs.initHighlightingOnLoad();
+    })
+</script>
+<link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+
+
+</body>
+
+</html>

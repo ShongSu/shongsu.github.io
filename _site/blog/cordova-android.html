@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="檐下窗欞斜映枝椏 與你席地對座飲茶">
+
+    <title>Cordova-Android Plugin Example / Cordova-Android 插件详解 - A Piece of Sunshine</title>
+
+    <link rel="canonical" href="/blog/cordova-android.html">
+
+    <!-- Icons -->
+  <link rel="shortcut icon" href="../sysimg/favicon.ico">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/clean-blog.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-65242983-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+</head>
+
+
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">A Piece of Sunshine</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/about.html">About</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/archives.html">Archives</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/people.html">People</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/projects.html">Projects</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/reading.html">Reading</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/tags.html">Tags</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/travel.html">Travel</a>
+                </li>
+                
+
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+
+    <!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/sysimg/autumn2.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="Tags">
+                        
+                        <a class="tag" href="/Tags/#Cordova" title="Cordova">Cordova</a>
+                        
+                        <a class="tag" href="/Tags/#Android" title="Android">Android</a>
+                        
+                    </div>
+                    <h1>Cordova-Android Plugin Example / Cordova-Android 插件详解</h1>
+                    
+                    <span class="meta">Posted by Pengyu on October 27, 2015</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 post-container">
+
+                <center>**------English (英文)------**</center>
+
+<p>This is sample cordova plugin (currently for android platform only). Tested with Cordova 5.3.3 + Android 5.1.1</p>
+
+<p>You can get the original codes from <a href="https://github.com/ShongSu/CordovaPluginExample">here</a>.</p>
+
+<h2 id="how-to-run-example">How to run example?</h2>
+
+<p>Create a new cordova project, for example:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>cordova create PluginTest com.shongsu.test PluginTest
+</code></pre>
+</div>
+
+<p>Go into the directory you just created.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>cd PluginTest
+</code></pre>
+</div>
+
+<p>Add Android platform.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>cordova platform add android
+</code></pre>
+</div>
+
+<p>Add this plugin to your cordova project, type:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>cordova plugin add https://github.com/shongsu/cordova-example-plugin.git
+</code></pre>
+</div>
+
+<p>or clone this git and add it locally, for example:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>cordova plugin add file-path-here
+</code></pre>
+</div>
+
+<p>Eidt your <code class="highlighter-rouge">www/index.html</code> file, here is full example:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+	<span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Cordova - Android Plugin Example<span class="nt">&lt;/title&gt;</span>
+
+        <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"cordova.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"plugins/SamplePlugin.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+        <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+            <span class="kd">function</span> <span class="nx">onLoad</span><span class="p">()</span> <span class="p">{</span>
+                <span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'deviceready'</span><span class="p">,</span> <span class="nx">onDeviceReady</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="kd">function</span> <span class="nx">onDeviceReady</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+                <span class="nb">window</span><span class="p">.</span><span class="nx">func_add</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="nx">a</span> <span class="o">+</span> <span class="s2">" + "</span> <span class="o">+</span> <span class="nx">b</span> <span class="o">+</span> <span class="s2">" = "</span> <span class="o">+</span> <span class="nx">result</span><span class="p">);</span> <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span> <span class="p">});</span>
+        <span class="nb">window</span><span class="p">.</span><span class="nx">func_sub</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="nx">a</span> <span class="o">+</span> <span class="s2">" - "</span> <span class="o">+</span> <span class="nx">b</span> <span class="o">+</span> <span class="s2">" = "</span> <span class="o">+</span> <span class="nx">result</span><span class="p">);</span> <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span> <span class="p">});</span>
+        <span class="nb">window</span><span class="p">.</span><span class="nx">func_factorial</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="nx">a</span> <span class="o">+</span> <span class="s2">"! = "</span> <span class="o">+</span> <span class="nx">result</span><span class="p">);</span> <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span> <span class="p">});</span>		
+      <span class="p">}</span>
+        <span class="nt">&lt;/script&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+
+    <span class="nt">&lt;body</span> <span class="na">onload=</span><span class="s">"onLoad()"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;h1&gt;</span>Cordova - Android Plugin Example<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;p&gt;</span>
+    1. a+b; <span class="nt">&lt;br/&gt;</span>
+    2. a-b; <span class="nt">&lt;br/&gt;</span>
+    3. a!;
+    <span class="nt">&lt;/p&gt;</span>
+
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre>
+</div>
+
+<p>Run application.</p>
+
+<p>In this example, page shuld alert “5 + 3 = 8”, “5 - 3 = 2” and “5! = 120”.</p>
+
+<h2 id="how-it-works">How it works?</h2>
+
+<p>We have <strong>three files</strong>: native code (.java), javascript code which exposes native code to cordova box (.js) and plugin manifest file (.xml). The structure looks as</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>    ExamplePlugin
+    │  plugin.xml
+    │
+    ├─src
+    │  └─android
+    │       ExamplePlugin.java
+    │
+    └─www
+        ExamplePlugin.js &lt;br /&gt;
+</code></pre>
+</div>
+
+<p>Let’s take a look at plugin files:</p>
+
+<p><code class="highlighter-rouge">src/android//ExamplePlugin.java</code> contains native code which executes outside of your cordova box.<br />
+<br /><br />
+<code class="highlighter-rouge">www/ExamplePlugin.js</code> connects native code with javascript - declares javascript functions <code class="highlighter-rouge">func_add</code>, <code class="highlighter-rouge">func_sub</code> and <code class="highlighter-rouge">func_factorial</code>.<br />
+<br /><br />
+<code class="highlighter-rouge">plugin.xml</code> contains info about plugin itself and paths to java and js files.</p>
+
+<h2 id="examplepluginjava">ExamplePlugin.java</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>    package com.shongsu.plugin;
+
+    import org.apache.cordova.CordovaPlugin;
+    import org.apache.cordova.CallbackContext;
+    import org.apache.cordova.PluginResult;
+
+    import org.json.JSONArray;
+    import org.json.JSONException;
+    import org.json.JSONObject;
+
+    /**
+     * This class performs sum called from JavaScript.
+     */
+    public class ExamplePlugin extends CordovaPlugin {
+        @Override
+        public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
+            if (action.equals("func_add")) {
+                Integer num1 = args.getInt(0);
+                Integer num2 = args.getInt(1);
+                this.func_add(num1, num2, callbackContext);
+                return true;
+            } else if (action.equals("func_sub")) {
+                Integer num1 = args.getInt(0);
+                Integer num2 = args.getInt(1);
+                this.func_sub(num1, num2, callbackContext);
+                return true;
+            } else if (action.equals("func_factorial")) {
+                Integer num1 = args.getInt(0);
+                this.func_factorial(num1, callbackContext);
+                return true;
+            }
+
+            return false;
+        }
+
+        private void func_add(Integer num1, Integer num2, CallbackContext callbackContext) {
+            if(num1 != null &amp;&amp; num2 != null) {
+                callbackContext.success(num1 + num2);
+            } else {
+                callbackContext.error("Expected two integer arguments.");
+            }
+        }
+
+        private void func_sub(Integer num1, Integer num2, CallbackContext callbackContext) {
+            if(num1 != null &amp;&amp; num2 != null) {
+                int s = num1 - num2;
+                callbackContext.success(s);
+            } else {
+                callbackContext.error("Expected two integer arguments.");
+            }
+        }
+
+        private void func_factorial(Integer num1, CallbackContext callbackContext) {
+            if(num1 != null &amp;&amp; num1 &gt;= 0) {
+                int result = 1;
+                if (num1 == 0 || num1 ==1) {
+                  result = 1;
+                } else {
+                  for(int i=1;i&lt;=num1;i++)
+                  {
+                    result *= i;
+                  }
+                }
+
+                callbackContext.success(result);
+            } else {
+                callbackContext.error("Expected a non-negative integer argument.");
+            }
+        }
+
+    }
+</code></pre>
+</div>
+
+<p>First method <code class="highlighter-rouge">execute</code> is the same in every plugin, it overrides standard method of CordovaPlugin class and allways has the same parameters:</p>
+
+<ul>
+  <li>Parameter <code class="highlighter-rouge">action</code> is string containing name of method to execute.</li>
+  <li><code class="highlighter-rouge">args</code> is array containing variable number of arguments</li>
+  <li><code class="highlighter-rouge">callbackContext</code> has <code class="highlighter-rouge">.success</code> and <code class="highlighter-rouge">.error</code> methods which are called when your function finishes or in case of error.</li>
+</ul>
+
+<p>Note that our plugin class can have many methods, but just one <code class="highlighter-rouge">execute</code> function. We test <code class="highlighter-rouge">action</code> argument to see which method we should call.<br />
+<br /></p>
+
+<p>Next method <code class="highlighter-rouge">func_add</code> is our example function: it receives two integers and callbackContext. In case of error it calls <code class="highlighter-rouge">callbackContext.error</code> with error message string, or in case of success it calls <code class="highlighter-rouge">callbackContext.success</code> with result.</p>
+
+<p>Same as method <code class="highlighter-rouge">func_sub</code> and <code class="highlighter-rouge">func_factorial</code>.</p>
+
+<h2 id="examplepluginjs">ExamplePlugin.js</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>window.func_add = function(num1, num2, successCallback, errorCallback) {
+	cordova.exec(successCallback, errorCallback, "ExamplePlugin", "func_add", [num1, num2]);
+};
+
+window.func_sub = function(num1, num2, successCallback, errorCallback) {
+	cordova.exec(successCallback, errorCallback, "ExamplePlugin", "func_sub", [num1, num2]);
+};
+
+window.func_factorial = function(num1, successCallback, errorCallback) {
+	cordova.exec(successCallback, errorCallback, "ExamplePlugin", "func_factorial", [num1]);
+};
+</code></pre>
+</div>
+
+<p>In this file we extend <code class="highlighter-rouge">window</code> object with function <code class="highlighter-rouge">func_add</code> (for example) which calls <code class="highlighter-rouge">cordova.exec</code>. Cordova translates that and calls <code class="highlighter-rouge">execute</code> method from our class declared in ExamplePlugin.java.</p>
+
+<p>Arguments to <code class="highlighter-rouge">exec</code> are allways the same: two callback functions (success and error callback), plugin class name, action name and array of arguments.<br />
+You can pass any number of arguments - they are processed by execute function as described.</p>
+
+<h2 id="pluginxml">plugin.xml</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>    &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+    &lt;plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="com.shongsu.plugin.ExamplePlugin"
+        version="1.0.0"&gt;
+
+        &lt;name&gt;ExamplePlugin&lt;/name&gt;
+
+      &lt;description&gt;
+        Cordova-Android Plugin Example
+      &lt;/description&gt;
+
+      &lt;js-module src="www/ExamplePlugin.js" name="ExamplePlugin"&gt;
+            &lt;clobbers target="ExamplePlugin" /&gt;
+        &lt;/js-module&gt;
+
+      &lt;engines&gt;
+        &lt;engine name="cordova" version="&gt;=3.0.0" /&gt;
+      &lt;/engines&gt;
+
+      &lt;!-- android --&gt;
+      &lt;platform name="android"&gt;
+        &lt;config-file target="res/xml/config.xml" parent="/*"&gt;
+          &lt;feature name="ExamplePlugin"&gt;
+              &lt;param name="android-package" value="com.shongsu.plugin.ExamplePlugin"/&gt;
+          &lt;/feature&gt;
+        &lt;/config-file&gt;
+
+        &lt;source-file src="src/android/ExamplePlugin.java" target-dir="src/com/shongsu/plugin/ExamplePlugin" /&gt;
+      &lt;/platform&gt;
+
+      &lt;!-- more platforms here --&gt;
+
+    &lt;/plugin&gt;
+</code></pre>
+</div>
+
+<p>This file tells cordova how to deal with plugin. Package name, class name and (relative) paths to files are defined here. More details about <a href="https://cordova.apache.org/docs/en/5.1.1/config_ref/index.html">plugin.xml</a>.</p>
+
+<p>For more details refer:</p>
+
+<p><a href="http://docs.phonegap.com/en/3.4.0/guide_hybrid_plugins_index.md.html#Plugin%20Development%20Guide">Cordova Plugin Development Guide</a> and <a href="http://docs.phonegap.com/en/3.4.0/guide_platforms_android_plugin.md.html#Android%20Plugins">Android Plugins</a></p>
+
+
+
+                <hr>
+
+
+                <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC A-S 4.0 International License</a>.
+
+                <hr>
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/blog/codility.html" data-toggle="tooltip" data-placement="top" title="A Good Site for Coding Test / Codility, 练习编码的好平台">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/blog/max-subsequence-sum.html" data-toggle="tooltip" data-placement="top" title="Max Subsequence Sum Problem / 最大子序列和问题">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- Duoshuo Share start
+                <style>
+                    .ds-share{
+                        text-align: right;
+                    }
+
+                    @media only screen and (max-width: 700px) {
+                        .ds-share {
+
+                        }
+                    }
+                </style>
+
+                <div class="ds-share"
+                    data-thread-key="/blog/cordova-android" data-title="Cordova-Android Plugin Example / Cordova-Android 插件详解"
+                    data-images="/sysimg/autumn2.jpg"
+                    data-content="**------English (英文)------**
+
+This is sample cordova plugin (currently for an... | Microdust:Azeril's blog"
+                    data-url="/blog/cordova-android.html">
+                    <div class="ds-share-inline">
+                      <ul  class="ds-share-icons-16">
+
+                        <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
+                        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+                        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+                        <li><a class="ds-douban" href="javascript:void(0);" data-service="douban">豆瓣</a></li>
+                      </ul>
+                      <div class="ds-share-icons-more">
+                      </div>
+                    </div>
+                <hr>
+                </div>
+                 Duoshuo Share end-->
+
+                 <div id="disqus_thread"></div>
+                 <script>
+                   /**
+                   * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                   * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+                   */
+                   /*
+                   var disqus_config = function () {
+                   this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+                   this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                   };
+                   */
+                   (function() { // DON'T EDIT BELOW THIS LINE
+                     var d = document, s = d.createElement('script');
+
+                     s.src = '//shongsu.disqus.com/embed.js';
+
+                     s.setAttribute('data-timestamp', +new Date());
+                   (d.head || d.body).appendChild(s);
+                 })();
+                 </script>
+
+                 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+                 </noscript>
+
+
+                <!-- 多说评论框 start
+                <div class="comment">
+                    <div class="ds-thread" data-thread-key="/blog/cordova-android" data-title="Cordova-Android Plugin Example / Cordova-Android 插件详解" data-url="/blog/cordova-android.html"></div>
+                </div>
+                 多说评论框 end -->
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次)
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"azeril"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+多说公共JS代码 end -->
+
+
+
+
+
+</script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("http://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+  
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <!-- kill the Facebook and Weibo -->
+                    <li>
+                        <a href="/feed.xml">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+
+                    <!--
+                    
+                  -->
+
+                    
+                    <li>
+                        <a href="https://linkedin.com/in/pengyu-chen-85253886">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+                    
+                    <li>
+                        <a href="https://github.com/Shongsu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+                    <!--
+                    
+                    -->
+
+                    <!--
+                    
+                    -->
+
+                    
+                    <li>
+                        <a href="mailto:chinhouu1992@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">陈</i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+                    <!-- 
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/Shongsu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">陈</i>
+                            </span>
+                        </a>
+                    </li>
+                     -->
+
+                    <!--
+                    
+                    -->
+
+                </ul>
+                <p class="copyright text-muted">
+                &copy; 2015~2016 Pengyu   Powered by Jekyll.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/clean-blog.min.js "></script>
+
+
+
+
+<!-- Highlight.js -->
+<script>
+    async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js",function(){
+        hljs.initHighlightingOnLoad();
+    })
+</script>
+<link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+
+
+</body>
+
+</html>

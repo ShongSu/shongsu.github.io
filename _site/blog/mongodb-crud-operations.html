@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="檐下窗欞斜映枝椏 與你席地對座飲茶">
+
+    <title>MongoDB CRUD Operations / MongoDB的增删改查操作 - A Piece of Sunshine</title>
+
+    <link rel="canonical" href="/blog/mongodb-crud-operations.html">
+
+    <!-- Icons -->
+  <link rel="shortcut icon" href="../sysimg/favicon.ico">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/clean-blog.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-65242983-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+</head>
+
+
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">A Piece of Sunshine</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/about.html">About</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/archives.html">Archives</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/people.html">People</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/projects.html">Projects</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/reading.html">Reading</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/tags.html">Tags</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/travel.html">Travel</a>
+                </li>
+                
+
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+
+    <!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/sysimg/autumn2.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="Tags">
+                        
+                        <a class="tag" href="/Tags/#MongoDB" title="MongoDB">MongoDB</a>
+                        
+                    </div>
+                    <h1>MongoDB CRUD Operations / MongoDB的增删改查操作</h1>
+                    
+                    <span class="meta">Posted by Pengyu on July 23, 2015</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 post-container">
+
+                <center>**------English (英文)------**</center>
+
+<p>###<b>Insert Documents</b></p>
+
+<p>1&gt; Insert a Document</p>
+
+<p>1.1&gt; Create a document.<br />
+Define a variable <code class="highlighter-rouge">document</code> that holds a document to insert.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>document=({"user_id" : "chen","password" :"chen123" ,"DOB" :
+	"02/03/1992" ,"education" :"M.C.S." , "profession" : "DEVELOPER"})
+</code></pre>
+</div>
+
+<p>1.2&gt; Insert the document.<br />
+Pass the variable <code class="highlighter-rouge">document</code> to the <code class="highlighter-rouge">db.collection.insert()</code> to perform an insert.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>db.myinfo.insert(document);
+</code></pre>
+</div>
+
+<p>2&gt; Directly Insert without Document.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>db.myinfo.insert({"user_id" : "hao","password" :"hao123" ,"DOB" : "02/12/1990" ,
+	"education" :"M.C.A." , "profession" : "Software consultant"});
+</code></pre>
+</div>
+
+<p>###<b>Modify Documents</b></p>
+
+<p>MongoDB can use <code class="highlighter-rouge">update()</code> function to modify data.</p>
+
+<p><code class="highlighter-rouge">db.collection.update( criteria, objNew, upsert, multi )</code></p>
+
+<p><b>criteria</b> : update conditions, similar to the statements after <code class="highlighter-rouge">where</code> in sql update.</p>
+
+<p><b>objNew</b> : update’s objects or some update operations ($,$inc…), may ragard as the statements after <code class="highlighter-rouge">set</code> in sql update.</p>
+
+<p><b>upsert</b> : if the record doesn’t exist, if you want to insert this new record, true is insert, default is false, don’t insert.</p>
+
+<p><b>multi</b> : defaust is false, only update the first record it found. if it is true, update all records meet the conditions.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>db.myinfo.update({"user_id" : "hao"},{"user_id" : "hui","password" :"hui123" ,
+	"DOB" : "06/06/1990" ,"education" :"M.E.B." , "profession" : "MARKETING"});
+</code></pre>
+</div>
+
+<p>###<b>Query Documents</b></p>
+
+<p>Select all documents in a collection</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>db.myinfo.find({}); // or
+db.myinfo.find();
+</code></pre>
+</div>
+
+<p>which is similar to SQL statement</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Select * from myinfo;
+</code></pre>
+</div>
+
+<p>Select the documents which “education” is “M.C.S”</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>db.myinfo.find({"education":"M.C.S."});
+</code></pre>
+</div>
+
+<p>which is similar to SQL statement</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Select * from myinfo where education="M.C.S.";
+</code></pre>
+</div>
+
+<p><b>Conditional operator:</b></p>
+
+<p>(&gt;) - $gt</p>
+
+<p>(&lt;) - $lt</p>
+
+<p>(&gt;=) - $gte</p>
+
+<p>(&lt;= ) - $lte</p>
+
+<p>For example 1,</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>db.testtable.find({age : {$gt : 22}})
+</code></pre>
+</div>
+
+<p>is similar to SQL statement</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Select * from testtable where age &gt;22;
+</code></pre>
+</div>
+
+<p>Example 2,</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>db.testtable.find({age : {$lt :24, $gt : 17}})
+</code></pre>
+</div>
+
+<p>is similar to SQL statement</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Select * from testtable where age &gt; 17 and age &lt;24;
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">limit()</code> accept a integer parameter, to define the number of records selected from MongoDB</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>db.COLLECTION_NAME.find().limit(NUMBER)
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">skip()</code> to ignore the number of records</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>db.COLLECTION_NAME.find().limit(NUMBER).skip(NUMBER)
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">sort()</code>, 1 is ascending, and -1 is descending</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>db.COLLECTION_NAME.find().sort({KEY:1})
+</code></pre>
+</div>
+
+<p>###<b>Remove Documents</b></p>
+
+<p>Use <code class="highlighter-rouge">remove()</code><br />
+if you want to delete record where “user_id” = “chen” in “myinfo”, you may use,</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>db.myinfo.remove( { "user_id" : "chen" } );
+</code></pre>
+</div>
+
+<p>Delete all data<br />
+if you want to delete all records in “myinfo”, you may use,</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>db.myinfo.remove({});
+</code></pre>
+</div>
+
+<p>Use <code class="highlighter-rouge">drop()</code> to delete collections<br />
+if you want to delete the whole “myinfo”, including data and documents, you may use,</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>db.myinfo.drop();
+</code></pre>
+</div>
+
+<p>Use <code class="highlighter-rouge">dropDatabase()</code> to delete database<br />
+if you want to delete the whole database, you may use,</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>db.dropDatabase()
+</code></pre>
+</div>
+
+<center>**------中文 (Chinese)------**</center>
+
+<p>###数据插入</p>
+
+<p>###数据修改</p>
+
+<p>###数据查询</p>
+
+<p>###数据删除</p>
+
+
+                <hr>
+
+
+                <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC A-S 4.0 International License</a>.
+
+                <hr>
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/blog/mongodb-for-mac.html" data-toggle="tooltip" data-placement="top" title="Install and Run MongoDB on Mac OS X / 在Mac下安装并使用MongoDB">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/blog/get-cell-value-swift.html" data-toggle="tooltip" data-placement="top" title="Get Value from Cells of TableView / TableView点击获取当前Cell内容">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- Duoshuo Share start
+                <style>
+                    .ds-share{
+                        text-align: right;
+                    }
+
+                    @media only screen and (max-width: 700px) {
+                        .ds-share {
+
+                        }
+                    }
+                </style>
+
+                <div class="ds-share"
+                    data-thread-key="/blog/mongodb-crud-operations" data-title="MongoDB CRUD Operations / MongoDB的增删改查操作"
+                    data-images="/sysimg/autumn2.jpg"
+                    data-content="**------English (英文)------**
+
+###Insert Documents
+
+1&gt; Insert a Document
+
+1... | Microdust:Azeril's blog"
+                    data-url="/blog/mongodb-crud-operations.html">
+                    <div class="ds-share-inline">
+                      <ul  class="ds-share-icons-16">
+
+                        <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
+                        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+                        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+                        <li><a class="ds-douban" href="javascript:void(0);" data-service="douban">豆瓣</a></li>
+                      </ul>
+                      <div class="ds-share-icons-more">
+                      </div>
+                    </div>
+                <hr>
+                </div>
+                 Duoshuo Share end-->
+
+                 <div id="disqus_thread"></div>
+                 <script>
+                   /**
+                   * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                   * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+                   */
+                   /*
+                   var disqus_config = function () {
+                   this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+                   this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                   };
+                   */
+                   (function() { // DON'T EDIT BELOW THIS LINE
+                     var d = document, s = d.createElement('script');
+
+                     s.src = '//shongsu.disqus.com/embed.js';
+
+                     s.setAttribute('data-timestamp', +new Date());
+                   (d.head || d.body).appendChild(s);
+                 })();
+                 </script>
+
+                 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+                 </noscript>
+
+
+                <!-- 多说评论框 start
+                <div class="comment">
+                    <div class="ds-thread" data-thread-key="/blog/mongodb-crud-operations" data-title="MongoDB CRUD Operations / MongoDB的增删改查操作" data-url="/blog/mongodb-crud-operations.html"></div>
+                </div>
+                 多说评论框 end -->
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次)
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"azeril"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+多说公共JS代码 end -->
+
+
+
+
+
+</script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("http://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+  
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <!-- kill the Facebook and Weibo -->
+                    <li>
+                        <a href="/feed.xml">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+
+                    <!--
+                    
+                  -->
+
+                    
+                    <li>
+                        <a href="https://linkedin.com/in/pengyu-chen-85253886">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+                    
+                    <li>
+                        <a href="https://github.com/Shongsu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+                    <!--
+                    
+                    -->
+
+                    <!--
+                    
+                    -->
+
+                    
+                    <li>
+                        <a href="mailto:chinhouu1992@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">陈</i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+                    <!-- 
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/Shongsu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">陈</i>
+                            </span>
+                        </a>
+                    </li>
+                     -->
+
+                    <!--
+                    
+                    -->
+
+                </ul>
+                <p class="copyright text-muted">
+                &copy; 2015~2016 Pengyu   Powered by Jekyll.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/clean-blog.min.js "></script>
+
+
+
+
+<!-- Highlight.js -->
+<script>
+    async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js",function(){
+        hljs.initHighlightingOnLoad();
+    })
+</script>
+<link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+
+
+</body>
+
+</html>

@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="檐下窗欞斜映枝椏 與你席地對座飲茶">
+
+    <title>Example of iOS VoIP Notification / iOS VoIP Notification实例 - A Piece of Sunshine</title>
+
+    <link rel="canonical" href="/blog/ios-voip-push-notification.html">
+
+    <!-- Icons -->
+  <link rel="shortcut icon" href="../sysimg/favicon.ico">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/clean-blog.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-65242983-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+</head>
+
+
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">A Piece of Sunshine</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/about.html">About</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/archives.html">Archives</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/people.html">People</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/projects.html">Projects</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/reading.html">Reading</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/tags.html">Tags</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/travel.html">Travel</a>
+                </li>
+                
+
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+
+    <!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/sysimg/autumn2.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="Tags">
+                        
+                        <a class="tag" href="/Tags/#iOS" title="iOS">iOS</a>
+                        
+                        <a class="tag" href="/Tags/#Swift" title="Swift">Swift</a>
+                        
+                        <a class="tag" href="/Tags/#PushKit" title="PushKit">PushKit</a>
+                        
+                    </div>
+                    <h1>Example of iOS VoIP Notification / iOS VoIP Notification实例</h1>
+                    
+                    <span class="meta">Posted by Pengyu on April 20, 2016</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 post-container">
+
+                <p>这篇文章翻译整理自Pierre-Marc Airoldi的<a href="http://pierremarcairoldi.com/ios-8-voip-notifications/">iOS 8 VoIP Notifications</a>和<a href="http://stackoverflow.com/a/28562124/5500154">M Penades</a>关于PushKit实现的回答，加入了我自己的文件设定，以及代码的更新，以方便读者更简单便捷的实现PushKit的学习。</p>
+
+<p>在iOS8中，苹果引进了一种可以用在VoIP应用中的新的消息推送，它可以在收到呼叫请求的时候唤醒你的应。通过这种新的推送方式，开发者将不需要再去设置<code class="highlighter-rouge">keep alive handler</code>来保持程序的后台场链接。新的推送将会在后台唤醒程序而不再需要程序一直运行在后台。总之，它将会减少数据流量的使用并且提高电池寿命。</p>
+
+<p>这一切听起来非常棒，但是在看过官方的文档之后，我们并不能了解怎么去实现它。文档中说到：</p>
+
+<p>In iOS 8 and later, voice-over-IP (VoIP) apps register for UIRemoteNotificationTypeVoIP<br />
+  remote notifications instead of using this method.</p>
+
+<p>问题在于<code class="highlighter-rouge">UIRemoteNotificationTypeVoIP</code>并不存在。它不存在的原因在于Apple引入了新的推送框架<code class="highlighter-rouge">PushKit</code>来专门处理这一类别的推送。下面让我们看看如何将该框架运用到我们的应用中。</p>
+
+<h2 id="section">配置</h2>
+
+<p>在开始之前，我们需要做些准备。首先，我们需要一个VoIP Services certificate。我们需要到iOS开发者中心找到Certificates, Identifier &amp; Profiles部分，可以看到如下截图。</p>
+
+<center><img src="/images/voip/image1.png" alt="" width="50%" /></center>
+
+<p>为了能够接收到消息推送我们需要创建一个Identifier。可以通过导航到Identifiers部分，然后单击加号按钮。</p>
+
+<center><img src="/images/voip/image2.png" alt="" width="80%" /></center>
+
+<p>我们还需要指定一个bundle id给你的应用程序，本例中，我们将使用<code class="highlighter-rouge">com.pengyu.voiptest</code>。先不用担心App Services这部分，我们将在后面补充。然后点击Continue，在下一个界面点击Register，完成。</p>
+
+<center><img src="/images/voip/image3.png" alt="" width="80%" /></center>
+
+<p>目前为止我们已经设置好了Identifier部分，然而我们仍需设置消息推送。打开Certificates界面，然后单击加号按钮，并选择VoIP Services Certificate如下：</p>
+
+<center><img src="/images/voip/image4.png" alt="" width="80%" /></center>
+
+<p>我们将会被要求选择一个app id，这里我们下拉菜单中选择我们之前刚刚创建的那个id，点击Continue。下一步要求并告诉我们如何生成一个Certificate Signing Request。</p>
+
+<p>如何生成CSR文件：</p>
+
+<p>打开Keychain Access，在Keychain Access下拉菜单中选择Keychain Access &gt; Certificate Assistant &gt; Request a Certificate from a Certificate Authority.</p>
+
+<p>在证书信息窗口，在User Email Address输入你的邮件地址，在Common Name那里输入一个你的私钥的名字，保持CA Email Address空白。<br />
+在”Request is”那里, 选择”Saved to disk” 选项，然后点击Continue，保存CSR到本地文件夹。</p>
+
+<p>下一步就是上传刚刚保存在本地的CSR，然后生存我们所需要的证书。一旦证书成功生产，结果将如下图所示：</p>
+
+<center><img src="/images/voip/image6.png" alt="" width="80%" /></center>
+
+<p>下载该证书并打开它<code class="highlighter-rouge">voip_services.cer</code>，这将会在Keychain Access应用中看到这个证书。目前我们完成了设置，下一步我们可以开始真正的工作了。找到你的certificate并点击证书旁边的小箭头，同时得到certificate和对应的key。<br />
+同时选中certificate和key，右击，选择Export 2 items…。</p>
+
+<center><img src="/images/voip/image7.png" alt="" width="80%" /></center>
+
+<p>选择p12格式并命名文件为 certificate.p12。</p>
+
+<p>将 <code class="highlighter-rouge">voip_services.cer</code> 和 <code class="highlighter-rouge">certificate.p12</code>文件保存在同一个文件夹下，方便我们一会儿生成模拟服务器端消息的推送。</p>
+
+<p>最后，在Apple开发者中心找到Provisioning Profiles-&gt;Distribution 点击右上角加号，新建一个Ad-Hoc distribution profile。</p>
+
+<center><img src="/images/voip/image11.png" alt="" width="80%" /></center>
+
+<p>根据向导，选择你的APP ID，开发者账号，以及将要用于真机测试的设备的UDID，创建完成后下载该文件并将它拖拽到Xcode中，以便后面的使用。</p>
+
+<h2 id="section-1">实现：</h2>
+
+<p>打开Xcode并创建新的Single View Application iOS app。项目名称叫做voiptest并确保它的bundle identifier是<code class="highlighter-rouge">com.pengyu.voiptest</code>。bundle identifier非常重要，因为我们需要确保它的名称与我们的证书相同才可以发送推送。</p>
+
+<p>添加PushkKit framework到我们的工程，General-&gt; Linked Frameworks and Libraries.<br />
+在Build Settings -&gt; Code Signing那里，provisioning profile选择刚才创建的AdHoc的profile，在Code Signing Identity选择Distribution模式。</p>
+
+<p>在编写代码之前的最后一件事就是打开应用的Background Modes。我们可以在项目Target下的capabilities标签下找到。如下图所示：</p>
+
+<p>在这个标签下有很多不同的选项，找到Background Modes并启用它。我们需要选定VoIP所需要的所有选项：</p>
+
+<p><code class="highlighter-rouge">Audio and Airplay</code></p>
+
+<p><code class="highlighter-rouge">Voice over IP</code></p>
+
+<p><code class="highlighter-rouge">Remote notifications</code></p>
+
+<p>现在我们开始向项目中添加代码。打开<code class="highlighter-rouge">AppDelegate.swift</code>，导入PushKit并注册通知。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>import UIKit
+import PushKit
+
+  @UIApplicationMain
+  class AppDelegate: UIResponder, UIApplicationDelegate {
+
+    var window: UIWindow?
+    let voipRegistry = PKPushRegistry(queue: dispatch_get_main_queue())
+
+
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -&gt; Bool {
+      // Override point for customization after application launch.
+      //Enable all notification type. VoIP Notifications don't present a UI but we will use this to show local nofications later
+      let notificationSettings = UIUserNotificationSettings(forTypes: [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound] , categories: nil)
+
+      //register the notification settings
+      application.registerUserNotificationSettings(notificationSettings)
+
+      //output what state the app is in. This will be used to see when the app is started in the background
+      NSLog("app launched with state \(application.applicationState.stringValue)")
+      return true
+    }
+
+    func applicationWillTerminate(application: UIApplication) {
+      // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+      //output to see when we terminate the app
+      NSLog("app terminated")
+    }
+
+  }
+</code></pre>
+</div>
+
+<p>这里我们使用一些Log输出来查看我们的应用是否正常工作。这将使我们在控制台观测到程序在后台运行时收到通知的反应。</p>
+
+<p>我们使用了<code class="highlighter-rouge">registerUserNotificationSettings</code>方法，我们还需要实现它的delegate callback <code class="highlighter-rouge">didRegisterUserNotificationSettings</code>.</p>
+
+<p>在这个回调中我们会在用户同意接收推送的情况下注册VoIP通知推送。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>extension AppDelegate {
+
+  func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
+
+      //register for voip notifications
+      NSLog("didRegisterUserNotificationSettings called")
+      voipRegistry.desiredPushTypes = Set([PKPushTypeVoIP])
+      voipRegistry.delegate = self;
+  }
+}
+</code></pre>
+</div>
+
+<p>我们刚刚在<code class="highlighter-rouge">voipRegistry</code>对象声明中启用了VoIP推送。初始化<code class="highlighter-rouge">PKPushRegistry</code>将使用一个GCD队列来决定它的delegates从哪里回调。这里我们使用主队列，因为在这个简单的测试中并没有什么关系。要想实现<code class="highlighter-rouge">voipRegistry</code>对象的作用，我们需要设置它的delegate为 <code class="highlighter-rouge">.self</code>。<code class="highlighter-rouge">voipRegistry</code>的delegate是一个具有三个方法的<code class="highlighter-rouge">PKPushRegistryDelegate</code>类型，其中两个是必须的，下面我们添加这些方法到我们的项目中。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>extension AppDelegate: PKPushRegistryDelegate {
+
+
+  func pushRegistry(registry: PKPushRegistry!, didUpdatePushCredentials credentials: PKPushCredentials!, forType type: String!) {
+      NSLog("didUpdatePushCredentials called")
+
+      //print out the VoIP token. We will use this to test the nofications.
+      NSLog("voip token: \(credentials.token)")
+  }
+
+  func pushRegistry(registry: PKPushRegistry!, didReceiveIncomingPushWithPayload payload: PKPushPayload!, forType type: String!) {
+
+      NSLog("didReceiveIncomingPushWithPayload called")
+
+
+      let payloadDict = payload.dictionaryPayload["aps"] as? Dictionary&lt;String, String&gt;
+      let message = payloadDict?["alert"]
+
+      //present a local notifcation to visually see when we are recieving a VoIP Notification
+      if UIApplication.sharedApplication().applicationState == UIApplicationState.Background {
+          NSLog("incoming notificaiton from background")
+
+          let localNotification = UILocalNotification();
+          localNotification.alertBody = message
+          localNotification.applicationIconBadgeNumber = 1;
+          localNotification.soundName = UILocalNotificationDefaultSoundName;
+
+          UIApplication.sharedApplication().presentLocalNotificationNow(localNotification);
+      }
+
+      else {
+          NSLog("incoming notificaiton from frontend")
+
+
+          dispatch_async(dispatch_get_main_queue(), { () -&gt; Void in
+
+
+              let alertController = UIAlertController(title: "Title", message: "This is UIAlertController default", preferredStyle: UIAlertControllerStyle.Alert)
+              let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
+              let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+              alertController.addAction(cancelAction)
+              alertController.addAction(okAction)
+
+              UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alertController, animated: true, completion: nil)
+
+          })
+      }
+
+      NSLog("incoming voip notfication: \(payload.dictionaryPayload)")
+  }
+
+  func pushRegistry(registry: PKPushRegistry!, didInvalidatePushTokenForType type: String!) {
+      NSLog("didInvalidatePushTokenForType called")
+      NSLog("token invalidated")
+  }
+}
+</code></pre>
+</div>
+
+<p>我们不需要添加额外的代码到这些方法中去，但对于我们的测试，我们将使用<code class="highlighter-rouge">UILocalNotification</code>或者<code class="highlighter-rouge">UIAlertController</code>来显示收到了VoIP推送通知。我们还打印出<code class="highlighter-rouge">token</code>因为我们后面需要用它来测试我们的功能。好了，现在我们的程序将会在后台收到消息是重新打开应用程序了。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>extension UIApplicationState {
+    //help to output a string instead of an enum number
+    var stringValue : String {
+        get {
+            switch(self) {
+            case .Active:
+                return "Active"
+            case .Inactive:
+                return "Inactive"
+            case .Background:
+                return "Background"
+            }
+        }
+    }
+  }
+</code></pre>
+</div>
+
+<h2 id="section-2">测试</h2>
+
+<p>编写完代码之后，打包（Archive）项目并导出ipa文件，然后安装到测试设备上（可以通过iTunes安装）。</p>
+
+<p>运行App，我们可以在devices viewer（Xcode &gt; Window &gt; Devices）中查看设备的Log：在左侧选择正确的设备并点击底部的log部分。<br />
+进入log之后可以使用 <code class="highlighter-rouge">Command＋F</code> 查找关键字app launched with state或voip token，应当得到类似如下的输出：</p>
+
+<center><img src="/images/voip/image12.png" alt="" width="80%" /></center>
+
+<p>复制你得到的token并将其保存在剪贴板上，后面会用到。</p>
+
+<p>现在回到你存储证书的那个文件夹，应该包含有下面的文件：</p>
+
+<p><code class="highlighter-rouge">voip_services.cer</code></p>
+
+<p><code class="highlighter-rouge">certificate.p12</code></p>
+
+<p>1 - 打开终端，通过certificate文件创建pem文件。</p>
+
+<p><code class="highlighter-rouge">openssl x509 -in voip_services.cer -inform der -out PushVoipCert.pem</code></p>
+
+<p>2 - 通过导出的private key文创建另一个pem文件，其过程中需要你创建一个密码用于验证。</p>
+
+<p><code class="highlighter-rouge">openssl pkcs12 -nocerts -out PushVoipKey.pem -in certificate.p12</code></p>
+
+<p>3 - 将两个文件和成为一个:</p>
+
+<p><code class="highlighter-rouge">cat PushVoipCert.pem PushVoipKey.pem &gt; ck.pem</code></p>
+
+<p>下载Simplepush的<a href="http://d1xzuxjlafny7l.cloudfront.net/downloads/SimplePush.zip">php脚本文件</a>用于发送推送消息。修改<code class="highlighter-rouge">$deviceToken</code>为你的Token，<code class="highlighter-rouge">$passphrase</code>为刚刚生成PushVoipKey.pem是所设置的密码。例如：</p>
+
+<p><code class="highlighter-rouge">$deviceToken = 'b949d3784df30c2cf5c16aa24b494cb82c78acda986113b39e1b89b0a1f0d4bc';</code></p>
+
+<p><code class="highlighter-rouge">$passphrase = 'password';</code></p>
+
+<p>如果你使用的是Simplepush的代码，还要修改下面这一行：<br />
+将<code class="highlighter-rouge">ssl://gateway.sandbox.push.apple.com:2195</code>改成<code class="highlighter-rouge">ssl://gateway.push.apple.com:2195</code>。<br />
+这是因为我们需要使用Apple的产品状态服务器地址而不是开发状态服务器地址。</p>
+
+<p>这里贴一下<code class="highlighter-rouge">simplepush.php</code>的脚本代码：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  &lt;?php
+
+  // Put your device token here (without spaces):
+  $deviceToken = 'b949d3784df30c2cf5c16aa24b494cb82c78acda986113b39e1b89b0a1f0d4bc';
+
+  // Put your private key's passphrase here:
+  $passphrase = 'password';
+
+  // Put your alert message here:
+  $message = 'My first push notification!';
+
+  ////////////////////////////////////////////////////////////////////////////////
+
+  $ctx = stream_context_create();
+  stream_context_set_option($ctx, 'ssl', 'local_cert', 'ck.pem');
+  stream_context_set_option($ctx, 'ssl', 'passphrase', $passphrase);
+
+  // Open a connection to the APNS server
+  $fp = stream_socket_client(
+  	'ssl://gateway.push.apple.com:2195', $err,
+  	$errstr, 60, STREAM_CLIENT_CONNECT|STREAM_CLIENT_PERSISTENT, $ctx);
+
+  if (!$fp)
+  	exit("Failed to connect: $err $errstr" . PHP_EOL);
+
+  echo 'Connected to APNS' . PHP_EOL;
+
+  // Create the payload body
+  $body['aps'] = array(
+  	'alert' =&gt; $message,
+  	'sound' =&gt; 'default'
+  	);
+
+  // Encode the payload as JSON
+  $payload = json_encode($body);
+
+  // Build the binary notification
+  $msg = chr(0) . pack('n', 32) . pack('H*', $deviceToken) . pack('n', strlen($payload)) . $payload;
+
+  // Send it to the server
+  $result = fwrite($fp, $msg, strlen($msg));
+
+  if (!$result)
+  	echo 'Message not delivered' . PHP_EOL;
+  else
+  	echo 'Message successfully delivered' . PHP_EOL;
+
+  // Close the connection to the server
+  fclose($fp);
+
+  ?&gt;
+</code></pre>
+</div>
+
+<p>执行脚本文件</p>
+
+<p><code class="highlighter-rouge">php simplepush.php</code></p>
+
+<p>你将在控制台看到消息发送成功的消息，如图：</p>
+
+<center><img src="/images/voip/image14.png" alt="" width="80%" /></center>
+
+<p>如果一切顺利，你将会在设备端收到相应UILocalNotification或UIAlertAction的推送消息，并且能够在Log中看到相应函数调用的输出。例如：</p>
+
+<center><img src="/images/voip/image13.png" alt="" width="80%" /></center>
+
+<p>P.S. 文中截图会略有不同，截自voiptest和coolpush两个项目，只是项目名称不同，不影响整体的理解。</p>
+
+
+
+                <hr>
+
+
+                <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC A-S 4.0 International License</a>.
+
+                <hr>
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/blog/linux-shell-programming.html" data-toggle="tooltip" data-placement="top" title="Linux Shell Programming / Linux Shell编程">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/blog/notes-from-ctp.html" data-toggle="tooltip" data-placement="top" title="Notes from C Traps and Pitfalls / C陷阱与缺陷笔记">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- Duoshuo Share start
+                <style>
+                    .ds-share{
+                        text-align: right;
+                    }
+
+                    @media only screen and (max-width: 700px) {
+                        .ds-share {
+
+                        }
+                    }
+                </style>
+
+                <div class="ds-share"
+                    data-thread-key="/blog/ios-voip-push-notification" data-title="Example of iOS VoIP Notification / iOS VoIP Notification实例"
+                    data-images="/sysimg/autumn2.jpg"
+                    data-content="这篇文章翻译整理自Pierre-Marc Airoldi的iOS 8 VoIP Notifications和M Penades关于PushKit实现的回答... | Microdust:Azeril's blog"
+                    data-url="/blog/ios-voip-push-notification.html">
+                    <div class="ds-share-inline">
+                      <ul  class="ds-share-icons-16">
+
+                        <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
+                        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+                        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+                        <li><a class="ds-douban" href="javascript:void(0);" data-service="douban">豆瓣</a></li>
+                      </ul>
+                      <div class="ds-share-icons-more">
+                      </div>
+                    </div>
+                <hr>
+                </div>
+                 Duoshuo Share end-->
+
+                 <div id="disqus_thread"></div>
+                 <script>
+                   /**
+                   * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                   * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+                   */
+                   /*
+                   var disqus_config = function () {
+                   this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+                   this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                   };
+                   */
+                   (function() { // DON'T EDIT BELOW THIS LINE
+                     var d = document, s = d.createElement('script');
+
+                     s.src = '//shongsu.disqus.com/embed.js';
+
+                     s.setAttribute('data-timestamp', +new Date());
+                   (d.head || d.body).appendChild(s);
+                 })();
+                 </script>
+
+                 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+                 </noscript>
+
+
+                <!-- 多说评论框 start
+                <div class="comment">
+                    <div class="ds-thread" data-thread-key="/blog/ios-voip-push-notification" data-title="Example of iOS VoIP Notification / iOS VoIP Notification实例" data-url="/blog/ios-voip-push-notification.html"></div>
+                </div>
+                 多说评论框 end -->
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次)
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"azeril"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+多说公共JS代码 end -->
+
+
+
+
+
+</script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("http://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+  
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <!-- kill the Facebook and Weibo -->
+                    <li>
+                        <a href="/feed.xml">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+
+                    <!--
+                    
+                  -->
+
+                    
+                    <li>
+                        <a href="https://linkedin.com/in/pengyu-chen-85253886">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+                    
+                    <li>
+                        <a href="https://github.com/Shongsu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+                    <!--
+                    
+                    -->
+
+                    <!--
+                    
+                    -->
+
+                    
+                    <li>
+                        <a href="mailto:chinhouu1992@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">陈</i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+                    <!-- 
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/Shongsu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">陈</i>
+                            </span>
+                        </a>
+                    </li>
+                     -->
+
+                    <!--
+                    
+                    -->
+
+                </ul>
+                <p class="copyright text-muted">
+                &copy; 2015~2016 Pengyu   Powered by Jekyll.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/clean-blog.min.js "></script>
+
+
+
+
+<!-- Highlight.js -->
+<script>
+    async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js",function(){
+        hljs.initHighlightingOnLoad();
+    })
+</script>
+<link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+
+
+</body>
+
+</html>

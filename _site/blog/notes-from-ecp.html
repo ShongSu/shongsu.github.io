@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="檐下窗欞斜映枝椏 與你席地對座飲茶">
+
+    <title>Notes from Expert C Programming / C专家编程笔记 - A Piece of Sunshine</title>
+
+    <link rel="canonical" href="/blog/notes-from-ecp.html">
+
+    <!-- Icons -->
+  <link rel="shortcut icon" href="../sysimg/favicon.ico">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/clean-blog.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-65242983-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+</head>
+
+
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">A Piece of Sunshine</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/about.html">About</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/archives.html">Archives</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/people.html">People</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/projects.html">Projects</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/reading.html">Reading</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/tags.html">Tags</a>
+                </li>
+                
+                <li>
+                    <a href="/pages/travel.html">Travel</a>
+                </li>
+                
+
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+
+    <!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/sysimg/autumn2.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="Tags">
+                        
+                        <a class="tag" href="/Tags/#C/C++" title="C/C++">C/C++</a>
+                        
+                    </div>
+                    <h1>Notes from Expert C Programming / C专家编程笔记</h1>
+                    
+                    <span class="meta">Posted by Pengyu on May 2, 2016</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 post-container">
+
+                <h2 id="chapter-1-c-through-the-mists-of-time">Chapter 1: C Through the Mists of Time</h2>
+
+<h3 id="notes">Notes</h3>
+
+<ul>
+  <li>Avoid unnecessary complexity by minimizing your use of unsigned types; use a signed type like <code class="highlighter-rouge">int</code> and you won’t have to worry about boundary cases in the detailed rules for promoting mixed types; only use unsigned types for bitfields or binary masks. Use casts in expressions, to make all the operands <code class="highlighter-rouge">signed</code> or <code class="highlighter-rouge">unsigned</code>, so the compiler does not have to choose the result type.</li>
+</ul>
+
+<p>for example:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  int array[] = { 23, 34, 12, 17, 204, 99, 16 };
+  #define TOTAL_ELEMENTS (sizeof(array) / sizeof(array[0]))
+  int main(){
+    int d= -1;
+    if (d &lt;= TOTAL_ELEMENTS-2)
+    {
+      /* ... */
+    }
+  }
+</code></pre>
+</div>
+
+<p>The defined variable <code class="highlighter-rouge">TOTAL_ELEMENTS</code> has type <code class="highlighter-rouge">unsigned int</code> (because the return type of sizeof is “unsigned”). The test is comparing a signed <code class="highlighter-rouge">int</code> with an <code class="highlighter-rouge">unsigned int</code> quantity. So <code class="highlighter-rouge">d</code> is promoted to <code class="highlighter-rouge">unsigned int</code>. Interpreting -1 as an <code class="highlighter-rouge">unsigned int</code> yields a big positive number, making the clause <code class="highlighter-rouge">false</code>.</p>
+
+<h2 id="chapter-2-its-not-a-bug-its-a-language-feature">Chapter 2: It’s Not a Bug, It’s a Language Feature</h2>
+
+<h3 id="notes-1">Notes</h3>
+
+<ul>
+  <li>
+    <p>Any time you encounter the string <code class="highlighter-rouge">malloc(strlen(str));</code> it is almost always sure to be an error, where <code class="highlighter-rouge">malloc(strlen(str)+1);</code> was meant. This is because almost all the other string handling routines include the room needed for the trailing <code class="highlighter-rouge">'\0'</code> terminator, so people get used to not making the special provision for it that strlen needs.</p>
+  </li>
+  <li>
+    <p>The one “l” <code class="highlighter-rouge">NUL</code> ends an ASCII string. The two “l” <code class="highlighter-rouge">NULL</code> points to no thing.</p>
+  </li>
+  <li>
+    <p>In <code class="highlighter-rouge">switch</code> statement, the <code class="highlighter-rouge">default</code> case (if present) can appear anywhere in the list of cases, and will be executed if none of the cases match.</p>
+  </li>
+  <li>
+    <p>All the cases are optional, and any form of statement, including labelled statements, is permitted, means that some errors can’t be detected even by <code class="highlighter-rouge">lint</code>. A hard problem was mistyped <code class="highlighter-rouge">defau1t</code> for the <code class="highlighter-rouge">default</code> label (i.e., mistyped a digit “1” for the letter “l”).</p>
+  </li>
+  <li>
+    <p>Some Symbol Overloading in C:</p>
+  </li>
+</ul>
+
+<p><code class="highlighter-rouge">static</code>:</p>
+
+<p>Inside a function, retains its value between calls; At the function level, visible only in this file.</p>
+
+<p><code class="highlighter-rouge">extern</code>:</p>
+
+<p>Applied to a function definition, has global scope (and is redundant); Applied to a variable, defined elsewhere.</p>
+
+<p><code class="highlighter-rouge">void</code>:</p>
+
+<p>As the return type of a function, doesn’t return a value; In a pointer declaration, the type of a generic pointer; In a parameter list, takes no parameters.</p>
+
+<h2 id="chapter-3-unscrambling-declarations-in-c">Chapter 3: Unscrambling Declarations in C</h2>
+
+<h3 id="notes-2">Notes</h3>
+
+<ul>
+  <li>
+    <p>A declaration involving a pointer and a const has several possible orderings:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  const int * grape;
+  int const * grape;
+  int * const grape_jelly;
+</code></pre>
+    </div>
+  </li>
+</ul>
+
+<p>The last of these cases makes the pointer read-only, whereas the other two make the object that it points at read-only; and of course, both the object and what it points at might be constant. Either of the following equivalent declarations will accomplish this:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>    const int * const grape_jam;
+    int const * const grape_jam;
+</code></pre>
+</div>
+
+<ul>
+  <li>
+    <p>a function returning a pointer to a function is allowed: <code class="highlighter-rouge">int (* fun())()</code></p>
+
+    <p>a function returning a pointer to an array is allowed: <code class="highlighter-rouge">int (* foo())[]</code></p>
+
+    <p>an array holding pointers to functions is allowed: <code class="highlighter-rouge">int (*foo[])()</code></p>
+
+    <p>an array can hold other arrays, so you’ll frequently see <code class="highlighter-rouge">int foo[][]</code></p>
+  </li>
+  <li>
+    <p>The Precedence Rule</p>
+  </li>
+</ul>
+
+<table style="width:100%">
+  <tr>
+    <th colspan="3">The Precedence Rule for Understanding C Declarations</th>
+  </tr>
+  <tr>
+    <th colspan="2">A</th>
+    <th>Declarations are read by starting with the name and then reading in precedence order.</th>
+  </tr>
+  <tr>
+    <th colspan="2">B</th>
+    <th>The precedence, from high to low, is:</th>
+  </tr>
+  <tr>
+    <td></td>
+    <td>B.1</td>
+    <td>parentheses grouping together parts of a declaration</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>B.2</td>
+    <td>the postfix operators:parentheses () indicating a function, and square brackets [] indicating an array.</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>B.3</td>
+    <td>the prefix operator: the asterisk denoting "pointer to".</td>
+  </tr>
+  <tr>
+    <th colspan="2">C</th>
+    <th>If a const and/or volatile keyword is next to a type specifier (e.g. int, long, etc.) it applies to the type specifier. Otherwise the const and/or volatile keyword applies to the pointer asterisk on its immediate left.</th>
+  </tr>
+</table>
+
+<ul>
+  <li>A Example Solving a Declaration Using the Precedence Rule</li>
+</ul>
+
+<table style="width:100%">
+  <tr>
+    <th colspan="3">char* const *(*next)();</th>
+  </tr>
+  <tr>
+    <th colspan="2">A</th>
+    <th>First, go to the variable name, "next", and note that it is directly enclosed by parentheses.</th>
+  </tr>
+  <tr>
+    <td></td>
+    <td>B.1</td>
+    <td>So we group it with what else is in the parentheses, to get "next is a pointer to...".</td>
+  </tr>
+  <tr>
+    <th colspan="2">B</th>
+    <th>Then we go outside the parentheses, and have a choice of a prefix asterisk, or a postfix pair of parentheses.</th>
+  </tr>
+  <tr>
+    <td></td>
+    <td>B.2</td>
+    <td>Rule B.2 tells us the highest precedence thing is the function parentheses at the right, so we have "next is a pointer to a function returning…"</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>B.3</td>
+    <td>Then process the prefix "*" to get "pointer to".</td>
+  </tr>
+  <tr>
+    <th colspan="2">C</th>
+    <th>Finally, take the "char * const", as a constant pointer to a character</th>
+  </tr>
+</table>
+
+<p>Then put it all together to read:</p>
+
+<p>“<code class="highlighter-rouge">next</code> is a pointer to a function returning a pointer to a const pointer-to-char”</p>
+
+<ul>
+  <li>Another Example: <code class="highlighter-rouge">char *(*c[10])(int **p);</code></li>
+</ul>
+
+<p>“<code class="highlighter-rouge">c</code> is an array[0..9] of pointer to a function returning a pointer-to-char”</p>
+
+<h2 id="chapter-4-the-shocking-truth-c-arrays-and-pointers-are-not-the-same">Chapter 4: The Shocking Truth: C Arrays and Pointers Are NOT the Same!</h2>
+
+<h3 id="notes-3">Notes</h3>
+
+<ul>
+  <li>
+    <p>Defined as array NOT Same AS external declaration as pointer. The pointer variable itself will always be at the same address, but its contents can change to point to many different ints at different times. Each of those different ints can have different values. The array can’t move around to different places. At different times it can be filled with different values, but it always refers to the same n consecutive memory locations.</p>
+  </li>
+  <li>
+    <p>Differences Between Arrays and Pointers</p>
+  </li>
+</ul>
+
+<table style="width:100%">
+   <tr>
+    <th>Pointer</th>
+    <th>Array</th>
+  </tr>
+  <tr>
+   <td>Holds the address of data</td>
+   <td>Holds data</td>
+  </tr>
+  <tr>
+    <td>Data is accessed indirectly, so you first retrieve the
+contents of the pointer, load that as an address (call it "L"),
+then retrieve its contents.
+If the pointer has a subscript [i] you instead retrieve the
+contents of the location 'i' units past "L"</td>
+    <td>Data is accessed directly, so for a[i] you
+simply retrieve the contents of the
+location i units past a.</td>
+  </tr>
+  <tr>
+   <td>Commonly used for dynamic data structures</td>
+   <td>Commonly used for holding a fixed number of elements of the same type of data</td>
+  </tr>
+  <tr>
+   <td>Commonly used with `malloc()`, `free()`</td>
+   <td>Implicitly allocated and deallocated</td>
+  </tr>
+  <tr>
+   <td>Typically points to anonymous data</td>
+   <td>Is a named variable in its own right</td>
+  </tr>
+</table>
+
+<ul>
+  <li>A string literal created by a pointer initialization is defined as read-only in ANSI C; In contrast to a pointer, an array initialized by a literal string is writable. The individual characters can later be changed.</li>
+</ul>
+
+<h3 id="to-be-continued">To be continued…</h3>
+
+
+                <hr>
+
+
+                <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC A-S 4.0 International License</a>.
+
+                <hr>
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/blog/notes-from-cpp.html" data-toggle="tooltip" data-placement="top" title="Notes from C Primer Plus / C Primer Plus笔记">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/blog/notes-from-js-tdg.html" data-toggle="tooltip" data-placement="top" title="Notes from JavaScript:The Definitive Guide / JavaScript权威指南笔记">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- Duoshuo Share start
+                <style>
+                    .ds-share{
+                        text-align: right;
+                    }
+
+                    @media only screen and (max-width: 700px) {
+                        .ds-share {
+
+                        }
+                    }
+                </style>
+
+                <div class="ds-share"
+                    data-thread-key="/blog/notes-from-ecp" data-title="Notes from Expert C Programming / C专家编程笔记"
+                    data-images="/sysimg/autumn2.jpg"
+                    data-content="Chapter 1: C Through the Mists of Time
+
+Notes
+
+
+  Avoid unnecessary complexit... | Microdust:Azeril's blog"
+                    data-url="/blog/notes-from-ecp.html">
+                    <div class="ds-share-inline">
+                      <ul  class="ds-share-icons-16">
+
+                        <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
+                        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+                        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+                        <li><a class="ds-douban" href="javascript:void(0);" data-service="douban">豆瓣</a></li>
+                      </ul>
+                      <div class="ds-share-icons-more">
+                      </div>
+                    </div>
+                <hr>
+                </div>
+                 Duoshuo Share end-->
+
+                 <div id="disqus_thread"></div>
+                 <script>
+                   /**
+                   * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                   * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+                   */
+                   /*
+                   var disqus_config = function () {
+                   this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+                   this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                   };
+                   */
+                   (function() { // DON'T EDIT BELOW THIS LINE
+                     var d = document, s = d.createElement('script');
+
+                     s.src = '//shongsu.disqus.com/embed.js';
+
+                     s.setAttribute('data-timestamp', +new Date());
+                   (d.head || d.body).appendChild(s);
+                 })();
+                 </script>
+
+                 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+                 </noscript>
+
+
+                <!-- 多说评论框 start
+                <div class="comment">
+                    <div class="ds-thread" data-thread-key="/blog/notes-from-ecp" data-title="Notes from Expert C Programming / C专家编程笔记" data-url="/blog/notes-from-ecp.html"></div>
+                </div>
+                 多说评论框 end -->
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次)
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"azeril"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+多说公共JS代码 end -->
+
+
+
+
+
+</script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("http://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+  
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <!-- kill the Facebook and Weibo -->
+                    <li>
+                        <a href="/feed.xml">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+
+                    <!--
+                    
+                  -->
+
+                    
+                    <li>
+                        <a href="https://linkedin.com/in/pengyu-chen-85253886">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+                    
+                    <li>
+                        <a href="https://github.com/Shongsu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+                    <!--
+                    
+                    -->
+
+                    <!--
+                    
+                    -->
+
+                    
+                    <li>
+                        <a href="mailto:chinhouu1992@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">陈</i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+                    <!-- 
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/Shongsu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">陈</i>
+                            </span>
+                        </a>
+                    </li>
+                     -->
+
+                    <!--
+                    
+                    -->
+
+                </ul>
+                <p class="copyright text-muted">
+                &copy; 2015~2016 Pengyu   Powered by Jekyll.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/clean-blog.min.js "></script>
+
+
+
+
+<!-- Highlight.js -->
+<script>
+    async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js",function(){
+        hljs.initHighlightingOnLoad();
+    })
+</script>
+<link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+
+
+</body>
+
+</html>
