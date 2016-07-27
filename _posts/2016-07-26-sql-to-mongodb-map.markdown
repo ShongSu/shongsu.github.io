@@ -33,7 +33,7 @@ description:
 ！MongoDB集合名为 `users`，包含以下文档格式：
 
 	{
-		_id: ObjectId("509a8fb2f3f4948bd2f983a0"),
+		\_id: ObjectId("509a8fb2f3f4948bd2f983a0"),
 		user_id: "abc123",
 		age: 55,
 		status: 'A'
@@ -67,11 +67,13 @@ description:
 	db.createCollection("users")
 
 
+集合不描述或指定文件的结构,即在集合级别上，没有结构更换。
+然而在文档级别，`update()`操作可以使用`$set`操作符向既存的文档中添加新的字段。
+
+
 	ALTER TABLE users
 	ADD join_date DATETIME
 
-集合不描述或指定文件的结构,即在集合级别上，没有结构更换。
-然而在文档级别，`update()`操作可以使用`$set`操作符向既存的文档中添加新的字段。
 
 	db.users.update(
 	    { },
@@ -80,10 +82,11 @@ description:
 	)
 
 
+在文档级别，`update()``操作可以使用`$unset`操作符删除文档中的某个字段。
+
+
 	ALTER TABLE users
 	DROP COLUMN join_date
-
-在文档级别，`update()``操作可以使用`$unset`操作符删除文档中的某个字段。
 
 	db.users.update(
 	    { },
@@ -91,10 +94,13 @@ description:
 	    { multi: true }
 	)
 
+
+
 	CREATE INDEX idx_user_id_asc
 	ON users(user_id)
 
 	db.users.createIndex( { user_id: 1 } )
+
 
 
 	CREATE INDEX
