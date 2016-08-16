@@ -55,11 +55,11 @@ Eidt your `www/index.html` file, here is full example:
                 }
 
                 function onDeviceReady() {
-            var a = 5;
-            var b = 3;
-                    window.func_add(a, b, function(result) { alert(a + " + " + b + " = " + result); }, function(err) { alert(err); });
-            window.func_sub(a, b, function(result) { alert(a + " - " + b + " = " + result); }, function(err) { alert(err); });
-            window.func_factorial(a, function(result) { alert(a + "! = " + result); }, function(err) { alert(err); });		
+	            var a = 5;
+	            var b = 3;
+                    window.testplugin.func_add(a, b, function(result) { alert(a + " + " + b + " = " + result); }, function(err) { alert(err); });
+	            window.testplugin.func_sub(a, b, function(result) { alert(a + " - " + b + " = " + result); }, function(err) { alert(err); });
+	            window.testplugin.func_factorial(a, function(result) { alert(a + "! = " + result); }, function(err) { alert(err); });		
           }
             </script>
         </head>
@@ -200,19 +200,32 @@ Same as method `func_sub` and `func_factorial`.
 ExamplePlugin.js
 ---------------
 
-    window.func_add = function(num1, num2, successCallback, errorCallback) {
-    	cordova.exec(successCallback, errorCallback, "ExamplePlugin", "func_add", [num1, num2]);
-    };
+    (function (cordova) {
+	function TestPlugin() {}
 
-    window.func_sub = function(num1, num2, successCallback, errorCallback) {
-    	cordova.exec(successCallback, errorCallback, "ExamplePlugin", "func_sub", [num1, num2]);
-    };
 
-    window.func_factorial = function(num1, successCallback, errorCallback) {
-    	cordova.exec(successCallback, errorCallback, "ExamplePlugin", "func_factorial", [num1]);
-    };
+	TestPlugin.prototype.func_add = function(num1, num2, successCallback, errorCallback) {
+		cordova.exec(successCallback, errorCallback, "ExamplePlugin", "func_add", [num1, num2]);
+	};
 
-In this file we extend `window` object with function `func_add` (for example) which calls `cordova.exec`. Cordova translates that and calls `execute` method from our class declared in ExamplePlugin.java.
+	TestPlugin.prototype.func_sub = function(num1, num2, successCallback, errorCallback) {
+		cordova.exec(successCallback, errorCallback, "ExamplePlugin", "func_sub", [num1, num2]);
+	};
+
+	TestPlugin.prototype.func_factorial = function(num1, successCallback, errorCallback) {
+		cordova.exec(successCallback, errorCallback, "ExamplePlugin", "func_factorial", [num1]);
+	};
+
+
+	window.testplugin = new TestPlugin();
+
+	// backwards compatibility
+	window.plugins = window.plugins || {};
+	window.plugins.testplugin = window.testplugin;
+	})(window.PhoneGap || window.Cordova || window.cordova);
+
+
+In this file we extend `window.testplugin` object with function `func_add` (for example) which calls `cordova.exec`. Cordova translates that and calls `execute` method from our class declared in ExamplePlugin.java.
 
 Arguments to `exec` are allways the same: two callback functions (success and error callback), plugin class name, action name and array of arguments.
 You can pass any number of arguments - they are processed by execute function as described.
