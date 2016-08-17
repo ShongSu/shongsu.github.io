@@ -34,7 +34,7 @@ Chinese (Mandarin) • English • Japanese
 
 **Skills**
 
-C/C++ • Java • PHP • iOS • Android • HTML • SQL  
+C/C++ • Java • PHP • iOS • Android • HTML • JavaScript • SQL • MongoDB
 
 
 **Education**
