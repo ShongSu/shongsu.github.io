@@ -259,6 +259,25 @@ eqfeed_callback(
 			},
 			id: "20150831"
 		},
+		
+		{
+			type: "Feature",
+			properties: {
+				place: "Canada",
+				time: 20160904,
+				updated: 20160904,
+				times: 1,
+				title: "Montreal"
+			},
+			geometry: {
+				type: "Point",
+				coordinates: [
+					-73.58781,
+					45.50884,
+				]
+			},
+			id: "20160904"
+		},
 	],
 }
 )
