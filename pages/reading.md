@@ -6,7 +6,7 @@ header-img: "../sysimg/blue.jpg"
 ---
 
 
-## Readings - July
+## Readings - September
 
 [1] [Expert C Programming][ecp]   \[[Notes][n2]\]
 
