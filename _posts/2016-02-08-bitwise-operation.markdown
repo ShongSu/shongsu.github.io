@@ -145,7 +145,7 @@ description:
     }
 
 
-6．寻找只出现一次的数
+6．1 寻找只出现一次的数，其他数字均出现两次
 
     int main()  
     {          
@@ -157,9 +157,46 @@ description:
         printf("缺失的数字为:  %d\n", lostNum);     
         return 0;  
     }
+    
+6．2 寻找只出现一次的数，其他数字均出现三次
+
+    public class Solution {
+       public int singleNumber(int[] nums) {
+           int[] bit = new int[32];  
+            int result = 0; 
+            for(int i=0;i<32;i++){
+                for(int j=0;j<nums.length;j++){
+                    bit[i] += (nums[j]>>i) & 1;
+                    bit[i] %= 3;
+                }
+                result |= bit[i]<<i;
+            }
+            return result;
+        }
+    }
+
+6．3 寻找只出现一次的两个数，其他数字均成对出现
+
+    public class Solution {
+        public int[] singleNumber(int[] nums) {
+           int[] result = {0,0};
+           int xor = 0;
+           for(int i=0;i<nums.length;i++){
+               xor ^= nums[i];
+           }
+           int lastBit = xor & -xor; // get last bit with 1
+           for(int i=0;i<nums.length;i++){
+               if((lastBit & nums[i]) == 0)
+                    result[0] ^= nums[i];
+               else 
+                    result[1] ^= nums[i];
+           }
+           return result;
+        }
+    }
 
 
-6．奇偶位交换
+7．奇偶位交换
 
 请编写程序交换一个数的二进制的奇数位和偶数位。（使用越少的指令越好）
 给定一个int x，请返回交换后的数int。
