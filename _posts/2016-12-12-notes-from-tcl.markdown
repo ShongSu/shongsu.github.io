@@ -3,7 +3,7 @@ layout: post
 title: Notes from Tcl and the Tk Toolkit / Tcl/Tk入门经典
 date: 2016-12-12 22:42
 categories: [blog ]
-tags: [Tcl, Tk]
+tags: [Tcl/Tk,]
 description:
 ---
 
@@ -48,7 +48,7 @@ description:
 
 **UI界面：**
 
-#! /user/local/bin/wish
+		#! /user/local/bin/wish
 
 		proc factorial {val} {
 		  set result 1
