@@ -222,3 +222,30 @@ Solution 2:
     }
 
 P.S. Fast/slow pointer strategy is very useful.
+
+## Q6 - Check Loop
+
+Implement a function to check if a linked list has a loop.
+
+输入一个单向链表，判断链表是否有环？
+
+分析：通过两个指针，分别从链表的头节点出发，一个每次向后移动一步，另一个移动两步，两个指针移动速度不一样，如果存在环，那么两个指针一定会在环里相遇。
+
+    //判断单链表是否存在环,参数circleNode是环内节点，后面的题目会用到
+    bool hasCircle(Node *head,Node *&circleNode)
+    {
+        Node *slow,*fast;
+        slow = fast = head;
+        while(fast != NULL && fast->next != NULL)
+        {
+            fast = fast->next->next;
+            slow = slow->next;
+            if(fast == slow)
+            {
+                circleNode = fast;
+                return true;
+            }
+        }
+
+        return false;
+    }
