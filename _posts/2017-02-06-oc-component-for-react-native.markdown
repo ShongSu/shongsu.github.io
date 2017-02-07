@@ -10,7 +10,9 @@ description:
 最近公司项目准备往React Native上转移，简单学习了一下，个人对React Native的强大感到佩服。
 众所周知，React Native是一个极其优秀的移动开发框架，让开发者们使用JavaScript和ReactJS就能开发出优秀的APP。
 
-和PhoneGap／Cordova类似，我们需要依赖于第三方的插件（Plugin），在RN中，我们称之为组件（Component）。除了寻求第三方的优秀组件之外，很多时候我们需要自定义我们自己所需求的组件。本文就简单的介绍一下如何用Objective-C编写iOS组件。
+和PhoneGap／Cordova类似，我们需要依赖于第三方的插件（Plugin），在RN中，我们称之为组件（Component）。除了寻求第三方的优秀组件之外，很多时候我们需要自定义我们自己所需求的组件。
+
+本文就简单的介绍一下如何用Objective-C编写iOS组件。
 
 
 ## 1 - 创建新项目
@@ -20,29 +22,29 @@ description:
     react-native-cli: 2.0.1
     react-native: 0.41.2
 
-根据RN的官方文档[od]，通过命令行创建并初始化一个RN项目。
+根据[RN的官方文档][od]，通过命令行创建并初始化一个RN项目。
 
-	 react-native init CustomComponent
+    react-native init CustomComponent
 
 初始化完毕后，运行下面命令，可以在iOS模拟器上看到默认的界面。
 
   	cd CustomComponent
   	react-native run-ios
 
-［img 1］
+<center><img src="/images/react-native-demo/1.pic.jpg" alt="" width="50%" /></center>
 
 
 打开Xcode工程文件，用你的开发者账户Sign一下，否则在Xcode上编译的时候有可能报错。（另外工程的Targets下面会自动生成tvOS和相关的测试目标，也要Sign一下，当然也可以直接删除多余的目标）。
 
 然后找到你的目标工程，这里是CustomComponent，找到Build Settings，查找`Header Search Paths`，添加如下两项内容，`$(SRCROOT)/../react-native/React` 和 `$(SRCROOT)/../../React` 。 否则的话，编译器找不到React Native的关联文件，将会导致`"'RCTBridgeModule.h' file not found"`的报错。
 
- ［img 2］
+<center><img src="/images/react-native-demo/2.pic.jpg" alt="" width="50%" /></center>
 
 ## 2 - 编写一个简单的iOS组件模块
 
 打开Xcode项目，在项目文件夹下添加Objective-C文件，这里我们命名为`MyObjcClass`。具体步骤是：在CustomComponent文件夹上右击，选择`New File…` , 选择`Cocoa Touch Class`，Class命名为`MyObjcClass`，SubClass暂且选择`NSObject`，后面我们会做修改，语言选择Objective-C。完成后将会生成`MyObjcClass.h`和`MyObjcClass.m`两个文件。
 
-[img 3]
+<center><img src="/images/react-native-demo/3.pic.jpg" alt="" width="50%" /></center>
 
 
 打开`MyObjcClass.h`，写入以下代码，
@@ -202,16 +204,16 @@ description:
 
 最后运行起来的程序如下：
 
-［img 4］
+<center><img src="/images/react-native-demo/4.pic.jpg" alt="" width="50%" /></center>
 
 如果你的程序已经在运行了，这里你需要重新运行一下，以确保加载了我们自定义的Objective-C类。
-示例代码已上传的我的Github[gh]供参考。
+示例代码已上传的我的[Github][gh]供参考。
 
 
 
 Refecesse:
-How To Easily Make Your Objective-C Code Work With React Native. [ht]
-React Native Official Docs. [od]
+[How To Easily Make Your Objective-C Code Work With React Native.][ht]
+[React Native Official Docs.][od]
 
 
 
