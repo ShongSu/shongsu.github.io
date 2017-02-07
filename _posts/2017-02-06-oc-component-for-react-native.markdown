@@ -28,8 +28,9 @@ description:
 
 初始化完毕后，运行下面命令，可以在iOS模拟器上看到默认的界面。
 
-  	`cd CustomComponent
-  	react-native run-ios`
+    cd CustomComponent
+    
+    react-native run-ios
 
 
 <center><img src="/images/react-native-demo/1.pic.jpg" alt="" width="50%" /></center>
