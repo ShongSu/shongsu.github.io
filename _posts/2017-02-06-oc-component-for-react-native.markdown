@@ -39,14 +39,14 @@ description:
 
 然后找到你的目标工程，这里是`CustomComponent`，找到B`uild Settings`，查找`Header Search Paths`，添加如下两项内容，`$(SRCROOT)/../react-native/React` 和 `$(SRCROOT)/../../React` 。 否则的话，编译器找不到React Native的关联文件，将会导致`"'RCTBridgeModule.h' file not found"`的报错。
 
-<center><img src="/images/react-native-demo/2.pic.jpg" alt="" width="50%" /></center>
+<center><img src="/images/react-native-demo/2.pic.jpg" alt="" width="85%" /></center>
 
 
 ## 2 - 编写一个简单的iOS组件模块
 
 打开Xcode项目，在项目文件夹下添加Objective-C文件，这里我们命名为`MyObjcClass`。具体步骤是：在CustomComponent文件夹上右击，选择`New File…` , 选择`Cocoa Touch Class`，Class命名为`MyObjcClass`，SubClass暂且选择`NSObject`，后面我们会做修改，语言选择Objective-C。完成后将会生成`MyObjcClass.h`和`MyObjcClass.m`两个文件。
 
-<center><img src="/images/react-native-demo/3.pic.jpg" alt="" width="50%" /></center>
+<center><img src="/images/react-native-demo/3.pic.jpg" alt="" width="85%" /></center>
 
 
 打开`MyObjcClass.h`，写入以下代码，
@@ -216,6 +216,7 @@ description:
 ## Refecesse:
 
 [How To Easily Make Your Objective-C Code Work With React Native.][ht]
+
 [React Native Official Docs.][od]
 
 
