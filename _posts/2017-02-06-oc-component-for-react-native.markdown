@@ -28,17 +28,19 @@ description:
 
 初始化完毕后，运行下面命令，可以在iOS模拟器上看到默认的界面。
 
-  	cd CustomComponent
-  	react-native run-ios
+  	`cd CustomComponent
+  	react-native run-ios`
+
 
 <center><img src="/images/react-native-demo/1.pic.jpg" alt="" width="50%" /></center>
 
 
 打开Xcode工程文件，用你的开发者账户Sign一下，否则在Xcode上编译的时候有可能报错。（另外工程的Targets下面会自动生成tvOS和相关的测试目标，也要Sign一下，当然也可以直接删除多余的目标）。
 
-然后找到你的目标工程，这里是CustomComponent，找到Build Settings，查找`Header Search Paths`，添加如下两项内容，`$(SRCROOT)/../react-native/React` 和 `$(SRCROOT)/../../React` 。 否则的话，编译器找不到React Native的关联文件，将会导致`"'RCTBridgeModule.h' file not found"`的报错。
+然后找到你的目标工程，这里是`CustomComponent`，找到B`uild Settings`，查找`Header Search Paths`，添加如下两项内容，`$(SRCROOT)/../react-native/React` 和 `$(SRCROOT)/../../React` 。 否则的话，编译器找不到React Native的关联文件，将会导致`"'RCTBridgeModule.h' file not found"`的报错。
 
 <center><img src="/images/react-native-demo/2.pic.jpg" alt="" width="50%" /></center>
+
 
 ## 2 - 编写一个简单的iOS组件模块
 
@@ -211,7 +213,8 @@ description:
 
 
 
-Refecesse:
+## Refecesse:
+
 [How To Easily Make Your Objective-C Code Work With React Native.][ht]
 [React Native Official Docs.][od]
 
