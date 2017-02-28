@@ -20,6 +20,8 @@ header-img: "../sysimg/blue.jpg"
 
 [5] [Learning Virtual Reality][vr]
 
+[6] [AWS Certified Solutions Architect Official Study Guide: Associate Exam][aws]
+
 
 ## Others
 
@@ -50,3 +52,4 @@ header-img: "../sysimg/blue.jpg"
 [n3]:http://shongsu.github.io/blog/notes-from-cpp.html
 [vr]:http://pdf.th7.cn/down/files/1602/Learning%20Virtual%20Reality.pdf
 [pp2]:https://tfetimes.com/wp-content/uploads/2015/04/ProgrammingPearls2nd.pdf
+[aws]:https://www.amazon.ca/Certified-Solutions-Architect-Official-Study/dp/1119138558/ref=tmm_pap_swatch_0?_encoding=UTF8&qid=1488322076&sr=8-1
