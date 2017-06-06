@@ -6,7 +6,7 @@ header-img: "../sysimg/blue.jpg"
 ---
 
 
-## Readings - March 2017
+## Readings - June 2017
 
 [0] [Programming Pearls - 2 Edition][pp2]
 
@@ -21,6 +21,8 @@ header-img: "../sysimg/blue.jpg"
 [5] [Learning Virtual Reality][vr]
 
 [6] [AWS Certified Solutions Architect Official Study Guide: Associate Exam][aws]
+
+[7] [騎士団長殺し :第1部 顕れるイデア編][kill]
 
 
 ## Others
@@ -53,3 +55,4 @@ header-img: "../sysimg/blue.jpg"
 [vr]:http://pdf.th7.cn/down/files/1602/Learning%20Virtual%20Reality.pdf
 [pp2]:https://tfetimes.com/wp-content/uploads/2015/04/ProgrammingPearls2nd.pdf
 [aws]:https://www.amazon.ca/Certified-Solutions-Architect-Official-Study/dp/1119138558/ref=tmm_pap_swatch_0?_encoding=UTF8&qid=1488322076&sr=8-1
+[kill]:https://www.amazon.co.jp/%E9%A8%8E%E5%A3%AB%E5%9B%A3%E9%95%B7%E6%AE%BA%E3%81%97-%E7%AC%AC1%E9%83%A8-%E9%A1%95%E3%82%8C%E3%82%8B%E3%82%A4%E3%83%87%E3%82%A2%E7%B7%A8-%E6%9D%91%E4%B8%8A-%E6%98%A5%E6%A8%B9/dp/410353432X
