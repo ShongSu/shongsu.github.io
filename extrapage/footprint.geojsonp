@@ -240,7 +240,7 @@ eqfeed_callback(
 			},
 			id: "20150831"
 		},
-		
+
 		{
 			type: "Feature",
 			properties: {
@@ -259,7 +259,7 @@ eqfeed_callback(
 			},
 			id: "20150831"
 		},
-		
+
 		{
 			type: "Feature",
 			properties: {
@@ -277,6 +277,42 @@ eqfeed_callback(
 				]
 			},
 			id: "20160904"
+		},
+		{
+			type: "Feature",
+			properties: {
+				place: "Canada",
+				time: 20170701,
+				updated: 20170701,
+				times: 1,
+				title: "Québec City"
+			},
+			geometry: {
+				type: "Point",
+				coordinates: [
+					288.76293,
+          				46.825553,
+				]
+			},
+			id: "20170701"
+		},
+		{
+			type: "Feature",
+			properties: {
+				place: "Canada",
+				time: 20170702,
+				updated: 20170702,
+				times: 1,
+				title: "Tadoussac"
+			},
+			geometry: {
+				type: "Point",
+				coordinates: [
+						290.2829933166504,
+				    48.14329612989035
+				]
+			},
+			id: "20170702"
 		},
 	],
 }
