@@ -290,8 +290,8 @@ eqfeed_callback(
 			geometry: {
 				type: "Point",
 				coordinates: [
-					-71.4817,
-					46.8562,
+					288.76293,
+          				46.825553,
 				]
 			},
 			id: "20170701"
