@@ -18,13 +18,13 @@ Ottawa, Ontario, Canada <br />
 **Work Experience**
 
 <b>Software Developer</b> @ [Aetonix Systems Inc][ae] <br />
-August 2015 – Persent. Ottawa, Ontario, Canada <br />
+Ottawa, Ontario, Canada <br />
 <br />
-<b>QA Intern</b> @ [Optimal Payments PLC][op] <br />
-September 2014 – December 2014 (4 months). Gatineau, Quebec, Canada <br />
+<b>QA Developer Intern</b> @ [Optimal Payments PLC][op] <br />
+Gatineau, Quebec, Canada <br />
 <br />
 <b>Web Developer</b> @ Ottawa Insititute of Systems Biology, [University of Ottawa][uo] <br />
-May 2014 – August 2014 (4 months). Ottawa, Ontario, Canada
+Ottawa, Ontario, Canada
 
 
 **Languages**
@@ -34,7 +34,7 @@ Chinese (Mandarin) • English • Japanese
 
 **Skills**
 
-C/C++ • Java • PHP • iOS • Android • HTML • JavaScript • SQL • MongoDB
+C/C++ • Java • PHP • iOS • Android • HTML • JavaScript • SQL • MongoDB • React • React Native
 
 
 **Education**

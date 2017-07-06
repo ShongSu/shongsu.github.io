@@ -26,10 +26,12 @@ description:
 
     react-native init CustomComponent
 
-初始化完毕后，运行下面命令，可以在iOS模拟器上看到默认的界面。
+初始化完毕后，运行下面命令
 
-  	`cd CustomComponent
-  	react-native run-ios`
+    cd CustomComponent    
+    react-native run-ios
+
+可以在iOS模拟器上看到默认的界面。
 
 
 <center><img src="/images/react-native-demo/1.pic.jpg" alt="" width="50%" /></center>
@@ -215,9 +217,9 @@ description:
 
 ## Refecesse:
 
-[How To Easily Make Your Objective-C Code Work With React Native.][ht]
+[1] [How To Easily Make Your Objective-C Code Work With React Native.][ht]
 
-[React Native Official Docs.][od]
+[2] [React Native Official Docs.][od]
 
 
 
