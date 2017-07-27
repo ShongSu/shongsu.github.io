@@ -11,7 +11,7 @@ header-img: "../sysimg/sky2.jpg"
 + [Liu Cheng][b]
 + [Opeoluwa Temitayo][c]
 + [Zijie(Augustus) Li][d]
-
++ [Jiaqi Xu][e]
 
 
 
@@ -24,3 +24,4 @@ header-img: "../sysimg/sky2.jpg"
 [b]: http://willowcheng.top/
 [c]: http://www.ewejeopeoluwa.com/
 [d]: http://augustus2014.blogspot.ca/
+[e]: http://jqx.world/
