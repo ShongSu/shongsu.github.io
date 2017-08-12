@@ -7,9 +7,11 @@ header-img: "../sysimg/grass.jpg"
 
 # {{ page.title }}
 
-+ [Cookings4u][u]: Designing a Website in order to provide a platform for both customers and private home cuisine chefs. (In development)
++ [Boolean's Store][bs]: Online shop based on AWS, Wordpress and WooCommerce.
 
-+ Develop [Cordova][c] plugins for Android and iOS.
++ [Cookings4u][u]: Designing a Website in order to provide a platform for both customers and private home cuisine chefs. 
+
++ Developing [Cordova][c] plugins for Android and iOS.
 
 + Secondary development on [Magento][m] eCommerce software.
 
@@ -25,3 +27,4 @@ header-img: "../sysimg/grass.jpg"
 [q]: https://github.com/ShongSu/QRCode
 [m]: https://github.com/hchen1202/Magento
 [u]: http://ec2-52-3-166-108.compute-1.amazonaws.com/Main/
+[sb]:http://ec2-54-175-204-71.compute-1.amazonaws.com/
