@@ -12,6 +12,7 @@ header-img: "../sysimg/sky2.jpg"
 + [Opeoluwa Temitayo][c]
 + [Zijie(Augustus) Li][d]
 + [Jiaqi Xu][e]
++ [Zheming Zhou][f]
 
 
 
@@ -25,3 +26,4 @@ header-img: "../sysimg/sky2.jpg"
 [c]: http://www.ewejeopeoluwa.com/
 [d]: http://augustus2014.blogspot.ca/
 [e]: http://jqx.world/
+[f]: https://www.zhemingzhou.com/
