@@ -27,4 +27,4 @@ header-img: "../sysimg/grass.jpg"
 [q]: https://github.com/ShongSu/QRCode
 [m]: https://github.com/hchen1202/Magento
 [u]: http://ec2-52-3-166-108.compute-1.amazonaws.com/Main/
-[sb]:http://ec2-54-175-204-71.compute-1.amazonaws.com/
+[bs]:http://ec2-54-175-204-71.compute-1.amazonaws.com/
