@@ -6,7 +6,7 @@ header-img: "../sysimg/blue.jpg"
 ---
 
 
-## Readings - June 2017
+## Readings
 
 [0] [Programming Pearls - 2 Edition][pp2]
 
