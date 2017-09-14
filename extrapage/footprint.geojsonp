@@ -314,6 +314,24 @@ eqfeed_callback(
 			},
 			id: "20170702"
 		},
+		{
+			type: "Feature",
+			properties: {
+				place: "Italy",
+				time: 20170902,
+				updated: 20170902,
+				times: 1,
+				title: "Roma"
+			},
+			geometry: {
+				type: "Point",
+				coordinates: [
+				    12.395913,
+				    41.909986
+				]
+			},
+			id: "20170902"
+		},
 	],
 }
 )
