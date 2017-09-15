@@ -332,6 +332,60 @@ eqfeed_callback(
 			},
 			id: "20170902"
 		},
+		{
+			type: "Feature",
+			properties: {
+				place: "Italy",
+				time: 20170904,
+				updated: 20170904,
+				times: 1,
+				title: "Pisa"
+			},
+			geometry: {
+				type: "Point",
+				coordinates: [
+				    10.3602728,
+				    43.7067453
+				]
+			},
+			id: "20170904"
+		},
+		{
+			type: "Feature",
+			properties: {
+				place: "Italy",
+				time: 20170905,
+				updated: 20170905,
+				times: 1,
+				title: "Firenze"
+			},
+			geometry: {
+				type: "Point",
+				coordinates: [
+				    11.1707559,
+				    43.7799367
+				]
+			},
+			id: "20170905"
+		},
+		{
+			type: "Feature",
+			properties: {
+				place: "Italy",
+				time: 20170907,
+				updated: 20170907,
+				times: 1,
+				title: "Venice"
+			},
+			geometry: {
+				type: "Point",
+				coordinates: [
+				    12.1008655,
+				    45.4041991
+				]
+			},
+			id: "20170907"
+		},
 	],
 }
 )
