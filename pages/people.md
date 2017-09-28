@@ -13,7 +13,7 @@ header-img: "../sysimg/sky2.jpg"
 + [Zijie(Augustus) Li][d]
 + [Jiaqi Xu][e]
 + [Zheming Zhou][f]
-
++ [Zheng Lu][g]
 
 
 
@@ -27,3 +27,4 @@ header-img: "../sysimg/sky2.jpg"
 [d]: http://augustus2014.blogspot.ca/
 [e]: http://jqx.world/
 [f]: https://www.zhemingzhou.com/
+[g]: http://jay0lu.github.io/
