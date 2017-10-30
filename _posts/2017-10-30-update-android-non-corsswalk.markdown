@@ -7,12 +7,11 @@ tags: [Cordova, Android, CrossWalk]
 description:
 ---
 
-
 In our previous app development, we were using [Cordova][co] + [Crosswalk][xw] for a better webView. As of February 2017, Crosswalk is not being developed anymore. And since Android 7.0 added Chromium as their default web view, we don’t need Crosswalk anymore.
 
 ### Problem
 
-We get ride of cordova crosswalk plugin `cordova-plugin-crosswalk-webview` and rebuild an update version (increased `android:versionCode` and `versionName`) of our current app, but it keeps showing Application Installation Failed. The error they provided us is `the device already has a newer version of this application`. It makes me confused since we de increased the version but why shows this error. It means we are not able to upgrade our current app to the newer version.
+We get ride of cordova crosswalk plugin `cordova-plugin-crosswalk-webview` and rebuild an update version (increased `android:versionCode` and `versionName`) of our current app, but it keeps showing `Application Installation Failed`. The error they provided us is `the device already has a newer version of this application`. It makes me confused since we de increased the version but why shows this error. It means we are not able to upgrade our current app to the newer version.
 
 After few hours investigation, I found the reason and a potential solution for it.
 
@@ -47,14 +46,14 @@ if (Boolean.valueOf(cdvBuildMultipleApks)) {
 
 The `defaultConfig.versionCode` comes from your android `AndroidManifest.xml` file which is also come from your condova’s `config.xml`
 
-Such as:
+Such as (suppose our current version is `4.0.1`):
 
 `AndroidManifest.xml:  <manifest android:versionCode=“40001" …/>`
 
 `Config.xml: <widget id=“xxx.xxx.xxx” version=“4.0.1" …/>`
 
 
-Since crosswalk provided tow different CPU architectures: armV7 and x86, when you building and compiling your project, it will call for `build.gradle` to reset your `versionCode`.
+Since crosswalk provided tow different CPU architectures: `armV7` and `x86`, when you building and compiling your project, it will call for `build.gradle` to reset your `versionCode`.
 
 For armv7, the final `versionCode` should be `versionCode*10 + 2`, in our example, it becomes to `400012`.
 
@@ -66,7 +65,7 @@ Until now we learnt that why `the device already has a newer version of this app
 
 ### Solution:
 
-If you are going to update your version from 4.0.1 to 4.0.2, you have to change `android:versionCode=”40002”` to “40002x”, `x` can be any number from `0 to 9`, personally I attached  `0` at the end like `400020`. As long as the new `versionCode` is greater than the old one.
+If you are going to update your version from `4.0.1` to `4.0.2`, you have to change `android:versionCode=”40002”` to `40002x` manually, `x` can be any number from `0 to 9`, personally I attached  `0` at the end like `400020`. As long as the new `versionCode` is greater than the old one.
 
 
 
