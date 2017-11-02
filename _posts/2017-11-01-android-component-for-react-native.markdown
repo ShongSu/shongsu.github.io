@@ -114,6 +114,7 @@ Is this ok? (yes) yes
 ```
 
   * build.gradle
+
   ```
   apply plugin: 'com.android.library'
 
@@ -135,6 +136,7 @@ Is this ok? (yes) yes
   ```
 
   * AndoridManifest.xml
+
   ```
   <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.shongsu.toastdemo">
@@ -142,6 +144,7 @@ Is this ok? (yes) yes
   ```
 
   * DemoModule.java
+  
   ```
   package com.shongsu.toastdemo;
 
