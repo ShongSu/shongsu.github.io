@@ -144,7 +144,7 @@ Is this ok? (yes) yes
   ```
 
   * DemoModule.java
-  
+
   ```
   package com.shongsu.toastdemo;
 
@@ -181,13 +181,14 @@ Is this ok? (yes) yes
   DemoPackage.java是用来注册模块的。
 
   ```
-  package com.shongs.toastdemo;
+  package com.shongsu.toastdemo;
 
   import com.facebook.react.ReactPackage;
   import com.facebook.react.bridge.JavaScriptModule;
   import com.facebook.react.bridge.NativeModule;
   import com.facebook.react.bridge.ReactApplicationContext;
   import com.facebook.react.uimanager.ViewManager;
+  import com.shongsu.toastdemo.DemoModule;
 
   import java.util.ArrayList;
   import java.util.Collections;
@@ -195,7 +196,6 @@ Is this ok? (yes) yes
 
   public class DemoPackage implements ReactPackage {
 
-    @Override
     public List<Class<? extends JavaScriptModule>> createJSModules() {
       return Collections.emptyList();
     }
@@ -245,7 +245,7 @@ react-native init Example
 "dependencies": {
 		"react": "16.0.0-beta.5",
 		"react-native": "0.49.5",
-		"react-native-toast-demo":"file:../"
+		"react-native-toast-demo":"../"
 	},
 ```
 
@@ -261,30 +261,50 @@ react-native link
 ```
 
 
-在`index.android.js`中使用我们的自定义组件：
+在`App.js`中使用我们的自定义组件：
 
 ```
-import DemoModule from 'react-native-toast-demo';
+  import React, { Component } from 'react';
+  import {
+    Platform,
+    StyleSheet,
+    Text,
+    View,
+    Button
+  } from 'react-native';
+  import DemoModule from 'react-native-toast-demo';
 
-const onButtonPress = () => {
-  DemoModule.alert('Hello World');
-};
+  const onButtonPress = () => {
+    DemoModule.alert('Hello World');
+  };
 
-export default class Example extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Button title='Click' onPress={onButtonPress}/>
-      </View>
-    );
+  export default class App extends Component<{}> {
+    render() {
+      return (
+        <View style={styles.container}>
+          <Button title='Click' onPress={onButtonPress}/>
+        </View>
+      );
+    }
   }
-}
+
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: '#F5FCFF',
+    }
+  });
 ```
 
 然后运行项目即可。
+
+项目代码的[Github链接][code]。
 
 
 
 [oc]:http://shongsu.github.io/blog/oc-component-for-react-native.html
 [nm]:https://facebook.github.io/react-native/releases/0.21/docs/native-modules-android.html
 [tt]:https://developer.android.com/reference/android/widget/Toast.html
+[code]: https://github.com/ShongSu/react-native-toast-demo
