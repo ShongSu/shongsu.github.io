@@ -50,20 +50,40 @@ A:
 Any line of instructions containing the # symbol
 
 > print(1) # here is a comment
-> # print(2)
+> \# print(2)
 > print(3) # another comment @!#!@$
 
 If a pound sign # appears in a string, then it does not get treated as a comment.
 
-Use character " inside of a string:
+Use character `"` inside of a string:
 
 > print('I said "Wow!" to him.')
 > print("This is an \"escape\" of a double-quote")
 
 ## 4 Types
 
+> print(type("Hello, World!"))  # <class 'str'>
+> print(type(34)) # <class 'int'>
+> print(type(1.234)) # <class 'float'>
 
+typecast function:
 
+> x = float("3.4") # changes the string "3.4" to the float 3.4
+
+converting a float to an int loses the information after the decimal point, e.g. int(1.234) gives 1, and int(-34.7) gives -34.
+
+converting a str to an int causes an error if the string is not formatted exactly like an integer, e.g. int("1.234") causes an error.
+
+converting a str to a float causes an error if the string is not a number, e.g. float("sandwich") causes an error.
+
+# 5 Input
+
+By calling input() multiple times, you can access multiple lines of input. The first call to input() gets the first line, the second gets the second line, et cetera.
+The string given by input() can be converted to an int or a float.
+
+# 6 If
+
+> if «condition»:
 
 
 
