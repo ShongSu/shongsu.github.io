@@ -11,7 +11,7 @@ This post is my study note when learning Python programming based on [online tut
 
 ## 0 Hello World
 
->> print("Hello, World!")
+> print("Hello, World!")
 
 ## 1 Variables & Errors
 
@@ -19,7 +19,7 @@ You don't need keywords like `var` or `int` to decare variables.
 
 The following code will results to a `TypeError: Can't convert 'int' object to str implicitly`.
 
->> print("you cannot add text and numbers" + 12)
+> print("you cannot add text and numbers" + 12)
 
 Q: What is the technical difference between syntax and run-time errors?
 
@@ -31,6 +31,43 @@ So, a program with a syntax error will execute no steps at all, but a program wi
 The extra spaces in most situations had no effect on the output. However, be careful that extra space at the beginning of a line, called indenting, has a special meaning that can cause errors if used incorrectly.
 
 ## 2 Functions
+
+Q: Code scramble: make the program sort the three numbers x, y and z into increasing order, so that x has the smallest value, y has the next smallest value, and z has the largest value. (only use max(a,b) and min(a,b)).
+
+A:
+  tmp = max(x,y)
+  x = min(x,y)
+  y = tmp
+  tmp = max(y,z)
+  y=min(y,z)
+  z = tmp
+  tmp = max(x,y)
+  x = min(x,y)
+  y = tmp
+
+## 3 Comments and Quotes
+
+Any line of instructions containing the # symbol
+
+> print(1) # here is a comment
+> # print(2)
+> print(3) # another comment @!#!@$
+
+If a pound sign # appears in a string, then it does not get treated as a comment.
+
+Use character " inside of a string:
+
+> print('I said "Wow!" to him.')
+> print("This is an \"escape\" of a double-quote")
+
+## 4 Types
+
+
+
+
+
+
+
 
 
 To be continued...
