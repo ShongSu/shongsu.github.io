@@ -50,7 +50,7 @@ A:
 Any line of instructions containing the # symbol
 
 > print(1) # here is a comment
-> \# print(2)
+>> # print(2)
 > print(3) # another comment @!#!@$
 
 If a pound sign # appears in a string, then it does not get treated as a comment.
@@ -76,14 +76,28 @@ converting a str to an int causes an error if the string is not formatted exactl
 
 converting a str to a float causes an error if the string is not a number, e.g. float("sandwich") causes an error.
 
-# 5 Input
+## 5 Input
 
 By calling input() multiple times, you can access multiple lines of input. The first call to input() gets the first line, the second gets the second line, et cetera.
 The string given by input() can be converted to an int or a float.
 
-# 6 If
+## 6 If
 
 > if «condition»:
+
+the «condition» which must be a True/False expression
+
+Then, the body consisting of one or more indented lines. The number of spaces (the amount of indentation) doesn't matter, but being inconsistent will cause an error since Python uses the amount of indentation to determine where you mean the body to start or stop.
+
+In Python, the bool type is used to represent Boolean values; only two bool values exist, True and False.
+
+## 7 Design, Debugging and Donuts
+
+ // for integer division instead of / which does decimal division
+
+## 8 String, Math & Loop
+
+
 
 
 
