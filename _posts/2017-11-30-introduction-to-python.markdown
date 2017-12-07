@@ -97,6 +97,26 @@ In Python, the bool type is used to represent Boolean values; only two bool valu
 
 ## 8 String, Math & Loop
 
+String
+
+For a string S and an integer index, the notation `S[index]`. In many other programming languages, there is a separate type for characters. In Python, characters are the same as length-1 strings
+
+Cutting strings: `S[firstIndex:tailIndex]` to get the substring starting at index firstIndex and ending at tailIndex-1.
+
+length of a string: `len(S)`
+
+Pasting strings: `S+T` is to create a new string that starts with S and has T immediately afterwards
+
+If you want to concatenate numbers, you need to convert them to str first. such as `print("high " + str(5))`
+
+`S * n` is short for `S + S + ... + S`.
+
+`ord`: convert a character into its corresponding numerical code
+
+`chr`: convert a numerical code into its corresponding character
+
+
+
 
 
 
