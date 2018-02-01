@@ -386,6 +386,24 @@ eqfeed_callback(
 			},
 			id: "20170907"
 		},
+		{
+			type: "Feature",
+			properties: {
+				place: "China",
+				time: 20171227,
+				updated: 20171227,
+				times: 1,
+				title: "Wuhan"
+			},
+			geometry: {
+				type: "Point",
+				coordinates: [
+				    114.020194,
+				    30.567816
+				]
+			},
+			id: "20171227"
+		},
 	],
 }
 )
