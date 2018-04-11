@@ -404,6 +404,24 @@ eqfeed_callback(
 			},
 			id: "20171227"
 		},
+		{
+			type: "Feature",
+			properties: {
+				place: "USA",
+				time: 20180330,
+				updated: 20180330,
+				times: 1,
+				title: "Orlando"
+			},
+			geometry: {
+				type: "Point",
+				coordinates: [
+				    -81.470008,
+				    28.4743207
+				]
+			},
+			id: "20180330"
+		},
 	],
 }
 )
