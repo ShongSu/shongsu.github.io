@@ -625,7 +625,7 @@ The Five Pillars: Security, Reliability, Performance Efficiency, Cost optimizati
   * Very expensive.
   * Only mission-critical apps.
 
-*AWS:
+* AWS:
   * Multiple servers
   * AZ's
   * Regions.
