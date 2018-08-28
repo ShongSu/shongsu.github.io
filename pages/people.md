@@ -13,6 +13,7 @@ header-img: "../sysimg/sky2.jpg"
 + [Jiaqi Xu][e]
 + [Zheming Zhou][f]
 + [Zheng Lu][g]
++ [Wei Xie][h]
 
 
 
@@ -26,3 +27,4 @@ header-img: "../sysimg/sky2.jpg"
 [e]: http://jqx.world/
 [f]: https://www.zhemingzhou.com/
 [g]: http://jay0lu.github.io/
+[h]: https://evan0322.github.io/
