@@ -11,19 +11,26 @@ header-img: "../sysimg/tree.jpg"
 </center>
 
 
-<b>Pengyu Chen</b> <a target="_blank" href="../extrapage/me.html"> Click Me...</a> <br />
+<b>Pengyu Chen</b> <!--<a target="_blank" href="../extrapage/me.html"> Click Me...</a> --> <br />
 Ottawa, Ontario, Canada <br />
 
 
 **Work Experience**
 
+<b>Staff Software Developer</b> @ [IBM Canada][ibm] <br />
+2018.11 - Present <br />
+Ottawa, Ontario, Canada <br />
+<br />
 <b>Software Developer</b> @ [Aetonix Systems Inc][ae] <br />
+2015.10 - 2018.11 <br />
 Ottawa, Ontario, Canada <br />
 <br />
 <b>QA Developer Intern</b> @ [Optimal Payments PLC][op] <br />
+2014.9 - 2014.12 <br />
 Gatineau, Quebec, Canada <br />
 <br />
-<b>Web Developer</b> @ Ottawa Insititute of Systems Biology, [University of Ottawa][uo] <br />
+<b>Web Developer Intern</b> @ Ottawa Insititute of Systems Biology, [University of Ottawa][uo] <br />
+2014.4 - 2014.8 <br />
 Ottawa, Ontario, Canada
 
 
@@ -60,6 +67,7 @@ This Blog was written by [Sublime][s], built by [Jekyll][j], management by [Gith
 </center>
 
 
+[ibm]: https://www.ibm.com/ca-en/
 [ae]: http://www.aetonix.com/
 [op]: https://www.paysafe.com/
 [uo]: http://www.uottawa.ca/
