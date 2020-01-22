@@ -1,45 +1,151 @@
-<!DOCTYPE html>
 <html>
   <head>
-    <style>
-      html, body, #map { margin: 0; padding: 0; height: 100%; }
-    </style>
-    <script
-      src="https://maps.googleapis.com/maps/api/js?libraries=visualization">
-    </script>
-    <script>
-      var map;
-
-      function initialize() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 2,
-          center: new google.maps.LatLng(2.8,-187.3),
-          mapTypeId: google.maps.MapTypeId.TERRAIN
-        });
-
-        // Create a <script> tag and set the USGS URL as the source.
-        var script = document.createElement('script');
-        // (In this example we use a locally stored copy instead.)
-        script.src = './footprint.geojsonp';
-        document.getElementsByTagName('head')[0].appendChild(script);
-      }
-
-      // Loop through the results array and place a marker for each
-      // set of coordinates.
-      window.eqfeed_callback = function(results) {
-        for (var i = 0; i < results.features.length; i++) {
-          var coords = results.features[i].geometry.coordinates;
-          var latLng = new google.maps.LatLng(coords[1],coords[0]);
-          var marker = new google.maps.Marker({
-            position: latLng,
-            map: map,
-          });
-        }
-      }
-      google.maps.event.addDomListener(window, 'load', initialize)
-    </script>
+    <title> </title>
+    <script src="https://www.amcharts.com/lib/4/core.js"></script>
+    <script src="https://www.amcharts.com/lib/4/maps.js"></script>
+    <script src="https://www.amcharts.com/lib/4/geodata/worldLow.js"></script>
+    <script src="https://www.amcharts.com/lib/4/geodata/chinaLow.js"></script>
+    <script src="https://www.amcharts.com/lib/4/geodata/usaLow.js"></script>
+    <script src="https://www.amcharts.com/lib/4/geodata/canadaLow.js"></script>
+    <script src="https://www.amcharts.com/lib/4/geodata/japanLow.js"></script>
+    <script src="https://www.amcharts.com/lib/4/geodata/italyLow.js"></script>
   </head>
+  <script>
+    am4core.ready(function() {
+      var chart = am4core.create("chartdiv", am4maps.MapChart);
+
+      // Set map definition
+      chart.geodata = am4geodata_worldLow;
+
+      // Set projection
+      chart.projection = new am4maps.projections.Miller();
+
+      // Create map polygon series
+      var polygonSeries = chart.series.push(new am4maps.MapPolygonSeries());
+
+      // Make map load polygon (like country names) data from GeoJSON
+      polygonSeries.useGeodata = true;
+
+      // Configure series
+      var polygonTemplate = polygonSeries.mapPolygons.template;
+      polygonTemplate.tooltipText = "{name}";
+      if (polygonTemplate.tooltipText === "Taiwan")
+        polygonTemplate.tooltipText = "Taiwan(China)";
+
+      //   // Create hover state and set alternative fill color
+      //   var hs = polygonTemplate.states.create("hover");
+      //   hs.properties.fill = am4core.color("#367B25");
+
+      // Remove Antarctica
+      polygonSeries.exclude = ["AQ"];
+
+      // Add some data
+      polygonSeries.data = [
+        {
+          id: "US",
+          disabled: true
+        },
+        {
+          id: "CN",
+          disabled: true
+        },
+        {
+          id: "CA",
+          disabled: true
+        },
+        {
+          id: "FR",
+          name: "France"
+        },
+        {
+          id: "JP",
+          fill: am4core.color("#ffb900")
+        },
+        {
+          id: "IT",
+          fill: am4core.color("#ffb900")
+        }
+      ];
+
+      // Bind "fill" property to "fill" key in data
+      polygonTemplate.propertyFields.fill = "fill";
+
+      var usaSeries = chart.series.push(new am4maps.MapPolygonSeries());
+      usaSeries.geodata = am4geodata_usaLow;
+      // Series for United States map
+      usaSeries.data = [
+        {
+          id: "US-FL",
+          fill: am4core.color("#ffb900")
+        },
+        {
+          id: "US-NY",
+          fill: am4core.color("#ffb900")
+        }
+      ];
+      var polygonTemplate = usaSeries.mapPolygons.template;
+      polygonTemplate.tooltipText = "{id}";
+      polygonTemplate.propertyFields.fill = "fill";
+
+      var chinaSeries = chart.series.push(new am4maps.MapPolygonSeries());
+      chinaSeries.geodata = am4geodata_chinaLow;
+      chinaSeries.data = [
+        {
+          id: "CN-TW",
+          name: "Taiwan(China)"
+        },
+        {
+          id: "CN-BJ",
+          fill: am4core.color("#ffb900")
+        },
+        {
+          id: "CN-TJ",
+          fill: am4core.color("#ffb900")
+        },
+        {
+          id: "CN-SD",
+          fill: am4core.color("#ffb900")
+        },
+        {
+          id: "CN-HA",
+          fill: am4core.color("#ffb900")
+        },
+        {
+          id: "CN-HB",
+          fill: am4core.color("#ffb900")
+        },
+        {
+          id: "CN-SN",
+          fill: am4core.color("#ffb900")
+        }
+      ];
+
+      // Series for United States map
+      var polygonTemplateChina = chinaSeries.mapPolygons.template;
+      polygonTemplateChina.tooltipText = "{name}";
+      polygonTemplateChina.propertyFields.fill = "fill";
+
+      var canadaSeries = chart.series.push(new am4maps.MapPolygonSeries());
+      canadaSeries.geodata = am4geodata_canadaLow;
+      canadaSeries.data = [
+        {
+          id: "CA-ON",
+          name: "Ontario",
+          fill: am4core.color("#ffb900")
+        },
+        {
+          id: "CA-QC",
+          name: "Québec",
+          fill: am4core.color("#ffb900")
+        }
+      ];
+
+      var polygonTemplate = canadaSeries.mapPolygons.template;
+      polygonTemplate.tooltipText = "{id}";
+      polygonTemplate.propertyFields.fill = "fill";
+    });
+  </script>
   <body>
-    <div id="map"></div>
+    <div id="chartdiv"></div>
   </body>
 </html>
