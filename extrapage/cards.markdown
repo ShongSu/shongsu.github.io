@@ -6,7 +6,7 @@ post-link:
 ---
 
 
-| Card | Fee | Grocery	| Dining | Entmt. | Drug | Bill | Gas | Travel | Transit | Other | Extra | FX |
+| Card Type | Fee | Grocery	| Dining | Entmt. | Drug | Bill | Gas | Travel | Transit | Other | Extra | FX |
 | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
 | ![Scotia Passport](https://www.scotiabank.com/content/dam/scotiabank/canada/credit-cards/images/card-art/Passport_Visa_Infinite_CreditCard_0421_Eng.png) | $75 | `2x` | `2x` | 2x | 1x | 1x | 1x | 1x | 2x | 1x | Airport Lounge x6 | No |
 | ![Scotia Amex](https://www.scotiabank.com/content/dam/scotiabank/canada/credit-cards/images/card-art/AMEX_Gold_SceneGoldLogo_En.png) | $75 | `5x` | `5x` | `5x` | 1x | 1x | `3x` | 1x | `3x` | 1x | / | No |
