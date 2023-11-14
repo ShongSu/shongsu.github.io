@@ -422,6 +422,24 @@ eqfeed_callback(
 			},
 			id: "20180330"
 		},
+		{
+			type: "Feature",
+			properties: {
+				place: "China",
+				time: 20230924,
+				updated: 20231114,
+				times: 99,
+				title: "Guangzhou"
+			},
+			geometry: {
+				type: "Point",
+				coordinates: [
+					112.8975042,
+					23.1258854,
+				]
+			},
+			id: "20230924"
+		},
 	],
 }
 )

@@ -17,8 +17,12 @@ Ottawa, Ontario, Canada <br />
 
 **Work Experience**
 
+<b>Software Architect</b> @ [Aetonix Systems Inc][ae] <br />
+2022.11 - Present <br />
+Ottawa, Ontario, Canada <br />
+<br />
 <b>Staff Software Developer</b> @ [IBM Canada][ibm] <br />
-2018.11 - Present <br />
+2018.11 - 2022.11 <br />
 Ottawa, Ontario, Canada <br />
 <br />
 <b>Software Developer</b> @ [Aetonix Systems Inc][ae] <br />
