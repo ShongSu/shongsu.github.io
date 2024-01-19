@@ -254,3 +254,57 @@ MyBands.data = ['Neil Young', 'Led Zep']
 console.log(MyBands.data) // ['Neil Young', 'Led Zep']
 MyBands.data = [...MyBands.data, 'ZZ Top']
 console.log(MyBands.data) // ['Neil Young', 'Led Zep','ZZ Top']
+
+
+# Index Signatures & keyof Assertions
+
+// Index Signatures
+
+interface TransactionObj {
+  Pizza: number,
+  Books: number,
+  Job: number
+}
+
+const todaysTransactions: TransactionObj = {
+  Pizza: -10,
+  Books: -5,
+  Job: 50
+}
+
+interface TransactionObj {
+  [index: string]: number
+}
+
+////////////////
+
+interface Student {
+  [key: string]: string | number | number[] | undefined,
+  name: string,
+  GPA: number,
+  classes?: number[]
+}
+
+const student: Student = {
+  name: "Dong",
+  GPA: 3.5,
+  classes: [100, 200] 
+}
+
+for(const key in student) {
+  console.log(`${key}: ${student[key as keyof Student]}`)
+}
+
+type Stream = 'salary' | 'bouns' | 'sidehustle'
+
+type Incomes = Record<Streams, number | string>
+
+const monthlyIncomes: Incomes = {
+  salary: 500,
+  bonus: 100,
+  sidehustle: 250
+}
+
+for(const revenue in monthlyIncomes) {
+  console.log(monthlyIncomes[revenue as keyof Incomes])
+}
