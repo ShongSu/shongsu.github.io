@@ -9,7 +9,7 @@
 | ![Rogers](https://media.creditcardgenius.ca/credit-card-images/lg/rogers-world-elite-mastercard.png) | $0 | `3x` | `3x` | 3x | `3x` | `3x` | `3x` | 3x | `3x` | `3x` | Rogers needed | Yes | / |
 | ![CIBC Aeroplan](https://www.cibc.com/content/cibcpublic/en/personal-banking/credit-cards/all-credit-cards/aeroplan-visa-infinite-card/_jcr_content/parsys/image_copy_copy_copy.render.desktop.png) | $139 | 1.5x | 1x | 1x | 1x | 1x | 1.5x | 1x | 1x | 1x | / | Yes | Apr 27 |
 | ![National WEMC](https://www.nbc.ca/personal/mastercard-credit-cards/world-elite/_jcr_content/root/landmarks/responsivegrid/landmarks_683016834/responsivegrid_12564/responsivegrid_copy_/responsivegrid_74545/responsivegrid/responsivegrid_1219401158/responsivegrid_11000/image_copy.bncimg.100.767.lg.png/1743090820188/world-elite-card-300x190.png) | $150 | `5x` | `5x` | 1x | 1x | 2x | 2x | 1x | 1x | 1x | Insurance | Yes | Aug 23 |
-| ![Aeroplan Amex](https://icm.aexp-static.com/Internet/internationalcardshop/en_ca/images/cards/aeroplan-card.png) | $120 | `` | `` | x | x | x | x | x | x | x | x | Yes | Dec 24 |
+| ![Aeroplan Amex](https://icm.aexp-static.com/Internet/internationalcardshop/en_ca/images/cards/aeroplan-card.png) | $120 | x | x | x | x | x | x | x | x | x | x | Yes | Dec 24 |
 
 
 | Card | Fee | Grocery	| Dining | Entmt. | Drug | Bill | Gas | Travel | Transit | Other | Extra | FX |  Renew |
