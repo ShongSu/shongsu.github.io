@@ -115,9 +115,11 @@ const add = (a: number, b: number) : number => {
     return a + b;
 }
 
+```js
 const logMsg = (message: any): void => {
   console.log(message)
 }
+```
 
 type mathFunction = (a: number, b: number) => number
 
@@ -183,9 +185,10 @@ class WebDev extends Coder {
   }
 }
 
+```ts
 const Sara = new WebDev('Mac', 'Sara', 'Lofi',25)
 console.log(Sara.getLang()) // I write Typescript
-
+```
 
 interface Musician {
   name: string,
