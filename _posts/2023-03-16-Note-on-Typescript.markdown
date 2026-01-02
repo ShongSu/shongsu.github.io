@@ -17,6 +17,7 @@ JS: Loosely Typed Language; Dynamically typed Language (Checked at run time)
 
 ## Hello World
 
+```ts
 const hello : string = "Hello World!"
 
 let a: string = 'abc'
@@ -27,21 +28,23 @@ let re: RegExp = /\w+/g
 
 
 const sum = (a: number, b: number) => {
-```
-return a + b;
-```
+  return a + b;
 }
+```
 
 # Union type
 
+```ts
 let postId: string | number
 let isActive: number | boolean
 
 
 let re = /\w+/g
+```
 
 # Arrays & Objects
 
+```ts
 let stringArr = ['one','two','three'] // string
 let guitars = ['one','two',123] // string | number
 let mixed = ['one',1992,true] // string | number | boolean
@@ -63,10 +66,8 @@ const exampleObj = {
 }
 
 const exampleObj: {
-```
-prop1: string;
-prop2: boolean;
-```
+  prop1: string;
+  prop2: boolean;
 }
 
 type Guitarist = {
@@ -89,11 +90,11 @@ enum Grade {
 }
 
 Grade.U // 0
-
+```
 # Functions
 
 
-
+```ts
 // Type Aliases
 
 type stringOrNumber = string | number
@@ -101,12 +102,10 @@ type stringOrNumber = string | number
 type stringOrNumberArray = (string | number)[]
 
 type Guitarist = {
-```
-name?: string,
-active: boolean,
-albums: (string | number)[]
-```
-  }
+  name?: string,
+  active: boolean,
+  albums: (string | number)[]
+}
   
 type UserId = stringOrNumber
 
@@ -118,16 +117,12 @@ let userName: 'Chen' | 'Li' | 'Peng'
 // functions
 
 const add = (a: number, b: number) : number => {
-```
-return a + b;
-```
+  return a + b;
 }
 
-```js
 const logMsg = (message: any): void => {
   console.log(message)
 }
-```
 
 type mathFunction = (a: number, b: number) => number
 
@@ -142,9 +137,7 @@ interface mathFunction {
 // optional parameters
 const addAll = (a:number, b:number, c?:number): number => {
   if(typeof c !== 'undefined') {
-```
-return a + b + c
-```
+    return a + b + c
   }
   return a + b
 }
@@ -154,30 +147,25 @@ return a + b + c
 cosnt total = (a: number, ...nums: number[]) : number => {
   return a + nums.reduce((prev, curr) => prev + curr)
 }
-
+```
 # Classes
 
+```ts
 class Coder {
   constructor(
-```
-public readonly name: string, 
-public music:string, 
-private age: number, 
-protected lang: string = 'Typescript'
-```
+  public readonly name: string, 
+  public music:string, 
+  private age: number, 
+  protected lang: string = 'Typescript'
 ) {
-```
-this.name: name
-this.music: music
-this.age: age
-this.lang: lang
-```
+  this.name: name
+  this.music: music
+  this.age: age
+  this.lang: lang
 }
 
 public getAge() {
-```
-return `Hello, I'm ${this.age}`
-```
+  return `Hello, I'm ${this.age}`
   }
 }
 
@@ -186,31 +174,22 @@ const Dave = new Coder('Dave', 'Rock', 32)
 
 class WebDev extends Coder {
   constructor(
-```
-public computer: string,
-name: string, 
-music:string, 
-age: number, 
-```
-
+  public computer: string,
+  name: string, 
+  music:string, 
+  age: number, 
 ) {
-```
-super(name, music, age)
-this.computer = computer
-```
+  super(name, music, age)
+  this.computer = computer
 }
 
 public getLang() {
-```
-return `I write ${this.lang}`
-```
+  return `I write ${this.lang}`
   }
 }
 
-```ts
 const Sara = new WebDev('Mac', 'Sara', 'Lofi',25)
 console.log(Sara.getLang()) // I write Typescript
-```
 
 interface Musician {
   name: string,
@@ -223,16 +202,12 @@ class Guitarist implements Musician {
   instrument: string
 
   constructor(name: string, instrument: string){
-```
-this.name = name;
-this.instrument =instrument
-```
+    this.name = name;
+    this.instrument =instrument
   }
 
   play(action: string) {
-```
-return `${this.name} ${action} the ${this.instrument}`
-```
+    return `${this.name} ${action} the ${this.instrument}`
   }
 }
 
@@ -242,17 +217,13 @@ conosle.log(Page.play('strums')) // Jimmy strums the guitar
 class Peeps {
   static count: number = 0
   static getCount(): number {
-```
-return Peeps.count
-```
+    return Peeps.count
   }
 
   public id: number
   construtor(public name: string) {
-```
-this.name = name
-this.id = ++Peeps.count
-```
+    this.name = name
+    this.id = ++Peeps.count
   }
 }
 
@@ -265,25 +236,18 @@ class Bands {
   private dataState: string[]
 
   construtor() {
-```
-this.dataState = []
-```
+    this.dataState = []
   }
 
   public get data(): string[] {
-```
-return this.dataState
-```
+    return this.dataState
   }
 
   public set data(value: string[]) {
-```
-if(Array.isArray(value) && value.every(el=>typeof el === 'string')) {
-  this.dateState = value
-  return
-} else throw new Error('Param is not an array of strings')
-```
-
+    if(Array.isArray(value) && value.every(el=>typeof el === 'string')) {
+      this.dateState = value
+      return
+    } else throw new Error('Param is not an array of strings')
   } 
 }
 
@@ -293,10 +257,11 @@ MyBands.data = ['Neil Young', 'Led Zep']
 console.log(MyBands.data) // ['Neil Young', 'Led Zep']
 MyBands.data = [...MyBands.data, 'ZZ Top']
 console.log(MyBands.data) // ['Neil Young', 'Led Zep','ZZ Top']
-
+```
 
 # Index Signatures & keyof Assertions
 
+```ts
 // Index Signatures
 
 interface TransactionObj {
@@ -347,9 +312,11 @@ const monthlyIncomes: Incomes = {
 for(const revenue in monthlyIncomes) {
   console.log(monthlyIncomes[revenue as keyof Incomes])
 }
+```
 
 # Generics
 
+```ts
 const echo = <T>(arg: T): T => arg
 const isObj = <T>(arg: T): boolean => {
   return (typeof arg === 'obj' && !Array.isArray(arg) && arg !== null)
@@ -357,162 +324,136 @@ const isObj = <T>(arg: T): boolean => {
 
 const isTrue = <T>(arg: T): { arg: T, is: boolean} => {
   if(Array.isArray(arg) && !arg.length) {
-```
-return {arg, is: false}
-```
+    return {arg, is: false}
   }
   if(isObj(arg) && !Object.keys(arg as keyof T).length) {
-```
-return {art, is: false}
-```
+    return {art, is: false}
   }
   return {arg, is: !!arg}
 
 }
+```
 
 # Utility Types
 
-// Partial 
 
+// Partial 
+```ts
 interface Assignment {
-```
-studentId: string,
-title: string,
-grade: number,
-verified?: boolean,
-```
+  studentId: string,
+  title: string,
+  grade: number,
+  verified?: boolean,
 }
 
 const updateAssignment = (assign: Assignment, propsToUpdate: Partial<Assignment>): Assignment => {
-```
-return { ...assign, ...propsToUpdate }
-```
+  return { ...assign, ...propsToUpdate }
 }
 
 const assign1: Assignment = {
-```
-studentId: "compsci123",
-title: "Final Project",
-grade: 0,
-```
+  studentId: "compsci123",
+  title: "Final Project",
+  grade: 0,
 }
 
 console.log(updateAssignment(assign1, { grade: 95 }))
 const assignGraded: Assignment = updateAssignment(assign1, { grade: 95 })
-
+```
 
 // Required and Readonly 
 
+```ts
 const recordAssignment = (assign: Required<Assignment>): Assignment => {
-```
-// send to database, etc. 
-return assign
-```
+  // send to database, etc. 
+  return assign
 }
 
 const assignVerified: Readonly<Assignment> = { ...assignGraded, verified: true }
 
 recordAssignment({ ...assignGraded, verified: true })
-
+```
 
 // Record 
+```ts
 const hexColorMap: Record<string, string> = {
-```
-red: "FF0000",
-green: "00FF00",
-blue: "0000FF",
-```
+  red: "FF0000",
+  green: "00FF00",
+  blue: "0000FF",
 }
-
+```
 // Pick and Omit 
-
+```ts
 type AssignResult = Pick<Assignment, "studentId" | "grade">
 
 const score: AssignResult = {
-```
-studentId: "k123",
-grade: 85,
-```
+  studentId: "k123",
+  grade: 85,
 }
 
 type AssignPreview = Omit<Assignment, "grade" | "verified">
 
 const preview: AssignPreview = {
-```
-studentId: "k123",
-title: "Final Project",
-```
+  studentId: "k123",
+  title: "Final Project",
 }
-
+```
 
 // Exclude and Extract 
-
+```ts
 type adjustedGrade = Exclude<LetterGrades, "U">
 
 type highGrades = Extract<LetterGrades, "A" | "B">
-
+```
 
 // Nonnullable 
-
+```ts
 type AllPossibleGrades = 'Dave' | 'John' | null | undefined
 type NamesOnly = NonNullable<AllPossibleGrades>
-
+``` 
 // ReturnType 
 
-
+```ts
 const createNewAssign = (title: string, points: number) => {
-```
-return { title, points }
-```
+  return { title, points }
 }
 
 type NewAssign = ReturnType<typeof createNewAssign>
 
 const tsAssign: NewAssign = createNewAssign("Utility Types", 100)
-
+```
 // Parameters 
 
+```ts
 type AssignParams = Parameters<typeof createNewAssign>
 
 const assignArgs: AssignParams = ["Generics", 100]
 
 const tsAssign2: NewAssign = createNewAssign(...assignArgs)
-
+```
 
 
 
 // Awaited - helps us with the ReturnType of a Promise 
-
+```ts
 interface User {
-```
-id: number,
-name: string,
-username: string,
-email: string,
-```
+  id: number,
+  name: string,
+  username: string,
+  email: string,
 }
 
 const fetchUsers = async (): Promise<User[]> => {
-
-```
-const data = await fetch(
-```
-'https://jsonplaceholder.typicode.com/users'
-```
-).then(res => {
-```
-return res.json()
-```
-}).catch(err => {
-```
-if (err instanceof Error) console.log(err.message)
-```
-})
-return data
-```
+  const data = await fetch(
+    'https://jsonplaceholder.typicode.com/users'
+  ).then(res => {
+    return res.json()
+    }).catch(err => {
+      if (err instanceof Error) console.log(err.message)
+    })
+  return data
 }
 
 type FetchUsersReturnType = Awaited<ReturnType<typeof fetchUsers>>
-
+```
 
 
