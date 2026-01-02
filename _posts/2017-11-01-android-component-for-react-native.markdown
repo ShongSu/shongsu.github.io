@@ -27,9 +27,12 @@ npm install -g react-native-cli
 
 ```
 --Project Folder
-       |--package.json
-       |--android  //这个文件夹内包含我们所需要的Java的原生代码
-       |--index.js   
+```
+   |--package.json
+   |--android  //这个文件夹内包含我们所需要的Java的原生代码
+   |--index.js   
+```
+
 ```
 
 接下来我们分别来编写、生成这些文件。
@@ -75,14 +78,18 @@ About to write to ~/react-native-toast-demo/package.json:
   "description": "Toast Demo for React Native Android",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "react",
-    "native",
-    "android",
-    "toast",
-    "demo"
+```
+"test": "echo \"Error: no test specified\" && exit 1"
+```
+},
+"keywords": [
+```
+"react",
+"native",
+"android",
+"toast",
+"demo"
+```
   ],
   "author": "shongsu",
   "license": "MIT"
@@ -100,78 +107,98 @@ Is this ok? (yes) yes
 
 ```
 --react-native-toast-demo/android
-      |--build.gradle
-      |--src
-          |--main
-              |--AndroidManifest.xml
-              |--java
-                   |--com
-                       |--shongsu
-                             |--toastdemo
-                                  |--DemoModule.java
-                                  |--DemoPackage.java
+```
+  |--build.gradle
+  |--src
+```
+|--main
+    |--AndroidManifest.xml
+    |--java
+         |--com
+             |--shongsu
+                   |--toastdemo
+                        |--DemoModule.java
+                        |--DemoPackage.java
+```
+```
 
 ```
 
   * build.gradle
 
   ```
-  apply plugin: 'com.android.library'
+apply plugin: 'com.android.library'
 
-  android {
-      compileSdkVersion 23
-      buildToolsVersion "25.0.0"
+android {
+```
+  compileSdkVersion 23
+  buildToolsVersion "25.0.0"
+```
 
-      defaultConfig {
-          minSdkVersion 16
-          targetSdkVersion 23
-          versionCode 1
-          versionName "1.0"
-      }
+```
+  defaultConfig {
+```
+minSdkVersion 16
+targetSdkVersion 23
+versionCode 1
+versionName "1.0"
+```
   }
+```
+}
 
-  dependencies {
-      compile "com.facebook.react:react-native:+"
-  }
+dependencies {
+```
+  compile "com.facebook.react:react-native:+"
+```
+}
   ```
 
   * AndoridManifest.xml
 
   ```
-  <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.shongsu.toastdemo">
-  </manifest>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+```
+package="com.shongsu.toastdemo">
+```
+</manifest>
   ```
 
   * DemoModule.java
 
   ```
-  package com.shongsu.toastdemo;
+package com.shongsu.toastdemo;
 
-  import android.widget.Toast;
+import android.widget.Toast;
 
-  import com.facebook.react.bridge.NativeModule;
-  import com.facebook.react.bridge.ReactApplicationContext;
-  import com.facebook.react.bridge.ReactContext;
-  import com.facebook.react.bridge.ReactContextBaseJavaModule;
-  import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.NativeModule;
+import com.facebook.react.bridge.ReactApplicationContext;
+import com.facebook.react.bridge.ReactContext;
+import com.facebook.react.bridge.ReactContextBaseJavaModule;
+import com.facebook.react.bridge.ReactMethod;
 
-  public class DemoModule extends ReactContextBaseJavaModule {
+public class DemoModule extends ReactContextBaseJavaModule {
 
-    public DemoModule(ReactApplicationContext reactContext) {
-      super(reactContext);
-    }
+```
+public DemoModule(ReactApplicationContext reactContext) {
+  super(reactContext);
+}
+```
 
-    @Override
-    public String getName() {
-      return "DemoModule";
-    }
+```
+@Override
+public String getName() {
+  return "DemoModule";
+}
+```
 
-    @ReactMethod
-    public void alert(String message) {
-      Toast.makeText(getReactApplicationContext(), message, Toast.LENGTH_LONG).show();
-    }
-  }
+```
+@ReactMethod
+public void alert(String message) {
+  Toast.makeText(getReactApplicationContext(), message, Toast.LENGTH_LONG).show();
+}
+```
+}
   ```
   DemoModule继承了ReactContextBaseJavaModule类并实现了JavaScript所需要的方法。
   在这里，`getName()`返回的字符串必须和你的类名相同
@@ -181,41 +208,53 @@ Is this ok? (yes) yes
   DemoPackage.java是用来注册模块的。
 
   ```
-  package com.shongsu.toastdemo;
+package com.shongsu.toastdemo;
 
-  import com.facebook.react.ReactPackage;
-  import com.facebook.react.bridge.JavaScriptModule;
-  import com.facebook.react.bridge.NativeModule;
-  import com.facebook.react.bridge.ReactApplicationContext;
-  import com.facebook.react.uimanager.ViewManager;
-  import com.shongsu.toastdemo.DemoModule;
+import com.facebook.react.ReactPackage;
+import com.facebook.react.bridge.JavaScriptModule;
+import com.facebook.react.bridge.NativeModule;
+import com.facebook.react.bridge.ReactApplicationContext;
+import com.facebook.react.uimanager.ViewManager;
+import com.shongsu.toastdemo.DemoModule;
 
-  import java.util.ArrayList;
-  import java.util.Collections;
-  import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-  public class DemoPackage implements ReactPackage {
+public class DemoPackage implements ReactPackage {
 
-    public List<Class<? extends JavaScriptModule>> createJSModules() {
-      return Collections.emptyList();
-    }
+```
+public List<Class<? extends JavaScriptModule>> createJSModules() {
+  return Collections.emptyList();
+}
+```
 
-    @Override
-    public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
-      return Collections.emptyList();
-    }
+```
+@Override
+public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
+  return Collections.emptyList();
+}
+```
 
-    @Override
-    public List<NativeModule> createNativeModules(
-                                ReactApplicationContext reactContext) {
-      List<NativeModule> modules = new ArrayList<>();
+```
+@Override
+public List<NativeModule> createNativeModules(
+```
+ReactApplicationContext reactContext) {
+```
+  List<NativeModule> modules = new ArrayList<>();
+```
 
-      modules.add(new DemoModule(reactContext));
+```
+  modules.add(new DemoModule(reactContext));
+```
 
-      return modules;
-    }
+```
+  return modules;
+}
+```
 
-  }
+}
   ```
 
 #### Index.js
@@ -243,10 +282,15 @@ react-native init Example
 
 ```
 "dependencies": {
-		"react": "16.0.0-beta.5",
-		"react-native": "0.49.5",
-		"react-native-toast-demo":"../"
-	},
+```
+```
+"react": "16.0.0-beta.5",
+"react-native": "0.49.5",
+"react-native-toast-demo":"../"
+```
+},
+```
+
 ```
 
 然后通过`npm`安装模块：
@@ -264,38 +308,48 @@ react-native link
 在`App.js`中使用我们的自定义组件：
 
 ```
-  import React, { Component } from 'react';
-  import {
-    Platform,
-    StyleSheet,
-    Text,
-    View,
-    Button
-  } from 'react-native';
-  import DemoModule from 'react-native-toast-demo';
+import React, { Component } from 'react';
+import {
+```
+Platform,
+StyleSheet,
+Text,
+View,
+Button
+```
+} from 'react-native';
+import DemoModule from 'react-native-toast-demo';
 
-  const onButtonPress = () => {
-    DemoModule.alert('Hello World');
-  };
+const onButtonPress = () => {
+```
+DemoModule.alert('Hello World');
+```
+};
 
-  export default class App extends Component<{}> {
-    render() {
-      return (
-        <View style={styles.container}>
-          <Button title='Click' onPress={onButtonPress}/>
-        </View>
-      );
-    }
-  }
+export default class App extends Component<{}> {
+```
+render() {
+  return (
+```
+<View style={styles.container}>
+  <Button title='Click' onPress={onButtonPress}/>
+</View>
+```
+  );
+}
+```
+}
 
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: '#F5FCFF',
-    }
-  });
+const styles = StyleSheet.create({
+```
+container: {
+  flex: 1,
+  justifyContent: 'center',
+  alignItems: 'center',
+  backgroundColor: '#F5FCFF',
+}
+```
+});
 ```
 
 然后运行项目即可。

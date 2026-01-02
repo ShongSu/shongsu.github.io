@@ -17,15 +17,19 @@ description:
 for example:
 
 
-      int array[] = { 23, 34, 12, 17, 204, 99, 16 };
-      #define TOTAL_ELEMENTS (sizeof(array) / sizeof(array[0]))
-      int main(){
-        int d= -1;
-        if (d <= TOTAL_ELEMENTS-2)
-        {
-          /* ... */
-        }
-      }
+```
+int array[] = { 23, 34, 12, 17, 204, 99, 16 };
+#define TOTAL_ELEMENTS (sizeof(array) / sizeof(array[0]))
+int main(){
+```
+int d= -1;
+if (d <= TOTAL_ELEMENTS-2)
+{
+  /* ... */
+}
+```
+}
+```
 
 The defined variable `TOTAL_ELEMENTS` has type `unsigned int` (because the return type of sizeof is "unsigned"). The test is comparing a signed `int` with an `unsigned int` quantity. So `d` is promoted to `unsigned int`. Interpreting -1 as an `unsigned int` yields a big positive number, making the clause `false`.
 
@@ -65,15 +69,27 @@ As the return type of a function, doesn't return a value; In a pointer declarati
 + A declaration involving a pointer and a const has several possible orderings:
 
 
-        const int * grape;
-        int const * grape;
-        int * const grape_jelly;
+```
+
+```
+const int * grape;
+int const * grape;
+int * const grape_jelly;
+```
+
+```
 
 The last of these cases makes the pointer read-only, whereas the other two make the object that it points at read-only; and of course, both the object and what it points at might be constant. Either of the following equivalent declarations will accomplish this:
 
 
-        const int * const grape_jam;
-        int const * const grape_jam;
+```
+
+```
+const int * const grape_jam;
+int const * const grape_jam;
+```
+
+```
 
 
 + a function returning a pointer to a function is allowed: `int (* fun())()`
@@ -89,34 +105,48 @@ The last of these cases makes the pointer read-only, whereas the other two make 
 
 <table style="width:100%">
   <tr>
-    <th colspan="3">The Precedence Rule for Understanding C Declarations</th>
+```
+<th colspan="3">The Precedence Rule for Understanding C Declarations</th>
+```
   </tr>
   <tr>
-    <th colspan="2">A</th>
-    <th>Declarations are read by starting with the name and then reading in precedence order.</th>
+```
+<th colspan="2">A</th>
+<th>Declarations are read by starting with the name and then reading in precedence order.</th>
+```
   </tr>
   <tr>
-    <th colspan="2">B</th>
-    <th>The precedence, from high to low, is:</th>
+```
+<th colspan="2">B</th>
+<th>The precedence, from high to low, is:</th>
+```
   </tr>
   <tr>
-    <td></td>
-    <td>B.1</td>
-    <td>parentheses grouping together parts of a declaration</td>
+```
+<td></td>
+<td>B.1</td>
+<td>parentheses grouping together parts of a declaration</td>
+```
   </tr>
   <tr>
-    <td></td>
-    <td>B.2</td>
-    <td>the postfix operators:</br>parentheses () indicating a function, and</br> square brackets [] indicating an array.</td>
+```
+<td></td>
+<td>B.2</td>
+<td>the postfix operators:</br>parentheses () indicating a function, and</br> square brackets [] indicating an array.</td>
+```
   </tr>
   <tr>
-    <td></td>
-    <td>B.3</td>
-    <td>the prefix operator: the asterisk denoting "pointer to".</td>
+```
+<td></td>
+<td>B.3</td>
+<td>the prefix operator: the asterisk denoting "pointer to".</td>
+```
   </tr>
   <tr>
-    <th colspan="2">C</th>
-    <th>If a const and/or volatile keyword is next to a type specifier (e.g. int, long, etc.) it applies to the type specifier. Otherwise the const and/or volatile keyword applies to the pointer asterisk on its immediate left.</th>
+```
+<th colspan="2">C</th>
+<th>If a const and/or volatile keyword is next to a type specifier (e.g. int, long, etc.) it applies to the type specifier. Otherwise the const and/or volatile keyword applies to the pointer asterisk on its immediate left.</th>
+```
   </tr>
 </table>
 
@@ -124,34 +154,48 @@ The last of these cases makes the pointer read-only, whereas the other two make 
 
 <table style="width:100%">
   <tr>
-    <th colspan="3">char* const *(*next)();</th>
+```
+<th colspan="3">char* const *(*next)();</th>
+```
   </tr>
   <tr>
-    <th colspan="2">A</th>
-    <th>First, go to the variable name, "next", and note that it is directly enclosed by parentheses.</th>
+```
+<th colspan="2">A</th>
+<th>First, go to the variable name, "next", and note that it is directly enclosed by parentheses.</th>
+```
   </tr>
   <tr>
-    <td></td>
-    <td>B.1</td>
-    <td>So we group it with what else is in the parentheses, to get "next is a pointer to...".</td>
+```
+<td></td>
+<td>B.1</td>
+<td>So we group it with what else is in the parentheses, to get "next is a pointer to...".</td>
+```
   </tr>
   <tr>
-    <th colspan="2">B</th>
-    <th>Then we go outside the parentheses, and have a choice of a prefix asterisk, or a postfix pair of parentheses.</th>
+```
+<th colspan="2">B</th>
+<th>Then we go outside the parentheses, and have a choice of a prefix asterisk, or a postfix pair of parentheses.</th>
+```
   </tr>
   <tr>
-    <td></td>
-    <td>B.2</td>
-    <td>Rule B.2 tells us the highest precedence thing is the function parentheses at the right, so we have "next is a pointer to a function returning…"</td>
+```
+<td></td>
+<td>B.2</td>
+<td>Rule B.2 tells us the highest precedence thing is the function parentheses at the right, so we have "next is a pointer to a function returning…"</td>
+```
   </tr>
   <tr>
-    <td></td>
-    <td>B.3</td>
-    <td>Then process the prefix "*" to get "pointer to".</td>
+```
+<td></td>
+<td>B.3</td>
+<td>Then process the prefix "*" to get "pointer to".</td>
+```
   </tr>
   <tr>
-    <th colspan="2">C</th>
-    <th>Finally, take the "char * const", as a constant pointer to a character</th>
+```
+<th colspan="2">C</th>
+<th>Finally, take the "char * const", as a constant pointer to a character</th>
+```
   </tr>
 </table>
 
@@ -174,20 +218,26 @@ Then put it all together to read:
 
 <table style="width:100%">
    <tr>
-    <th>Pointer</th>
-    <th>Array</th>
+```
+<th>Pointer</th>
+<th>Array</th>
+```
   </tr>
   <tr>
    <td>Holds the address of data</td>
    <td>Holds data</td>
   </tr>
   <tr>
-    <td>Data is accessed indirectly, so you first retrieve the
+```
+<td>Data is accessed indirectly, so you first retrieve the
+```
 contents of the pointer, load that as an address (call it "L"),
 then retrieve its contents.
 If the pointer has a subscript [i] you instead retrieve the
 contents of the location 'i' units past "L"</td>
-    <td>Data is accessed directly, so for a[i] you
+```
+<td>Data is accessed directly, so for a[i] you
+```
 simply retrieve the contents of the
 location i units past a.</td>
   </tr>

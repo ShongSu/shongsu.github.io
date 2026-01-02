@@ -9,14 +9,26 @@ description:
 
 Baisc Singly Linked List / 基本的单链表
 
-    public class ListNode {
-        int val;
-        ListNode next = null;
+```
+public class ListNode {
+```
+int val;
+ListNode next = null;
+```
 
-        ListNode(int val) {
-            this.val = val;
-        }
-    }
+```
+
+```
+
+```
+ListNode(int val) {
+```
+this.val = val;
+```
+}
+```
+}
+```
 
 
 
@@ -30,16 +42,22 @@ if this node is the last node, return `false`, otherwise return `true`.
 
 Solution:
 
-    public class Remove {
-        public boolean removeNode(ListNode pNode) {
-            // write code here
-            if(pNode == null || pNode.next == null)
-                return false;
-            pNode.val = pNode.next.val;
-            pNode.next = pNode.next.next;
-            return true;
-        }
-    }
+```
+public class Remove {
+```
+public boolean removeNode(ListNode pNode) {
+```
+// write code here
+if(pNode == null || pNode.next == null)
+    return false;
+pNode.val = pNode.next.val;
+pNode.next = pNode.next.next;
+return true;
+```
+}
+```
+}
+```
 
 P.S. Change your mind, modify the value rather than pointer.
 
@@ -55,46 +73,68 @@ You have two numbers represented by a linked list, where each node contains a si
 
 Solution:
 
-    public class Plus {
-        public ListNode plusAB(ListNode a, ListNode b) {
-            // write code here
-            ListNode start = null;
-            ListNode current = null;
-            if(a==null && b==null)
-                return null;
-            int plus=0;
-            while(a!=null||b!=null){
-                int temp = plus;
-                if(a!=null)
-                    temp += a.val;
-                if(b!=null)
-                    temp += b.val;
-                if(start == null){
-                    current = new ListNode(temp%10);
-                    start = current;
-                    plus = temp/10;
-                }else {
-                    current.next = new ListNode(temp%10);
-                    current=current.next;
-                    plus = temp/10;
-                }
-
-                if(a==null&&b!=null)
-                    b=b.next;
-                else if(a!=null&&b==null)
-                    a=a.next;
-                else{
-                    a=a.next;
-                    b=b.next;
-                }
-
-            }
-            if(plus==1){
-                current.next = new ListNode(plus);
-            }
-            return start;
-        }
+```
+public class Plus {
+```
+public ListNode plusAB(ListNode a, ListNode b) {
+```
+// write code here
+ListNode start = null;
+ListNode current = null;
+if(a==null && b==null)
+    return null;
+int plus=0;
+while(a!=null||b!=null){
+    int temp = plus;
+    if(a!=null)
+        temp += a.val;
+    if(b!=null)
+        temp += b.val;
+    if(start == null){
+        current = new ListNode(temp%10);
+        start = current;
+        plus = temp/10;
+    }else {
+        current.next = new ListNode(temp%10);
+        current=current.next;
+        plus = temp/10;
     }
+```
+```
+
+```
+
+```
+
+```
+```
+if(a==null&&b!=null)
+    b=b.next;
+else if(a!=null&&b==null)
+    a=a.next;
+else{
+    a=a.next;
+    b=b.next;
+}
+```
+```
+
+```
+
+```
+
+```
+```
+}
+if(plus==1){
+    current.next = new ListNode(plus);
+}
+return start;
+```
+}
+```
+}
+```
 
 
 
@@ -107,34 +147,70 @@ Question is: Write code to partition a linked list around a value `x`, such that
 
 Solution:
 
-    public class Partition {
-        public ListNode partition(ListNode pHead, int x) {
-            if(pHead == null || pHead.next == null)
-                return pHead;
+```
+public class Partition {
+```
+public ListNode partition(ListNode pHead, int x) {
+```
+if(pHead == null || pHead.next == null)
+    return pHead;
+```
+```
 
-            ListNode moveBeforeX=new ListNode(0);
-            ListNode moveAfterX=new ListNode(0);
-            ListNode beforeX=moveBeforeX;
-            ListNode afterX=moveAfterX;
-            ListNode temp = pHead;
+```
 
-            while(temp!=null){  
-                if(temp.val<x){
-                    moveBeforeX.next=temp;
-                    moveBeforeX=temp;
-                }else{
-                    moveAfterX.next=temp;
-                    moveAfterX=temp;
-                }
-                temp = temp.next;
-            }
+```
 
-            moveBeforeX.next=afterX.next;
-            moveAfterX.next=null;
-            return beforeX.next;
+```
+```
+ListNode moveBeforeX=new ListNode(0);
+ListNode moveAfterX=new ListNode(0);
+ListNode beforeX=moveBeforeX;
+ListNode afterX=moveAfterX;
+ListNode temp = pHead;
+```
+```
 
-        }
+```
+
+```
+
+```
+```
+while(temp!=null){  
+    if(temp.val<x){
+        moveBeforeX.next=temp;
+        moveBeforeX=temp;
+    }else{
+        moveAfterX.next=temp;
+        moveAfterX=temp;
     }
+    temp = temp.next;
+}
+```
+```
+
+```
+
+```
+
+```
+```
+moveBeforeX.next=afterX.next;
+moveAfterX.next=null;
+return beforeX.next;
+```
+```
+
+```
+
+```
+
+```
+}
+```
+}
+```
 
 
 ## Q4 - Reversed a Linked List
@@ -144,42 +220,85 @@ Reversed a Linked List.
 
 Solution 1:
 
-    ListNode reverseList(ListNode pHead)  
-    {  
+```
+ListNode reverseList(ListNode pHead)  
+{  
+```
 
-        if ( (null == pHead) || (null == pHead.next) )
-            return pHead;  
+```
 
-        ListNode pNewHead = reverseList(pHead.next);  
-        pHead.next.next = pHead;  
-        pHead.next = null;  
+```
+if ( (null == pHead) || (null == pHead.next) )
+```
+return pHead;  
+```
+```
 
-        return pNewHead;  
-    }
+```
+
+```
+
+```
+ListNode pNewHead = reverseList(pHead.next);  
+pHead.next.next = pHead;  
+pHead.next = null;  
+```
+
+```
+
+```
+
+```
+return pNewHead;  
+```
+}
+```
 
 Solution 2:
 
-    public class Solution {
-        public ListNode ReverseList(ListNode head) {
-    		if(head == null || head.next == null)
-                return head;
-            ListNode p1 = head;
-            ListNode p2 = p1.next;
-            ListNode p3 = p2.next;
-            p1.next = null;
+```
+public class Solution {
+```
+public ListNode ReverseList(ListNode head) {
+(head == null || head.next == null)
+```
+    return head;
+ListNode p1 = head;
+ListNode p2 = p1.next;
+ListNode p3 = p2.next;
+p1.next = null;
+```
+```
 
-            while(p3!=null){
-                p2.next = p1;
-                p1 = p2;
-                p2 = p3;
-                p3 = p2.next;            
-            }
-            p2.next = p1;
-            head = p2;
+```
 
-    		return head;
-        }
-    }
+```
+
+```
+```
+while(p3!=null){
+    p2.next = p1;
+    p1 = p2;
+    p2 = p3;
+    p3 = p2.next;            
+}
+p2.next = p1;
+head = p2;
+```
+```
+
+```
+
+```
+
+```
+```
+return head;
+```
+   }
+```
+}
+```
 
 
 ## Q5 - Check Palindrome
@@ -195,31 +314,56 @@ Reserve the linked list and compare each node value (actually half numbers is en
 
 Solution 2:
 
-    public class Palindrome {
-        public boolean isPalindrome(ListNode pHead) {
-            ListNode fast = pHead;
-            ListNode slow = pHead;
-            Stack<Integer> stack = new Stack<Integer>();
+```
+public class Palindrome {
+```
+public boolean isPalindrome(ListNode pHead) {
+```
+ListNode fast = pHead;
+ListNode slow = pHead;
+Stack<Integer> stack = new Stack<Integer>();
+```
+```
 
-            while(fast != null && fast.next != null){
-                stack.push(slow.val);
-                slow = slow.next;
-                fast = fast.next.next;
-            }
+```
 
-            if (fast != null) {
-                slow = slow.next;
-            }
-            while(slow != null){
-                if (stack.pop() != slow.val) {
-                    return false;
-                }
-                slow = slow.next;
-            }
-            return true;
-        }
+```
 
+```
+```
+while(fast != null && fast.next != null){
+    stack.push(slow.val);
+    slow = slow.next;
+    fast = fast.next.next;
+}
+```
+```
+
+```
+
+```
+
+```
+```
+if (fast != null) {
+    slow = slow.next;
+}
+while(slow != null){
+    if (stack.pop() != slow.val) {
+        return false;
     }
+    slow = slow.next;
+}
+return true;
+```
+}
+```
+
+```
+
+```
+}
+```
 
 P.S. Fast/slow pointer strategy is very useful.
 
@@ -231,21 +375,33 @@ Implement a function to check if a linked list has a loop.
 
 分析：通过两个指针，分别从链表的头节点出发，一个每次向后移动一步，另一个移动两步，两个指针移动速度不一样，如果存在环，那么两个指针一定会在环里相遇。
 
-    //判断单链表是否存在环,参数circleNode是环内节点，后面的题目会用到
-    bool hasCircle(Node *head,Node *&circleNode)
-    {
-        Node *slow,*fast;
-        slow = fast = head;
-        while(fast != NULL && fast->next != NULL)
-        {
-            fast = fast->next->next;
-            slow = slow->next;
-            if(fast == slow)
-            {
-                circleNode = fast;
-                return true;
-            }
-        }
+```
+//判断单链表是否存在环,参数circleNode是环内节点，后面的题目会用到
+bool hasCircle(Node *head,Node *&circleNode)
+{
+```
+Node *slow,*fast;
+slow = fast = head;
+while(fast != NULL && fast->next != NULL)
+{
+```
+fast = fast->next->next;
+slow = slow->next;
+if(fast == slow)
+{
+    circleNode = fast;
+    return true;
+}
+```
+}
+```
 
-        return false;
-    }
+```
+
+```
+
+```
+return false;
+```
+}
+```

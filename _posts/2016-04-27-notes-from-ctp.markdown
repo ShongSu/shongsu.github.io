@@ -17,11 +17,15 @@ description:
 
 1-1. Some C compilers allow nested comments. Write a C program that finds out if it is being run on such a compiler without any error messages. In other words, the program should be valid under both comment rules, but should do different things in each. Hint. A comment symbol `/*` inside a quoted string is just part of the string; a double quote `" "` inside a comment is part of the comment.
 
-      /*/**/"*/"/*"/**/
+```
+/*/**/"*/"/*"/**/
+```
 
 This expression is equivalent to `"*/"` if comments nest and `"/*"` if they don't.
 
-      /*/*/0*/**/1
+```
+/*/*/0*/**/1
+```
 
 This expression is equivalent to `1` if comments nest and `0*1` if they don't.
 
@@ -33,11 +37,17 @@ This expression is equivalent to `1` if comments nest and `0*1` if they don't.
 +  Wrong examples of operator precedence:
 
 
-        if (flags & FLAG != 0)  ===  if (flags & (FLAG != 0))
-        r = hi<<4 + low  === r = hi<< (4 + low)
-        r = (hi<<4) + low === r = hi<<4 | low
-        *p++ === *(p++)
-        while(c=getc(in) != EOF) === while(c = (getc(in) != EOF))
+```
+
+```
+if (flags & FLAG != 0)  ===  if (flags & (FLAG != 0))
+r = hi<<4 + low  === r = hi<< (4 + low)
+r = (hi<<4) + low === r = hi<<4 | low
+*p++ === *(p++)
+while(c=getc(in) != EOF) === while(c = (getc(in) != EOF))
+```
+
+```
 
 + Do not forget `break` in each `case` of `switch` statement.
 
@@ -55,10 +65,12 @@ but does not call it.
 + Apply `sizeof()` for Arrays and Pointers:
 
 
-      int calendar[12][31];  /* sizeof(calendar) = 31 * 12 * sizeof(int) */
-      calendar[4];   /* sizeof(calendar[4]) = sizeof(*monthp) = 31 * sizeof(int) */
-      int *p=calendar[4];   /* sizeof(p) = 2 * sizeof(int); sizeof(*p) = 1 * sizeof(int) */
-      int (*monthp)[31]=calendar;  /* sizeof(monthp) = 2 * sizeof(int) */
+```
+int calendar[12][31];  /* sizeof(calendar) = 31 * 12 * sizeof(int) */
+calendar[4];   /* sizeof(calendar[4]) = sizeof(*monthp) = 31 * sizeof(int) */
+int *p=calendar[4];   /* sizeof(p) = 2 * sizeof(int); sizeof(*p) = 1 * sizeof(int) */
+int (*monthp)[31]=calendar;  /* sizeof(monthp) = 2 * sizeof(int) */
+```
 
 In addtion, `calendar[4][7] == *(calendar[4] + 7) == *((calendar + 4) + 7)`.
 
@@ -69,14 +81,16 @@ In addtion, `calendar[4][7] == *(calendar[4] + 7) == *((calendar + 4) + 7)`.
 + Pointer declaration syntax overview:
 
 
-      char cff [5][5];    /* array of arrays of chars; a char can be any sign */
-      char *cfp [5];      /* array of pointers to chars */
-      char **cpp;         /* pointer to pointer to chars ("double pointer") */
-      char (*cpf) [5];    /* pointer to an array of chars */
-      char *cpF();        /* function which returns a pointer to chars */
-      char (*CFp)();      /* pointer to a function which returns chars */
-      char (*cfpF*())[5]; /* function which returns pointers to an array of chars */
-      char (*cpFf[5])();  /* an array of pointers to functions, which all return chars */
+```
+char cff [5][5];    /* array of arrays of chars; a char can be any sign */
+char *cfp [5];      /* array of pointers to chars */
+char **cpp;         /* pointer to pointer to chars ("double pointer") */
+char (*cpf) [5];    /* pointer to an array of chars */
+char *cpF();        /* function which returns a pointer to chars */
+char (*CFp)();      /* pointer to a function which returns chars */
+char (*cfpF*())[5]; /* function which returns pointers to an array of chars */
+char (*cpFf[5])();  /* an array of pointers to functions, which all return chars */
+```
 
 The `()` and `[]` have a higher priority than `*`.
 
@@ -93,38 +107,46 @@ The `()` and `[]` have a higher priority than `*`.
 
 "pure pointer" form
 
-    int *bsearch(int *t, int n, int x)
-    {
-      int *lo = t, *hi = t + n; // we cannot just initialize hi to t+n-1 because t+n-1 is an invalid address if n is 0
-      while (lo < hi) {
-        int *mid = lo + ((hi - lo) >> 1); // NOT mid = (lo + hi) / 2
-        if(x < *mid)
-          hi = mid; // NOT hi = mid -1
-        else if (x > *mid)
-          lo = mid + 1;
-        else
-          return mid;
-      }
-      return NULL;
-    }
+```
+int *bsearch(int *t, int n, int x)
+{
+  int *lo = t, *hi = t + n; // we cannot just initialize hi to t+n-1 because t+n-1 is an invalid address if n is 0
+  while (lo < hi) {
+```
+int *mid = lo + ((hi - lo) >> 1); // NOT mid = (lo + hi) / 2
+if(x < *mid)
+  hi = mid; // NOT hi = mid -1
+else if (x > *mid)
+  lo = mid + 1;
+else
+  return mid;
+```
+  }
+  return NULL;
+}
+```
 
 "array" form
 
-    int *bsearch(int *t, int n, int x)
-    {
-      int lo = 0, hi = n - 1;
-      while(lo <= hi)
-      {
-        int mid = (lo + hi) / 2;
-        if(x < t[mid])
-          hi = mid - 1;
-        else if(x > t[mid])
-          lo = mid + 1;
-        else
-          return t + mid;
-      }
-      return NULL;
-    }
+```
+int *bsearch(int *t, int n, int x)
+{
+  int lo = 0, hi = n - 1;
+  while(lo <= hi)
+  {
+```
+int mid = (lo + hi) / 2;
+if(x < t[mid])
+  hi = mid - 1;
+else if(x > t[mid])
+  lo = mid + 1;
+else
+  return t + mid;
+```
+  }
+  return NULL;
+}
+```
 
 
 ## Chapter 4: Linkage (链接)
@@ -150,78 +172,138 @@ The `()` and `[]` have a higher priority than `*`.
 
 + use `setbuf` in a program that copies its standard input to its standard output:
 
-        #include <stdio.h>
-        main()
-        {
-            int c;
-            char buf[BUFSIZ];  // error in this line.
-            setbuf(stdout, buf);
+```
 
-            while (c = getchar()) != EOF)
-            putchar (c);
-        }
+```
+#include <stdio.h>
+main()
+{
+```
+int c;
+char buf[BUFSIZ];  // error in this line.
+setbuf(stdout, buf);
+```
+```
+
+```
+
+```
+
+```
+```
+while (c = getchar()) != EOF)
+putchar (c);
+```
+}
+```
+
+```
 
 There are two ways to prevent this sort of trouble: First, make the `buffer` static, either by declaring it explicitly as static:
 
-    static char buf[BUFSIZ];
+```
+static char buf[BUFSIZ];
+```
 
 or by moving the declaration outside the main program entirely.
 
 Another possibility is to allocate the buffer dynamically and never free it:
 
-    char *malloc();
-    setbuf(stdout, malloc(BUFSIZ);
+```
+char *malloc();
+setbuf(stdout, malloc(BUFSIZ);
+```
 
 + `stdarg.h` is a header in the C standard library hat allows functions to accept an indefinite number of arguments. Example 1:
 
-        #include <stdio.h>
-        #include <stdarg.h>
+```
 
-        /* print all args one at a time until a negative argument is seen; all args are assumed to be of int type */
-        void printargs(int arg1, ...)
-        {
-          va_list ap;
-          int i;
+```
+#include <stdio.h>
+#include <stdarg.h>
+```
 
-          va_start(ap, arg1);
-          for (i = arg1; i >= 0; i = va_arg(ap, int))
-          printf("%d ", i);
-          va_end(ap);
-          putchar('\n');
-        }
+```
 
-        int main(void)
-        {
-          printargs(5, 2, 14, 84, 97, 15, -1, 48, -1);
-          printargs(84, 51, -1);
-          printargs(-1);
-          printargs(1, -1);
-          return 0;
-        }
+```
+
+```
+/* print all args one at a time until a negative argument is seen; all args are assumed to be of int type */
+void printargs(int arg1, ...)
+{
+  va_list ap;
+  int i;
+```
+
+```
+
+```
+
+```
+  va_start(ap, arg1);
+  for (i = arg1; i >= 0; i = va_arg(ap, int))
+  printf("%d ", i);
+  va_end(ap);
+  putchar('\n');
+}
+```
+
+```
+
+```
+
+```
+int main(void)
+{
+  printargs(5, 2, 14, 84, 97, 15, -1, 48, -1);
+  printargs(84, 51, -1);
+  printargs(-1);
+  printargs(1, -1);
+  return 0;
+}
+```
+
+```
 
 This program yields the output:
 
-    5 2 14 84 97 15
-    84 51
+```
+5 2 14 84 97 15
+84 51
+```
 
-    1
+```
+1
+```
 
 
 Example 2:
 
 
-      #include <stdarg.h>
+```
+#include <stdarg.h>
+```
 
-      int printf(char *format, ...)
-      {
-        va_list ap;
-        int n;
+```
+int printf(char *format, ...)
+{
+```
+va_list ap;
+int n;
+```
 
-        va_start(ap,format);
-        n = vprintf(format, ap);
-        va_end(ap);
-        return n;
-      }
+```
+
+```
+
+```
+va_start(ap,format);
+n = vprintf(format, ap);
+va_end(ap);
+return n;
+```
+}
+```
 
 
 
@@ -234,17 +316,21 @@ Example 2:
 + Some examples:
 
 
-      #define abs(x) (((x)>=0) ? (x) : (-x) )
-      #define max(a,b) ((a)>(b) ? (a):(b))
-      #define toupper(c) ((c)=>'a' && (c)<='z' ? (c + ('A'-'a')) : (c))
-      #define assert(e) ((e) || assert_error(__FILE__, __LINE__))
+```
+#define abs(x) (((x)>=0) ? (x) : (-x) )
+#define max(a,b) ((a)>(b) ? (a):(b))
+#define toupper(c) ((c)=>'a' && (c)<='z' ? (c + ('A'-'a')) : (c))
+#define assert(e) ((e) || assert_error(__FILE__, __LINE__))
+```
 
 + Macros are not type definitions. Using `typedef` instead of `#define`. For example, if you defined `#define T1 struct foo *` and `typedef struct foo *T2`. These definitions make T1 and T2 conceptually equivalent to a pointer to
 a struct foo. But when we try to use them with more than one variable:
 
 
-      T1 a, b;
-      T2 c, d;
+```
+T1 a, b;
+T2 c, d;
+```
 
 The first declaration gets expanded to `struct foo * a, b;` This defines `a` to be a pointer to a structure, but defines `b` to be a structure (not a pointer). The second declaration, in contrast, defines both `c`
 and `d` as pointers to structures, because `T2` behaves as a true type.
@@ -253,9 +339,16 @@ and `d` as pointers to structures, because `T2` behaves as a true type.
 
 6-1. Write a macro version of max with integer arguments that evaluates its arguments only once.
 
-    static int max_temp1, max_temp2;
-    #define max(p,q) (max_temp1=(p),max_temp2=(q),\
-            max_temp1>max_temp2? max_temp1:max_temp2)
+```
+static int max_temp1, max_temp2;
+#define max(p,q) (max_temp1=(p),max_temp2=(q),\
+```
+```
+max_temp1>max_temp2? max_temp1:max_temp2)
+```
+```
+
+```
 
 This will work as long as calls to max are not nested; making it work in that case may be impossible.
 
@@ -279,24 +372,40 @@ This will work as long as calls to max are not nested; making it work in that ca
 2. The only valid input characters are digits and `+` and `-` signs. The input ends at the first invalid character.
 
 
-        long atol(char *s)
-        {
-            long r = 0;
-            int neg = 0;
-            switch (*s){
-              case '-' :
-                  neg = 1;
-                  /* no break here*/
-              case '+' :
-                  s++;
-                  break;
-            }
-            while (*s >= '0' && *s <= '9'){
-                int n = *s++ - '0';
-                if(neg)
-                    n = -n;
-                r = r * 10 + n;
-            }
+```
 
-            return r;
-        }
+```
+long atol(char *s)
+{
+```
+long r = 0;
+int neg = 0;
+switch (*s){
+  case '-' :
+      neg = 1;
+      /* no break here*/
+  case '+' :
+      s++;
+      break;
+}
+while (*s >= '0' && *s <= '9'){
+    int n = *s++ - '0';
+    if(neg)
+        n = -n;
+    r = r * 10 + n;
+}
+```
+```
+
+```
+
+```
+
+```
+```
+return r;
+```
+}
+```
+
+```

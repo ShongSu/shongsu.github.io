@@ -22,26 +22,31 @@ Let’s take a look at `build.gradle` at module level, there’s a piece of code
 
 ```
 if (Boolean.valueOf(cdvBuildMultipleApks)) {
-        productFlavors {
-            armv7 {
-                versionCode defaultConfig.versionCode*10 + 2
-                ndk {
-                    abiFilters "armeabi-v7a", ""
-                }
-            }
-            x86 {
-                versionCode defaultConfig.versionCode*10 + 4
-                ndk {
-                    abiFilters "x86", ""
-                }
-            }
-            all {
-                ndk {
-                    abiFilters "all", ""
-                }
-            }
+```
+```
+productFlavors {
+    armv7 {
+        versionCode defaultConfig.versionCode*10 + 2
+        ndk {
+            abiFilters "armeabi-v7a", ""
         }
     }
+    x86 {
+        versionCode defaultConfig.versionCode*10 + 4
+        ndk {
+            abiFilters "x86", ""
+        }
+    }
+    all {
+        ndk {
+            abiFilters "all", ""
+        }
+    }
+}
+```
+}
+```
+
 ```
 
 The `defaultConfig.versionCode` comes from your android `AndroidManifest.xml` file which is also come from your condova’s `config.xml`

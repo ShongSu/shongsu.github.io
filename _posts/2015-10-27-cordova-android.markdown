@@ -19,61 +19,141 @@ How to run example?
 
 Create a new cordova project, for example:
 
-	cordova create PluginTest com.shongsu.test PluginTest
+```
+cordova create PluginTest com.shongsu.test PluginTest
+```
 
 Go into the directory you just created.
 
-	cd PluginTest
+```
+cd PluginTest
+```
 
 Add Android platform.
 
-	cordova platform add android
+```
+cordova platform add android
+```
 
 Add this plugin to your cordova project, type:
 
-	cordova plugin add https://github.com/shongsu/cordova-example-plugin.git
+```
+cordova plugin add https://github.com/shongsu/cordova-example-plugin.git
+```
 
   or clone this git and add it locally, for example:
 
-	cordova plugin add file-path-here
+```
+cordova plugin add file-path-here
+```
 
 Eidt your `www/index.html` file, here is full example:
 
 
-	<!DOCTYPE html>
-    	<html>
-        <head>
-            <meta charset="utf-8" />
-            <title>Cordova - Android Plugin Example</title>
+```
+<!DOCTYPE html>
+```
+```
 
-            <script type="text/javascript" src="cordova.js"></script>
-            <script type="text/javascript" src="plugins/SamplePlugin.js"></script>
+```
+<html>
+   <head>
+```
+<meta charset="utf-8" />
+<title>Cordova - Android Plugin Example</title>
+```
+```
 
-            <script type="text/javascript">
-                function onLoad() {
-                    document.addEventListener('deviceready', onDeviceReady, false);
-                }
+```
 
-                function onDeviceReady() {
-	            var a = 5;
-	            var b = 3;
-                    window.testplugin.func_add(a, b, function(result) { alert(a + " + " + b + " = " + result); }, function(err) { alert(err); });
-	            window.testplugin.func_sub(a, b, function(result) { alert(a + " - " + b + " = " + result); }, function(err) { alert(err); });
-	            window.testplugin.func_factorial(a, function(result) { alert(a + "! = " + result); }, function(err) { alert(err); });		
-          }
-            </script>
-        </head>
+```
 
-        <body onload="onLoad()">
-            <h1>Cordova - Android Plugin Example</h1>
-        <p>
-        1. a+b; <br/>
-        2. a-b; <br/>
-        3. a!;
-        </p>
+```
+```
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="plugins/SamplePlugin.js"></script>
+```
+```
 
-        </body>
-	</html>
+```
+
+```
+
+```
+```
+<script type="text/javascript">
+    function onLoad() {
+        document.addEventListener('deviceready', onDeviceReady, false);
+    }
+```
+```
+
+```
+
+```
+
+```
+```
+function onDeviceReady() {
+```
+```
+
+```
+```
+var a = 5;
+var b = 3;
+```
+```
+
+```
+```
+window.testplugin.func_add(a, b, function(result) { alert(a + " + " + b + " = " + result); }, function(err) { alert(err); });
+```
+```
+
+```
+```
+window.testplugin.func_sub(a, b, function(result) { alert(a + " - " + b + " = " + result); }, function(err) { alert(err); });
+window.testplugin.func_factorial(a, function(result) { alert(a + "! = " + result); }, function(err) { alert(err); });		
+```
+```
+
+```
+  }
+```
+</script>
+```
+</head>
+```
+
+```
+
+```
+
+```
+<body onload="onLoad()">
+```
+<h1>Cordova - Android Plugin Example</h1>
+```
+<p>
+1. a+b; <br/>
+2. a-b; <br/>
+3. a!;
+</p>
+```
+
+```
+
+```
+
+```
+</body>
+```
+
+```
+```
+</html>
+```
 
 Run application.
 
@@ -87,15 +167,23 @@ How it works?
 
 We have **three files**: native code (.java), javascript code which exposes native code to cordova box (.js) and plugin manifest file (.xml). The structure looks as
 
-        ExamplePlugin
-        │  plugin.xml
-        │
-        ├─src
-        │  └─android
-        │       ExamplePlugin.java
-        │
-        └─www
-            ExamplePlugin.js
+```
+
+```
+ExamplePlugin
+│  plugin.xml
+│
+├─src
+│  └─android
+│       ExamplePlugin.java
+│
+└─www
+```
+ExamplePlugin.js
+```
+```
+
+```
 <br />
 
 Let's take a look at plugin files:
@@ -110,77 +198,149 @@ Let's take a look at plugin files:
 ExamplePlugin.java
 -----------------
 
-        package com.shongsu.plugin;
+```
 
-        import org.apache.cordova.CordovaPlugin;
-        import org.apache.cordova.CallbackContext;
-        import org.apache.cordova.PluginResult;
+```
+package com.shongsu.plugin;
+```
 
-        import org.json.JSONArray;
-        import org.json.JSONException;
-        import org.json.JSONObject;
+```
 
-        /**
-         * This class performs sum called from JavaScript.
-         */
-        public class ExamplePlugin extends CordovaPlugin {
-            @Override
-            public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-                if (action.equals("func_add")) {
-                    Integer num1 = args.getInt(0);
-                    Integer num2 = args.getInt(1);
-                    this.func_add(num1, num2, callbackContext);
-                    return true;
-                } else if (action.equals("func_sub")) {
-                    Integer num1 = args.getInt(0);
-                    Integer num2 = args.getInt(1);
-                    this.func_sub(num1, num2, callbackContext);
-                    return true;
-                } else if (action.equals("func_factorial")) {
-                    Integer num1 = args.getInt(0);
-                    this.func_factorial(num1, callbackContext);
-                    return true;
-                }
+```
 
-                return false;
-            }
+```
+import org.apache.cordova.CordovaPlugin;
+import org.apache.cordova.CallbackContext;
+import org.apache.cordova.PluginResult;
+```
 
-            private void func_add(Integer num1, Integer num2, CallbackContext callbackContext) {
-                if(num1 != null && num2 != null) {
-                    callbackContext.success(num1 + num2);
-                } else {
-                    callbackContext.error("Expected two integer arguments.");
-                }
-            }
+```
 
-            private void func_sub(Integer num1, Integer num2, CallbackContext callbackContext) {
-                if(num1 != null && num2 != null) {
-                    int s = num1 - num2;
-                    callbackContext.success(s);
-                } else {
-                    callbackContext.error("Expected two integer arguments.");
-                }
-            }
+```
 
-            private void func_factorial(Integer num1, CallbackContext callbackContext) {
-                if(num1 != null && num1 >= 0) {
-                    int result = 1;
-                    if (num1 == 0 || num1 ==1) {
-                      result = 1;
-                    } else {
-                      for(int i=1;i<=num1;i++)
-                      {
-                        result *= i;
-                      }
-                    }
+```
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+```
 
-                    callbackContext.success(result);
-                } else {
-                    callbackContext.error("Expected a non-negative integer argument.");
-                }
-            }
+```
 
+```
+
+```
+/**
+ * This class performs sum called from JavaScript.
+ */
+public class ExamplePlugin extends CordovaPlugin {
+```
+@Override
+public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
+    if (action.equals("func_add")) {
+        Integer num1 = args.getInt(0);
+        Integer num2 = args.getInt(1);
+        this.func_add(num1, num2, callbackContext);
+        return true;
+    } else if (action.equals("func_sub")) {
+        Integer num1 = args.getInt(0);
+        Integer num2 = args.getInt(1);
+        this.func_sub(num1, num2, callbackContext);
+        return true;
+    } else if (action.equals("func_factorial")) {
+        Integer num1 = args.getInt(0);
+        this.func_factorial(num1, callbackContext);
+        return true;
+    }
+```
+```
+
+```
+
+```
+
+```
+```
+    return false;
+}
+```
+```
+
+```
+
+```
+
+```
+```
+private void func_add(Integer num1, Integer num2, CallbackContext callbackContext) {
+    if(num1 != null && num2 != null) {
+        callbackContext.success(num1 + num2);
+    } else {
+        callbackContext.error("Expected two integer arguments.");
+    }
+}
+```
+```
+
+```
+
+```
+
+```
+```
+private void func_sub(Integer num1, Integer num2, CallbackContext callbackContext) {
+    if(num1 != null && num2 != null) {
+        int s = num1 - num2;
+        callbackContext.success(s);
+    } else {
+        callbackContext.error("Expected two integer arguments.");
+    }
+}
+```
+```
+
+```
+
+```
+
+```
+```
+private void func_factorial(Integer num1, CallbackContext callbackContext) {
+    if(num1 != null && num1 >= 0) {
+        int result = 1;
+        if (num1 == 0 || num1 ==1) {
+          result = 1;
+        } else {
+          for(int i=1;i<=num1;i++)
+          {
+            result *= i;
+          }
         }
+```
+```
+
+```
+
+```
+
+```
+```
+        callbackContext.success(result);
+    } else {
+        callbackContext.error("Expected a non-negative integer argument.");
+    }
+}
+```
+```
+
+```
+
+```
+
+```
+}
+```
+
+```
 
 
 
@@ -200,29 +360,43 @@ Same as method `func_sub` and `func_factorial`.
 ExamplePlugin.js
 ---------------
 
-    (function (cordova) {
-	function TestPlugin() {}
+```
+(function (cordova) {
+```
+```
+function TestPlugin() {}
+```
 
 
-	TestPlugin.prototype.func_add = function(num1, num2, successCallback, errorCallback) {
-		cordova.exec(successCallback, errorCallback, "ExamplePlugin", "func_add", [num1, num2]);
-	};
+```
+TestPlugin.prototype.func_add = function(num1, num2, successCallback, errorCallback) {
+	cordova.exec(successCallback, errorCallback, "ExamplePlugin", "func_add", [num1, num2]);
+};
+```
 
-	TestPlugin.prototype.func_sub = function(num1, num2, successCallback, errorCallback) {
-		cordova.exec(successCallback, errorCallback, "ExamplePlugin", "func_sub", [num1, num2]);
-	};
+```
+TestPlugin.prototype.func_sub = function(num1, num2, successCallback, errorCallback) {
+	cordova.exec(successCallback, errorCallback, "ExamplePlugin", "func_sub", [num1, num2]);
+};
+```
 
-	TestPlugin.prototype.func_factorial = function(num1, successCallback, errorCallback) {
-		cordova.exec(successCallback, errorCallback, "ExamplePlugin", "func_factorial", [num1]);
-	};
+```
+TestPlugin.prototype.func_factorial = function(num1, successCallback, errorCallback) {
+	cordova.exec(successCallback, errorCallback, "ExamplePlugin", "func_factorial", [num1]);
+};
+```
 
 
-	window.testplugin = new TestPlugin();
+```
+window.testplugin = new TestPlugin();
+```
 
-	// backwards compatibility
-	window.plugins = window.plugins || {};
-	window.plugins.testplugin = window.testplugin;
-	})(window.PhoneGap || window.Cordova || window.cordova);
+```
+// backwards compatibility
+window.plugins = window.plugins || {};
+window.plugins.testplugin = window.testplugin;
+})(window.PhoneGap || window.Cordova || window.cordova);
+```
 
 
 In this file we extend `window.testplugin` object with function `func_add` (for example) which calls `cordova.exec`. Cordova translates that and calls `execute` method from our class declared in ExamplePlugin.java.
@@ -233,39 +407,107 @@ You can pass any number of arguments - they are processed by execute function as
 plugin.xml
 ----------
 
-        <?xml version="1.0" encoding="UTF-8"?>
-        <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-            id="com.shongsu.plugin.ExamplePlugin"
-            version="1.0.0">
+```
 
-            <name>ExamplePlugin</name>
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+```
+id="com.shongsu.plugin.ExamplePlugin"
+version="1.0.0">
+```
+```
 
-          <description>
-            Cordova-Android Plugin Example
-          </description>
+```
 
-          <js-module src="www/ExamplePlugin.js" name="ExamplePlugin">
-                <clobbers target="ExamplePlugin" />
-            </js-module>
+```
 
-          <engines>
-            <engine name="cordova" version=">=3.0.0" />
-          </engines>
+```
+```
+<name>ExamplePlugin</name>
+```
+```
 
-          <!-- android -->
-          <platform name="android">
-            <config-file target="res/xml/config.xml" parent="/*">
-              <feature name="ExamplePlugin">
-                  <param name="android-package" value="com.shongsu.plugin.ExamplePlugin"/>
-              </feature>
-            </config-file>
+```
 
-            <source-file src="src/android/ExamplePlugin.java" target-dir="src/com/shongsu/plugin/ExamplePlugin" />
-          </platform>
+```
 
-          <!-- more platforms here -->
+```
+  <description>
+```
+Cordova-Android Plugin Example
+```
+  </description>
+```
 
-        </plugin>
+```
+
+```
+
+```
+  <js-module src="www/ExamplePlugin.js" name="ExamplePlugin">
+```
+    <clobbers target="ExamplePlugin" />
+</js-module>
+```
+```
+
+```
+
+```
+
+```
+  <engines>
+```
+<engine name="cordova" version=">=3.0.0" />
+```
+  </engines>
+```
+
+```
+
+```
+
+```
+  <!-- android -->
+  <platform name="android">
+```
+<config-file target="res/xml/config.xml" parent="/*">
+  <feature name="ExamplePlugin">
+      <param name="android-package" value="com.shongsu.plugin.ExamplePlugin"/>
+  </feature>
+</config-file>
+```
+```
+
+```
+
+```
+
+```
+```
+<source-file src="src/android/ExamplePlugin.java" target-dir="src/com/shongsu/plugin/ExamplePlugin" />
+```
+  </platform>
+```
+
+```
+
+```
+
+```
+  <!-- more platforms here -->
+```
+
+```
+
+```
+
+```
+</plugin>
+```
+
+```
 
 
 This file tells cordova how to deal with plugin. Package name, class name and (relative) paths to files are defined here. More details about [plugin.xml][h].

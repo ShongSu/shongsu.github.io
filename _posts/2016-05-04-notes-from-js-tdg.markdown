@@ -16,12 +16,16 @@ description:
 
 For example, if you write:
 
-			return 
-					true;
+```
+return 
+		true;
+```
 
 JavaScript assumes you meant:
 
-			return; true;
+```
+return; true;
+```
 
 
 ### Ch 3. Types, Values, and Variables
@@ -35,20 +39,32 @@ JavaScript assumes you meant:
 + The not-a-number value has one unusual feature in JavaScript: it does not compare equal to any other value, including itself. This means that you can’t write `x == NaN` to determine whether the value of a variable `x` is `NaN`. Instead, you should write `x != x`. That expression will be true if, and only if, `x` is `NaN`.
 
 + The negative zero value is also somewhat unusual.
-        
-        
-        var zero = 0;  // Regular zero
-        var negz = -0;  // Negative zero
-        zero === negz    // => true: zero and negative zero are equal
-        1/zero === 1/negz  // => false: infinity and -infinity are not equal
+```
+
+```
+
+
+var zero = 0;  // Regular zero
+var negz = -0;  // Negative zero
+zero === negz    // => true: zero and negative zero are equal
+1/zero === 1/negz  // => false: infinity and -infinity are not equal
+```
+
+```
 
 
 + Because of rounding error,the difference between the approximations of `.3` and `.2` is not exactly the same as the difference between the approximations of `.2` and `.1`.
 
 
-        var x = .3 - .2;  // thirty cents minus 20 cents
-        var y = .2 - .1;  // twenty cents minus 10 cents
-        x == y            // => false: the two values are not the same!
+```
+
+```
+var x = .3 - .2;  // thirty cents minus 20 cents
+var y = .2 - .1;  // twenty cents minus 10 cents
+x == y            // => false: the two values are not the same!
+```
+
+```
 
 In JS, `0.3-0.2=0.09999999999999998;`
 
@@ -58,10 +74,16 @@ In JS, `0.3-0.2=0.09999999999999998;`
 + Diff between `null` and `undefined`:
 
 
-        typeof(null)  // => object
-        typeof(undefined) // => undefined
-        null == undefined  // =>true
-        null === undefined  // =>false
+```
+
+```
+typeof(null)  // => object
+typeof(undefined) // => undefined
+null == undefined  // =>true
+null === undefined  // =>false
+```
+
+```
  
 ### Ch 4. Expressions and Operators
 

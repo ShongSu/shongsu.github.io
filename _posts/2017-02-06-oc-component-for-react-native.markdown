@@ -19,17 +19,23 @@ description:
 
 当前RN的最新版本：
 
-    react-native-cli: 2.0.1
-    react-native: 0.41.2
+```
+react-native-cli: 2.0.1
+react-native: 0.41.2
+```
 
 根据[RN的官方文档][od]，通过命令行创建并初始化一个RN项目。
 
-    react-native init CustomComponent
+```
+react-native init CustomComponent
+```
 
 初始化完毕后，运行下面命令
 
-    cd CustomComponent    
-    react-native run-ios
+```
+cd CustomComponent    
+react-native run-ios
+```
 
 可以在iOS模拟器上看到默认的界面。
 
@@ -53,40 +59,60 @@ description:
 
 打开`MyObjcClass.h`，写入以下代码，
 
-    #import <React/RCTBridgeModule.h>
+```
+#import <React/RCTBridgeModule.h>
+```
 
-    @interface MyObjcClass : NSObject <RCTBridgeModule>
+```
+@interface MyObjcClass : NSObject <RCTBridgeModule>
+```
 
-    @end
+```
+@end
+```
 
 这里我们可以看到，导入的`RCTBridgeModule.h`使得我们连接原生代码和JS。
 
 在.m文件中，我们使用`macros`来连接代码，`MyObjcClass.m`代码如下，
 
-    #import "MyObjcClass.h"
+```
+#import "MyObjcClass.h"
+```
 
-    @implementation MyObjcClass
+```
+@implementation MyObjcClass
+```
 
-    // The React Native bridge needs to know our module
-    RCT_EXPORT_MODULE()
+```
+// The React Native bridge needs to know our module
+RCT_EXPORT_MODULE()
+```
 
-    - (NSDictionary *)constantsToExport {
-      // 返回一个常量字符串
-      return @{@"greeting": @"Welcome to Custom Component Demo!"};
-    }
+```
+- (NSDictionary *)constantsToExport {
+  // 返回一个常量字符串
+  return @{@"greeting": @"Welcome to Custom Component Demo!"};
+}
+```
 
-    RCT_EXPORT_METHOD(squareMe:(NSString *)number:(RCTResponseSenderBlock)callback) {
-      // 平方函数，返回一个整型的平方数
-      int num = [number intValue];
-      callback(@[[NSNull null], [NSNumber numberWithInt:(num*num)]]);
-    }
+```
+RCT_EXPORT_METHOD(squareMe:(NSString *)number:(RCTResponseSenderBlock)callback) {
+  // 平方函数，返回一个整型的平方数
+  int num = [number intValue];
+  callback(@[[NSNull null], [NSNumber numberWithInt:(num*num)]]);
+}
+```
 
-    - (NSInteger)squareMe:(NSString *)number {
-      int num = [number intValue];
-      return num*num;
-    }
+```
+- (NSInteger)squareMe:(NSString *)number {
+  int num = [number intValue];
+  return num*num;
+}
+```
 
-    @end
+```
+@end
+```
 
 首先我们需要调用`macro`告诉连接模块这个类要对我们的JS代码可见，也就是暴露API给JS。
 
@@ -107,89 +133,123 @@ description:
 
 因此，我们需要两个简单的`TextView`和一个`TextInput`。另外我们使用ES6语法，确保你的`index.ios.js`代码如下。
 
-    // 1
-    import React, { Component } from 'react';
-    import {
-      AppRegistry,
-      StyleSheet,
-      Text,
-      TextInput,
-      View
-    } from 'react-native';
+```
+// 1
+import React, { Component } from 'react';
+import {
+  AppRegistry,
+  StyleSheet,
+  Text,
+  TextInput,
+  View
+} from 'react-native';
+```
 
-    // 2
-    var MyObjcClass = require('NativeModules').MyObjcClass;
+```
+// 2
+var MyObjcClass = require('NativeModules').MyObjcClass;
+```
 
-    export default class CustomComponent extends Component {
-       // 3
-       constructor(props) {
-        super(props);
-        this.state = {
-          number: 0
-        };
-      }
+```
+export default class CustomComponent extends Component {
+   // 3
+   constructor(props) {
+```
+super(props);
+this.state = {
+  number: 0
+};
+```
+}
+```
 
-      //4
-      render() {
-        return (
-          <View style={styles.container}>
-          <Text style={styles.welcome}>
-          {MyObjcClass.greeting}
-          </Text>
-          <TextInput style={styles.input} onChangeText={(text) => this.squareMe(text)}/>
-    			<Text style={styles.result}> square is </Text>
-          <Text style={styles.result}>
-          {this.state.number}
-          </Text>
-          </View>
-        );
-      }
+```
+//4
+render() {
+```
+return (
+  <View style={styles.container}>
+  <Text style={styles.welcome}>
+  {MyObjcClass.greeting}
+  </Text>
+  <TextInput style={styles.input} onChangeText={(text) => this.squareMe(text)}/>
+Text style={styles.result}> square is </Text>
+  <Text style={styles.result}>
+  {this.state.number}
+  </Text>
+  </View>
+);
+```
+}
+```
 
-       // 5
-       squareMe(number) {
-        if (number == '') {
-          return;
-        }
-        MyObjcClass.squareMe(number, (error, result) => {
-          if (error) {
-            console.error(error);
-          } else {
-            this.setState({number: result});
-          }
-        })
-      }
+```
+// 5
+squareMe(number) {
+```
+if (number == '') {
+  return;
+}
+MyObjcClass.squareMe(number, (error, result) => {
+  if (error) {
+```
+console.error(error);
+```
+  } else {
+```
+this.setState({number: result});
+```
+  }
+})
+```
+}
+```
 
-    }
+```
+}
+```
 
-    // 6
-    var styles = StyleSheet.create({
-      container: {
-        flex: 1,
-        justifyContent: 'center',
-        backgroundColor: '#F5FCFF',
-      },
-      welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 20,
-      },
-      input: {
-        width: 100,
-        height: 40,
-        borderColor: 'red',
-        borderWidth: 1,
-        alignSelf: 'center'
-      },
-      result: {
-        textAlign: 'center',
-        color: '#333333',
-        fontSize: 30,
-        fontWeight: 'bold',
-        margin: 20,
-      },
-    });
+```
+// 6
+var styles = StyleSheet.create({
+  container: {
+```
+flex: 1,
+justifyContent: 'center',
+backgroundColor: '#F5FCFF',
+```
+},
+welcome: {
+```
+fontSize: 20,
+textAlign: 'center',
+margin: 20,
+```
+},
+input: {
+```
+width: 100,
+height: 40,
+borderColor: 'red',
+borderWidth: 1,
+alignSelf: 'center'
+```
+},
+result: {
+```
+textAlign: 'center',
+color: '#333333',
+fontSize: 30,
+fontWeight: 'bold',
+margin: 20,
+```
+  },
+});
+```
 
-    AppRegistry.registerComponent('CustomComponent', () => CustomComponent);
+```
+AppRegistry.registerComponent('CustomComponent', () => CustomComponent);
+```
 
 
 具体代码说明如下：

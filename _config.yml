@@ -25,10 +25,7 @@ gmail_username: chinhouu1992@gmail.com
 markdown: kramdown
 kramdown:
   input: GFM
-  syntax_highlighter: none
-  syntax_highlighter_opts:
-    default_lang: text
-    block: line_numbers
+  syntax_highlighter: rouge
 
 plugins:
   - jekyll-paginate
