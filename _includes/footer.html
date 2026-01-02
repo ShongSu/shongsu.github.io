@@ -4,35 +4,21 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <ul class="list-inline text-center">
-                    <!-- kill the Facebook and Weibo -->
                     <li>
-                        <a href="{{ "/feed.xml" | prepend: site.baseurl }}">
+                        <a href="{{ '/feed.xml' | prepend: site.baseurl }}" aria-label="RSS Feed">
                             <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
                             </span>
                         </a>
                     </li>
-
-                    <!--
-                    {% if site.twitter_username %}
-                    <li>
-                        <a href="https://twitter.com/{{ site.twitter_username }}">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                    {% endif %}
-                  -->
 
                     {% if site.linkedin_username %}
                     <li>
-                        <a href="https://linkedin.com/{{ site.linkedin_username }}">
+                        <a href="https://linkedin.com/{{ site.linkedin_username }}" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
                             <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
                             </span>
                         </a>
                     </li>
@@ -40,79 +26,39 @@
 
                     {% if site.github_username %}
                     <li>
-                        <a href="https://github.com/{{ site.github_username }}">
+                        <a href="https://github.com/{{ site.github_username }}" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
                             <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
                             </span>
                         </a>
                     </li>
                     {% endif %}
 
-                    <!--
-                    {% if site.douban_username %}
+                    {% if site.zhihu_username %}
                     <li>
-                        <a href="http://www.douban.com/people/{{ site.douban_username }}">
+                        <a href="https://www.zhihu.com/people/{{ site.zhihu_username }}" aria-label="Zhihu" target="_blank" rel="noopener noreferrer">
                             <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-douban fa-stack-1x fa-inverse"></i>
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-zhihu fa-stack-1x fa-inverse"></i>
                             </span>
                         </a>
                     </li>
                     {% endif %}
-                    -->
-
-                    <!--
-                    {% if site.facebook_username %}
-                    <li>
-                        <a href="https://www.facebook.com/{{ site.facebook_username }}">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                    {% endif %}
-                    -->
 
                     {% if site.gmail_username %}
                     <li>
-                        <a href="mailto:{{ site.gmail_username }}">
+                        <a href="mailto:{{ site.gmail_username }}" aria-label="Email">
                             <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa  fa-stack-1x fa-inverse">陈</i>
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
                             </span>
                         </a>
                     </li>
                     {% endif %}
-
-                    <!-- {% if site.zhihu_username %}
-                    <li>
-                        <a target="_blank" href="https://www.zhihu.com/people/{{ site.zhihu_username }}">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa  fa-stack-1x fa-inverse">陈</i>
-                            </span>
-                        </a>
-                    </li>
-                    {% endif %} -->
-
-                    <!--
-                    {% if site.weibo_username %}
-                    <li>
-                        <a target="_blank" href="http://weibo.com/{{ site.weibo_username }}">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                    {% endif %}
-                    -->
-
                 </ul>
                 <p class="copyright text-muted">
-                &copy; 2015~{{ site.time | date: '%Y' }} {{ site.owner.name }}   Powered by Jekyll.
+                    &copy; 2015&ndash;{{ site.time | date: '%Y' }} {{ site.owner.name }}. Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a>.
                 </p>
             </div>
         </div>
@@ -120,21 +66,19 @@
 </footer>
 
 <!-- jQuery -->
-<script src="{{ "/js/jquery.min.js " | prepend: site.baseurl }}"></script>
+<script src="{{ '/js/jquery.min.js' | prepend: site.baseurl }}"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="{{ "/js/bootstrap.min.js " | prepend: site.baseurl }}"></script>
+<script src="{{ '/js/bootstrap.min.js' | prepend: site.baseurl }}"></script>
 
 <!-- Custom Theme JavaScript -->
-<script src="{{ "/js/clean-blog.min.js " | prepend: site.baseurl }}"></script>
+<script src="{{ '/js/clean-blog.min.js' | prepend: site.baseurl }}"></script>
 
-
-
-
-<!-- Highlight.js -->
+<!-- Syntax Highlighting -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wf8aEkv2Lz/Wz3i6/lmC4i8c1Qebfy3iM8guu1n9aTq7gire0xE/gl0fvJf/dJ1dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" integrity="sha512-0a4y4Bj2EY2Y4WY4Q0S8pSAH8yiFgp8mF07rxBhFqFMj/4k3R0Af0xfY7s3waR0LfVH2B1cDi0F1EBfYEUhg+yw==" crossorigin="anonymous" referrerpolicy="no-referrer">
 <script>
-    async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js",function(){
-        hljs.initHighlightingOnLoad();
-    })
+    document.addEventListener('DOMContentLoaded', function() {
+        hljs.highlightAll();
+    });
 </script>
-<link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">

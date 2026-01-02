@@ -1,11 +1,10 @@
 # Site settings
 title: A Piece of Sunshine
-header-img: "img/autumn2.jpg"
+header-img: "sysimg/autumn2.jpg"
 tagline: "一抹阳光"
 description: "檐下窗欞斜映枝椏 與你席地對座飲茶"
 baseurl: ""
-#url: "http://pengyu.ca"
-#url: "http://localhost:4000"
+url: "https://shongsu.github.io"
 
 # About/contact
 owner:
@@ -14,61 +13,59 @@ owner:
   bio: "不以物喜 不以己悲"
 
 # Data
-#gavatar: url
 favicon: sysimg/favicon.ico
 
-#douban_username:
-#twitter_username: Shongsu
+# Social media
 github_username: Shongsu
-#facebook_username: Shongsu
 linkedin_username: in/pengyu-chen-85253886
-#weibo_username: Shongsu
 zhihu_username: Shongsu
 gmail_username: chinhouu1992@gmail.com
 
 # Build settings
-# use Github Flavored Markdown !important
-# document: http://jekyllrb.com/docs/configuration/#kramdown
 markdown: kramdown
 kramdown:
   input: GFM
-highlighter: rouge
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block: line_numbers
 
-gems:
-# - jekyll-gallery-generator
-- jekyll-paginate
+plugins:
+  - jekyll-paginate
+  - jekyll-feed
+  - jekyll-sitemap
+
 permalink: none
 paginate: 8
-exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
+paginate_path: "/page:num/"
 
-# http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+exclude:
+  - "less"
+  - "node_modules"
+  - "Gruntfile.js"
+  - "package.json"
+  - "README.md"
+  - "Gemfile.lock"
+  - ".sass-cache"
+  - ".jekyll-cache"
+
+# Timezone
 timezone: America/Toronto
-
-# Title
-
 
 # Defaults for posts
 defaults:
-  -
-    scope:
+  - scope:
       path: ""
       type: "posts"
     values:
       layout: "post"
       author: "Pengyu"
-      header-img: "sysimg/autumn2.jpg" # We don't want posts without a header image, that whould mean white on white
-
+      header-img: "sysimg/autumn2.jpg"
 
 # Comments
-comments :
-  provider : disqus
-  disqus :
-      short_name : Shongsu
+comments:
+  provider: disqus
+  disqus:
+    short_name: Shongsu
 
-# Analytics and webmaster tools stuff goes here
+# Analytics
 google_analytics: UA-66863061-1
-google_verify:
-# https://ssl.bing.com/webmaster/configure/verify/ownership Option 2 content= goes here
-bing_verify:
-
-# Links to include in footer navigation
