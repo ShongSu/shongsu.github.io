@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "LeetCode Questions: Solutions in JavaScript"
-date: 2025-01-01
+date: 2025-12-01
 categories: leetcode javascript
 ---
 
