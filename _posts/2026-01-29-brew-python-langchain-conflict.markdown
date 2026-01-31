@@ -1,8 +1,10 @@
 ---
 layout: post
-title: "The Biggest Pitfall When Using LangChain / Transformers on macOS"
-date: 2026-01-29
-categories: AI LangChain
+title: The Biggest Pitfall When Using LangChain / Transformers on macOS
+date: 2026-01-29 00:14
+categories: [blog]
+tags: [AI, LangChain]
+description:
 ---
 
 # Mac 上使用 LangChain / Transformers 最大的坑：Homebrew Python 冲突（终极解决方案）

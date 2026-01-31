@@ -1,8 +1,10 @@
 ---
 layout: post
-title: "LeetCode Questions: Solutions in JavaScript"
-date: 2025-12-01
-categories: leetcode javascript
+title: LeetCode Questions - Solutions in JavaScript
+date: 2025-12-01 14:11
+categories: [blog]
+tags: [leetcode, javascript]
+description:
 ---
 
 # LeetCode Questions: Solutions in JavaScript
