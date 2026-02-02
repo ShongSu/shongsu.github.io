@@ -1,7 +1,6 @@
-
 ---
 layout: post
-title: Sentiment Analysis Demo: Comparing OpenAI LLMs and TextBlob
+title: Sentiment Analysis Demo, Comparing OpenAI LLMs and TextBlob
 date: 2026-02-01 23:24
 categories: [blog]
 tags: [AI, LangChain]
